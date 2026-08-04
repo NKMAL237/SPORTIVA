@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Sportiva CM — Cameroon Sports Network{% endblock %}</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            camerGreen: '#007A3D',
+            camerRed: '#CE1126',
+            camerYellow: '#FCD116',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Leaflet CSS & JS for Interactive Cameroon Maps -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-slate-900 text-slate-100 flex flex-col min-h-screen selection:bg-emerald-500 selection:text-white">
+
+  <!-- Navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- Messages Alert Banners -->
+  {% if messages %}
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 w-full">
+      {% for message in messages %}
+        <div class="p-4 rounded-xl mb-3 flex items-center justify-between shadow-lg {% if message.tags == 'error' %}bg-rose-900/80 text-rose-200 border border-rose-700{% elif message.tags == 'success' %}bg-emerald-900/80 text-emerald-200 border border-emerald-700{% else %}bg-blue-900/80 text-blue-200 border border-blue-700{% endif %}">
+          <div class="flex items-center space-x-3">
+            <i class="fa-solid {% if message.tags == 'error' %}fa-circle-exclamation{% elif message.tags == 'success' %}fa-circle-check{% else %}fa-circle-info{% endif %} text-lg"></i>
+            <span class="text-sm font-medium">{{ message }}</span>
+          </div>
+          <button onclick="this.parentElement.remove()" class="text-xs opacity-70 hover:opacity-100">
+            <i class="fa-solid fa-xmark text-base"></i>
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <!-- Main Content -->
+  <main class="flex-grow">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'footer.html' %}
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

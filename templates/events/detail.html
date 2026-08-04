@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ event.title }} — Sportiva CM{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+  
+  <a href="{% url 'events_list' %}" class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors">
+    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Events List
+  </a>
+
+  <!-- Header Banner -->
+  <div class="glass-panel p-8 rounded-3xl border border-slate-800 space-y-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="flex items-center space-x-2 flex-wrap">
+          <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20">
+            {{ event.sport.name }}
+          </span>
+          <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-300 font-semibold border border-amber-500/20">
+            {{ event.category.name }}
+          </span>
+          <span class="text-xs px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 font-semibold border border-purple-500/20">
+            Entry Fee: {{ event.entry_fee }}
+          </span>
+        </div>
+
+        <h1 class="text-3xl font-extrabold text-white">{{ event.title }}</h1>
+        <p class="text-sm text-slate-400">
+          <i class="fa-solid fa-location-dot text-rose-400 mr-1.5"></i> {{ event.venue_name }}, {{ event.city }}
+        </p>
+        <p class="text-xs text-amber-400 font-semibold">
+          <i class="fa-solid fa-clock mr-1"></i> Date & Time: {{ event.start_date|date:"l, d F Y @ H:i" }} GMT+1
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        {% if user.is_authenticated %}
+          <a href="{% url 'event_rsvp' pk=event.pk %}" class="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold flex items-center justify-center transition-all {% if is_attending %}bg-rose-900/80 hover:bg-rose-800 text-rose-200 border border-rose-700{% else %}camer-btn shadow-lg{% endif %}">
+            <i class="fa-solid {% if is_attending %}fa-user-minus{% else %}fa-user-check{% endif %} mr-2"></i>
+            {% if is_attending %}Cancel Registration{% else %}RSVP & Attend{% endif %}
+          </a>
+        {% else %}
+          <a href="{% url 'login' %}" class="w-full sm:w-auto camer-btn px-6 py-3 rounded-xl text-xs font-bold flex items-center justify-center">
+            Log in to RSVP
+          </a>
+        {% endif %}
+
+        {% if event.contact_whatsapp %}
+          <a href="https://wa.me/{{ event.clean_whatsapp }}?text=Hello,%20I'm%20inquiring%20about%20{{ event.title|urlencode }}" target="_blank" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center shadow-md">
+            <i class="fa-brands fa-whatsapp text-base mr-2"></i> WhatsApp Contact
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="pt-6 border-t border-slate-800 space-y-3">
+      <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400">Event Overview</h3>
+      <p class="text-slate-300 text-sm leading-relaxed whitespace-pre-line">{{ event.description }}</p>
+    </div>
+  </div>
+
+  <!-- Venue Map -->
+  <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3">
+    <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400">
+      <i class="fa-solid fa-map-pin mr-1"></i> Venue Map Location
+    </h3>
+    <div id="event-map" class="w-full h-64 rounded-2xl overflow-hidden border border-slate-700/60 z-0"></div>
+  </div>
+
+  <!-- Registered Attendees -->
+  <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="text-base font-bold text-white">Registered Attendees</h3>
+      <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-emerald-400 border border-slate-700 font-semibold">
+        {{ attendee_count }} / {{ event.max_participants }} Confirmed
+      </span>
+    </div>
+
+    <div class="flex flex-wrap gap-3">
+      {% for att in attendances %}
+        <div class="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
+          <div class="w-6 h-6 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold text-[10px]">
+            {{ att.user.username|slice:":1"|upper }}
+          </div>
+          <span>{{ att.user.username }}</span>
+        </div>
+      {% empty %}
+        <p class="text-xs text-slate-500 italic">No attendees registered yet. Be the first!</p>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var lat = {{ event.latitude }};
+    var lng = {{ event.longitude }};
+    var map = L.map('event-map').setView([lat, lng], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map)
+      .bindPopup("<b>{{ event.title|escapejs }}</b><br>{{ event.venue_name|escapejs }}").openPopup();
+  });
+</script>
+{% endblock %}

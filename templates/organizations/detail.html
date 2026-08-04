@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ organization.name }} — Sportiva CM{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+  
+  <!-- Back Button -->
+  <a href="{% url 'organizations_list' %}" class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors">
+    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Organizations Directory
+  </a>
+
+  <!-- Club Banner / Header -->
+  <div class="glass-panel p-8 rounded-3xl border border-slate-800 space-y-6">
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+      <div class="flex items-center space-x-5">
+        {% if organization.logo %}
+          <img src="{{ organization.logo.url }}" alt="{{ organization.name }}" class="w-20 h-20 rounded-2xl object-cover border border-slate-700">
+        {% else %}
+          <div class="w-20 h-20 rounded-2xl bg-emerald-600/30 text-emerald-400 flex items-center justify-center font-bold text-3xl border border-emerald-500/30">
+            <i class="fa-solid {{ organization.sports_category.icon_class|default:'fa-trophy' }}"></i>
+          </div>
+        {% endif %}
+        <div>
+          <div class="flex items-center space-x-3">
+            <h1 class="text-3xl font-extrabold text-white">{{ organization.name }}</h1>
+            {% if organization.is_verified %}
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-semibold flex items-center">
+                <i class="fa-solid fa-circle-check mr-1"></i> Verified
+              </span>
+            {% endif %}
+          </div>
+          <p class="text-sm text-slate-400 mt-1">
+            <i class="fa-solid fa-location-dot text-rose-400 mr-1.5"></i> {{ organization.address }}, {{ organization.city }}
+          </p>
+        </div>
+      </div>
+
+      {% if organization.whatsapp_number %}
+        <a href="https://wa.me/{{ organization.clean_whatsapp }}?text=Hello%20{{ organization.name|urlencode }},%20I%20saw%20your%20club%20profile%20on%20Sportiva%20CM" target="_blank" class="camer-btn px-6 py-3.5 rounded-xl text-sm font-bold shadow-lg flex items-center justify-center">
+          <i class="fa-brands fa-whatsapp text-lg mr-2"></i> Chat on WhatsApp
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Details Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-slate-800">
+      
+      <!-- Description -->
+      <div class="md:col-span-2 space-y-3">
+        <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400">About the Club</h3>
+        <p class="text-slate-300 text-sm leading-relaxed whitespace-pre-line">{{ organization.description }}</p>
+      </div>
+
+      <!-- Contact Info Box -->
+      <div class="glass-card p-5 rounded-2xl border border-slate-800 space-y-3 text-xs">
+        <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-2">Club Contact Info</h4>
+        <div>
+          <span class="text-slate-400 block mb-0.5">Sport Category</span>
+          <span class="font-semibold text-emerald-400">{{ organization.sports_category.name }}</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">Phone Number</span>
+          <span class="font-semibold text-white">{{ organization.phone_number|default:"Not specified" }}</span>
+        </div>
+        <div>
+          <span class="text-slate-400 block mb-0.5">Email</span>
+          <span class="font-semibold text-white">{{ organization.email|default:"Not specified" }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Organization Location Map -->
+  <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-3">
+    <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400">
+      <i class="fa-solid fa-map-pin mr-1"></i> Venue Location
+    </h3>
+    <div id="detail-map" class="w-full h-64 rounded-2xl overflow-hidden border border-slate-700/60 z-0"></div>
+  </div>
+
+  <!-- Hosted Events Section -->
+  <div class="space-y-4">
+    <h3 class="text-xl font-extrabold text-white">Hosted Tournaments & Events</h3>
+    <div class="grid grid-cols-1 gap-4">
+      {% for event in events %}
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 flex items-center justify-between">
+          <div>
+            <h4 class="text-lg font-bold text-white">{{ event.title }}</h4>
+            <p class="text-xs text-slate-400 mt-1">
+              <i class="fa-solid fa-calendar mr-1 text-amber-400"></i> {{ event.start_date|date:"D, d M Y @ H:i" }} • {{ event.venue_name }}
+            </p>
+          </div>
+          <a href="{% url 'event_detail' pk=event.pk %}" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-emerald-400 text-xs font-semibold border border-slate-700">
+            View Event →
+          </a>
+        </div>
+      {% empty %}
+        <p class="text-xs text-slate-400 italic">No upcoming public events scheduled by this club yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var lat = {{ organization.latitude }};
+    var lng = {{ organization.longitude }};
+    var map = L.map('detail-map').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    L.marker([lat, lng]).addTo(map)
+      .bindPopup("<b>{{ organization.name|escapejs }}</b><br>{{ organization.address|escapejs }}").openPopup();
+  });
+</script>
+{% endblock %}

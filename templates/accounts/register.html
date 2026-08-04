@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Register — Sportiva CM{% endblock %}
+
+{% block content %}
+<div class="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full glass-panel p-8 rounded-3xl space-y-6 shadow-2xl border border-slate-800">
+    <div class="text-center space-y-2">
+      <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl mx-auto">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+      <h2 class="text-2xl font-bold text-white">Join Sportiva CM</h2>
+      <p class="text-slate-400 text-xs">Create your sports profile in Cameroon</p>
+    </div>
+
+    <form method="post" action="{% url 'register' %}" class="space-y-4">
+      {% csrf_token %}
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Username</label>
+        <input type="text" name="username" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-emerald-500 text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Email Address</label>
+        <input type="email" name="email" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-emerald-500 text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Role on Platform</label>
+        <select name="role" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-emerald-500 text-sm">
+          <option value="ATHLETE">Athlete / Sports Fan</option>
+          <option value="ORGANIZATION">Club / Sports Academy</option>
+          <option value="TRAINER">Coach / Personal Trainer</option>
+          <option value="SPONSOR">Sponsor / Business Partner</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">City in Cameroon</label>
+        <select name="city" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-emerald-500 text-sm">
+          <option value="Yaoundé">Yaoundé</option>
+          <option value="Douala">Douala</option>
+          <option value="Bafoussam">Bafoussam</option>
+          <option value="Garoua">Garoua</option>
+          <option value="Bamenda">Bamenda</option>
+          <option value="Buea">Buea</option>
+          <option value="Maroua">Maroua</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">WhatsApp Phone Number</label>
+        <input type="text" name="phone_number" placeholder="+237699000000" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-emerald-500 text-sm">
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Password</label>
+        <input type="password" name="password" required class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white focus:outline-none focus:border-emerald-500 text-sm">
+      </div>
+      <button type="submit" class="camer-btn w-full py-3.5 rounded-xl text-sm font-bold shadow-lg mt-2">
+        Create Free Account
+      </button>
+    </form>
+
+    <div class="text-center text-xs text-slate-400 pt-4 border-t border-slate-800">
+      Already registered? <a href="{% url 'login' %}" class="text-emerald-400 hover:underline font-semibold">Log in here</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

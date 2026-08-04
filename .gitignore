@@ -1,0 +1,25 @@
+# Python & Django .gitignore
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django database & media uploads
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
