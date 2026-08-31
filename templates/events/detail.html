@@ -100,14 +100,12 @@
   document.addEventListener('DOMContentLoaded', function() {
     var lat = {{ event.latitude }};
     var lng = {{ event.longitude }};
-    var map = L.map('event-map').setView([lat, lng], 14);
+    var map = window.createSportivaMap ? window.createSportivaMap('event-map', [lat, lng], 14) : L.map('event-map').setView([lat, lng], 14);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    L.marker([lat, lng]).addTo(map)
-      .bindPopup("<b>{{ event.title|escapejs }}</b><br>{{ event.venue_name|escapejs }}").openPopup();
+    if (map) {
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup("<div class='p-1'><b>{{ event.title|escapejs }}</b><br><span class='text-xs text-slate-400'>{{ event.venue_name|escapejs }}</span></div>").openPopup();
+    }
   });
 </script>
 {% endblock %}

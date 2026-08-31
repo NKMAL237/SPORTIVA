@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django import forms
+from accounts.decorators import tab_required
 from .models import Post, Comment, Like
 
 
@@ -30,7 +31,9 @@ class CommentForm(forms.ModelForm):
         }
 
 
+@tab_required('media_feed')
 def media_feed_list(request):
+
     """Main news feed — all published posts, newest first."""
     city_filter = request.GET.get('city', '')
     type_filter = request.GET.get('type', '')

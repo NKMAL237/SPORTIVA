@@ -2,11 +2,14 @@ import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from accounts.decorators import tab_required
 from .models import OrganizationProfile, SportsCategory
 from .forms import OrganizationForm
 
 
+@tab_required('organizations')
 def organizations_list(request):
+
     """
     Renders list of sports organizations with filtering by city and sport.
     Passes a JSON payload of organization coordinates for the Leaflet map.

@@ -1,0 +1,8708 @@
+REPUBLIC OF CAMEROON 
+
+REPUBLIQUE DU CAMEROON 
+
+Peace-Work-Fatherland 
+
+Paix-Travail- Patrie 
+
+AFRICAN INSTITUTE OF COMPUTER 
+
+SCIENCES - CAMEROON PAUL BIYA 
+
+TECHNOLOGICAL CENTER OF 
+
+REALIZE 
+
+EXCELLENCE 
+
+P.O. Box: 13719 Yaoundé 
+
+Tel: +237 620256960 / 237 654486985 
+
+Email: realize.contactus@gmail.com 
+
+Tel: +237.242.729.957 Fax: 22729958 
+
+Website: www.realize.com 
+
+E-mail:contact@iaicameroun.com 
+
+THEME 
+INTERNSHIP REPORT 
+
+Online Consulting and Follow-up Platform geared towards otaining 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-
+a DataSet for Caameroon 
+
+UP PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS  
+
+Case Study: ODZA District Hospital 
+
+Internship carried out from the 03rd  July to 30th September 2023 
+
+In view of obtaining a Higher Technician Diploma (HTD) in Computer Sciences. 
+
+Option: Software Engineering 
+
+Written By: 
+
+KAMENI SEPDEU ANGE CHRIS 
+
+Level II student at AICS Cameroon 
+
+Supervised By: 
+
+Academic Supervisor 
+
+Mr. AGBOR DONALD ANDERSON 
+
+Computer Engineer and Lecturer at AICS 
+
+Cameroon 
+
+Professional Supervisor 
+
+Mr. TANUE MONETTE 
+
+Software Engineer at Realize 
+
+Academic Year 2022 - 2023 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+DEDICATION 
+
+This work is dedicated to my family members for their 
+
+numerous encouragement and support towards my academic 
+
+success. 
+
+This work is dedicated to my family members for their 
+
+numerous encouragement and support towards my academic 
+
+success. 
+
+ACKNOWLEDGEMENTThis work is dedicated to my family 
+
+members for their numerous encouragement and support 
+
+towards my academic success. 
+
+This work is dedicated to my family members for their 
+
+numerous encouragement and support towards my academic 
+
+success. 
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+i 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+ACKNOWLEDGEMENT 
+Ackm 
+
+Drafting this document would have not been possible without the contribution of some people 
+
+ACKNOWLEDGEMENT 
+
+who  took  upon  themselves  to  see  this  work  being  accomplished.  Our  gratitude  goes  to  the 
+
+following people:  
+
+CONTENTACKNOWLEDGEMENT 
+  The  Resident  Representative  of  IAI-Cameroon,  Mr. Armand  Claude ABANDA,  for  his 
+
+support, words of encouragement and the different advices on how to approach situations. 
+
+  The  chief  executive  officer  of  Realize,  Mr.  NDELOGAKEH  Daniel  and  his  staffs  for 
+ACKNOWLEDGEMENT 
+
+trusting us by given us the opportunity to serve as interns in their prestigious enterprise.  
+
+  Our  professional  supervisor,  Mr.  TANUE  Monette  for  his  moral  support,  advice  and 
+
+professional expertise she shared with us.  
+
+  Our academic supervisor Mr. AGBOR Donald Anderson for his moral support, effort and 
+
+advices throughout the academic year.  
+
+  To  our  academic  teachers  Mrs.  TCHINGA  Alice,  Mr.  JIONGANG  Thibaut  AND  Mr. 
+
+MESSIO for their advices and assistance in realizing this document. 
+
+  To Mr. MBAH Royce for the tough training, advices and professional expertise.  
+
+  To all my teachers of AICS CAMEROON for the knowledge they impacted me with for me 
+
+to be where I am today.  
+
+  For my brothers and sister for their love and support.  
+
+  The countless contributors of open-source programming community, for their great help in 
+
+learning basic skills and detecting and solving bugs.  
+
+  To all my classmates for their collaborative work throughout the academic year. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+ii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONTENT 
+
+DEDICATION ........................................................................................................................... i 
+
+ACKNOWLEDGEMENT ....................................................................................................... ii 
+
+CONTENT ............................................................................................................................... iii 
+
+LIST OF FIGURES .................................................................................................................. v 
+
+LIST OF TABLES ................................................................................................................. viii 
+
+GLOSSARY ............................................................................................................................. ix 
+
+ABSTRACT .............................................................................................................................. x 
+
+RESUME .................................................................................................................................. xi 
+
+GENERAL INTRODUCTION ............................................................................................... 1 
+
+PART I ....................................................................................................................................... 2 
+
+INSERTION PHASE ............................................................................................................... 2 
+
+PART II ................................................................................................................................... 13 
+
+EXISTING SYSTEM ............................................................................................................. 13 
+
+PART III .................................................................................................................................. 23 
+
+SPECIFICATION BOOK ..................................................................................................... 23 
+
+PART IV .................................................................................................................................. 40 
+
+ANALYSIS BOOK ................................................................................................................. 40 
+
+PART V .................................................................................................................................... 76 
+
+CONCEPTION PHASE ........................................................................................................ 76 
+
+PART VI .................................................................................................................................. 96 
+
+REALIZATION PHASE ....................................................................................................... 96 
+
+PART VII ............................................................................................................................... 107 
+
+TEST OF FUNCTIONALITIES ......................................................................................... 107 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+iii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART VIII ............................................................................................................................. 115 
+
+INSTALLATION GUIDE AND USER GUIDE ................................................................ 115 
+
+GENERAL CONCLUSION ................................................................................................ 135 
+
+ANNEXES ............................................................................................................................... xii 
+
+BIBLIOGRAPHY ................................................................................................................. xiii 
+
+WEBOGRAPHY ................................................................................................................... xiv 
+
+TABLE OF CONTENT ......................................................................................................... xv 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+iv 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+LIST OF FIGURES 
+
+Figure 1: Functional Organization of Realize ............................................................................ 9 
+
+Figure 2: GEOGRAPHICAL LOCATION OF REALIZE ....................................................... 10 
+
+Figure 3: Doctor Survey Question 1 ........................................................................................ 17 
+
+Figure 4: Doctor Survey Question 2 ........................................................................................ 18 
+
+Figure 5: Doctor Survey Question 3 ........................................................................................ 18 
+
+Figure 6: Patient Survey question 1 ......................................................................................... 26 
+
+Figure 7: Patient Survey Question 2 ........................................................................................ 26 
+
+Figure 8: Patient Survey Question 3 ........................................................................................ 27 
+
+Figure 9: Patient Survey Question 4 ........................................................................................ 27 
+
+Figure 10: Gantt project planning ............................................................................................ 33 
+
+Figure 11: UML 2.5 diagrams overview (source: https://creately.com/blog/diagrams/uml-
+
+diagram-types-examples/) ........................................................................................................ 44 
+
+Figure 12: 2TUP diagram (source: https://www.mysciencework.com/omniscience/pervasive-
+
+mobile-healthcare-system-based on-cloud-computing). .......................................................... 47 
+
+Figure 13: Use Case Diagram formalism ................................................................................. 50 
+
+Figure 14: General Use Case Diagram ..................................................................................... 54 
+
+Figure 15 manage appointment use case diagram .................................................................... 55 
+
+Figure 16: consultation use case diagram ................................................................................ 56 
+
+Figure 17: Communication Diagram formalism ...................................................................... 60 
+
+Figure 18:Auhenticate Communication Diagram .................................................................... 62 
+
+Figure 19 Book appointment communication diagram ............................................................ 63 
+
+Figure 20: Formalism of sequence diagram ............................................................................. 64 
+
+Figure 21: Authenticate Sequence Diagram ............................................................................. 67 
+
+Figure 22 Book appointment sequence diagram ...................................................................... 68 
+
+Figure 23: Formalism of activity diagram ................................................................................ 69 
+
+Figure 24 Authenticate activity diagram .................................................................................. 72 
+
+Figure 25:Consultation activity diagram .................................................................................. 73 
+
+Figure 26 Book appointment activity diagram ......................................................................... 74 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  v 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Figure 27: Hardware diagram of the system ............................................................................ 79 
+
+Figure 28: n-tier Architecture (Source: https://www.pinterest.es/pin/752241943987565648/) 80 
+
+Figure 29: The MVC architecture (Source: https://www.freecodecamp.org/news/the-model-
+
+view-controller-pattern-mvc architecture-and-frameworks-explained/) .................................. 81 
+
+Figure 30: Formalism of Class Diagram .................................................................................. 82 
+
+Figure 31: System class diagram .............................................................................................. 85 
+
+Figure 32: Formalism of state machine diagram ...................................................................... 87 
+
+Figure 33 Account state machine diagram ............................................................................... 90 
+
+Figure 34 Consultation state machine diagram ........................................................................ 90 
+
+Figure 35 Appointment state machine diagram ........................................................................ 91 
+
+Figure 36: Formalism of package diagram .............................................................................. 92 
+
+Figure 37 iKare package diagram ............................................................................................ 94 
+
+Figure 38: Formalism of deployment diagram ......................................................................... 99 
+
+Figure 39 iKare deployment diagram ..................................................................................... 101 
+
+Figure 40: Formalism of component diagram (Source: 
+
+https://www.pinterest.com/pin/551128073157994549/) ........................................................ 102 
+
+Figure 41 iKare mobile component diagram .......................................................................... 104 
+
+Figure 42 iKare mobile component diagram .......................................................................... 105 
+
+Figure 43: Admin Modules tests ............................................................................................ 111 
+
+Figure 44: Professional Modules tests ................................................................................... 112 
+
+Figure 45: Book appointment test showcase .......................................................................... 113 
+
+Figure 46: Doctor's availability test showcase ....................................................................... 113 
+
+Figure 47 mongodb logo ........................................................................................................ 118 
+
+Figure 48 Downloading MongoDB  community version ....................................................... 118 
+
+Figure 49 Launching the installation wizard .......................................................................... 119 
+
+Figure 50 Clicking on next ..................................................................................................... 119 
+
+Figure 51: Agreement License ............................................................................................... 120 
+
+Figure 52 Select complete setup ............................................................................................. 120 
+
+Figure 53: Run service network user ...................................................................................... 121 
+
+Figure 54: Selecting MongoDB compass and clicking next .................................................. 121 
+
+Figure 55: Click on install to start installation ....................................................................... 122 
+
+Figure 56: Click on finish to complete installation ................................................................ 122 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  vi 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Figure 57: iKare login Screen ................................................................................................ 123 
+
+Figure 58: iKare register screen ............................................................................................. 124 
+
+Figure 59: iKare patient's welcome screen ............................................................................. 125 
+
+Figure 60: Hospital List Screen .............................................................................................. 126 
+
+Figure 61: Book Appointment Screen .................................................................................... 127 
+
+Figure 62: Doctor's home screen ............................................................................................ 128 
+
+Figure 63: Doctor's appointment Screen ................................................................................ 129 
+
+Figure 64: Prescription Screen ............................................................................................... 130 
+
+Figure 65: Chat Screen ........................................................................................................... 131 
+
+Figure 66: Admin Creation Page ............................................................................................ 132 
+
+Figure 67: List of Health Professionals page ......................................................................... 132 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  vii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+LIST OF TABLES 
+
+Table 1: Limitations, Consequence and proposed solution ...................................................... 20 
+
+Table 2: Chronogram of activities ............................................................................................ 32 
+
+Table 3: Software Resources (source : Mercurial  2022) ......................................................... 34 
+
+Table 4: Hardware resources (source: 
+
+https://www.scribd.com/document/561202966/mercuriale-2022) ........................................... 35 
+
+Table 5: Human Resources (source : Mercurial 2022) ............................................................. 36 
+
+Table 6: Global Estimation ....................................................................................................... 36 
+
+Table 7: List of participants ...................................................................................................... 38 
+
+Table 8: Differences between UML and MERISE ................................................................... 45 
+
+Table 9: Use Case Diagram Component .................................................................................. 51 
+
+Table 10: Actors of our System ................................................................................................ 53 
+
+Table 11: Authenticate Textual Description ............................................................................. 57 
+
+Table 12:  Book appointment textual description ..................................................................... 58 
+
+Table 13: Video Consultation textual description .................................................................... 59 
+
+Table 14: Elements of a communication diagram .................................................................... 61 
+
+Table 15: Elements of sequence diagram ................................................................................. 65 
+
+Table 16: Elements of activity diagram .................................................................................... 70 
+
+Table 17: Elements of class diagram ........................................................................................ 83 
+
+Table 18: Elements of state machine diagram .......................................................................... 88 
+
+Table 19: Elements of package diagram ................................................................................... 93 
+
+Table 20: Elements of deployment diagram ........................................................................... 100 
+
+Table 21: Elements of component diagram ............................................................................ 103 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  viii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+GLOSSARY 
+
+  2TUP: Two Track Unified Process.  
+
+  AICS: African Institute of Computer Sciences.  
+
+  APK: Android Package Kit.  
+
+  DBMS : Database Management System 
+
+  GUI: Graphical User Interface  
+
+  IDE: Integrated Development environment 
+
+  IPA:  iOS App Store Package.  
+
+  JSON: JavaScript Object Notation  
+
+  MVC: Model View Controller.  
+
+  UML: Unified Modelling Language. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+ix 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+ABSTRACT 
+
+Health is one of the most valuable assets that a human can possess. The recent arousal 
+
+Abstract 
+
+of a pandemic in 2020 has made the world in general and our country in particular discover 
+
+their vulnerability regarding health. Also, the inequality in the distribution of resources across 
+RESUMEABSTRACT 
+areas in the national territory in terms of distances (transport costs involved), number of doctors 
+
+(low doctor to patient ratio) has made it difficult for patients in certain enclaved areas to receive 
+Abstract 
+the most effective consultation and follow-ups they need. This carelessness can often lead to 
+more  serious  cases  of  illnesses  or  even  death  in  some  cases.  For  this  reason,  we  decided  to 
+
+develop an application to facilitate the consultation and follow-up of patients. This application 
+
+known  as  iKare,  is  a  mobile  application  that  enables  registered  patients  to  book  for 
+
+appointments for consultations through video calls, receive regular forms after been prescribed 
+
+drugs for follow-ups, search for nearby pharmacies, chat with health professionals on a health 
+
+topic and manage their electronic health records just to name a few. The health professionals on 
+
+the  other  hand  will  conduct  consultations  through  video  calls,  prescribe  drugs  at  the  end  of 
+
+every  consultation,  verify  all  forms  answered  by  patients.  This  will  help  the  effective 
+
+consultation  and  diagnosis  of  patients.  In  order  to  accomplish  this  project,  we  used  UML 
+
+(Unified Modelling Language) as our modelling language coupled with 2TUP (2 Track Unified 
+
+Process) in order to form a method. 
+
+Keywords: 
+
+  Health 
+
+  Pandemic 
+
+  Consultation 
+
+  iKare 
+
+  Follow-up 
+
+  Diagnosis 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  x 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+RESUME 
+
+Résumé 
+La santé est l'un des biens les plus précieux qu'un être humain puisse posséder. L'éveil 
+
+récent d'une pandémie en 2020 a révélé au monde en général, et à notre pays en particulier, leur 
+
+vulnérabilité en ce qui concerne la santé. De plus, l'inégalité dans la répartition des ressources 
+
+GENERAL INTRODUCTIONRESUME 
+
+à travers les différentes régions du territoire national, en termes de distances (coûts de transport 
+
+impliqués) et de nombre de médecins (ratio faible de médecins par patient), rend difficile pour 
+
+les patients dans certaines zones enclavées de recevoir les consultations les plus efficaces et les 
+
+Résumé 
+
+suivis  dont  ils  ont  besoin.  Cette  négligence  peut  souvent  conduire  à  des  cas  plus  graves  de 
+
+maladies, voire à la mort dans certains cas. Pour cette raison, nous avons décidé de développer 
+
+une application pour faciliter la consultation et le suivi des patients. Cette application (iKare) 
+
+permet  aux  patients  de  prendre  rendez-vous  pour  des  consultations  via  des  appels  vidéo,  de 
+
+recevoir  régulièrement  des  formulaires  après  s'être  vu  prescrire  des  médicaments  pour  les 
+
+suivis, de rechercher des pharmacies à proximité, de discuter avec des professionnels de la santé 
+
+sur  un  sujet  de  santé  et  de  gérer  leurs  dossiers  médicaux  électroniques,  pour  n'en  citer  que 
+
+quelques-unes. Les professionnels de la santé, quant à eux, mèneront des consultations via des 
+
+appels vidéo, prescriront des médicaments à la fin de chaque consultation et vérifieront tous les 
+
+formulaires remplis par les patients. Cela permettra une consultation et un diagnostic efficaces 
+
+des patients. Pour mener à bien ce projet, nous avons utilisé UML (Unified Modeling Language) 
+
+comme langage de modélisation, associé à 2TUP (2 Track Unified Process) pour former une 
+
+méthode. 
+
+Mots-clés : 
+
+  Santé 
+
+  Pandémie 
+
+  Consultation 
+
+  iKare 
+
+  Suivi 
+
+  Diagnostic 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xi 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+GENERAL INTRODUCTION 
+
+Technology  is  advancing  at  an  incredible  rate,  spanning  almost  every  sector  from 
+General Introduction 
+
+business to agriculture and other sectors. Due to the huge technological advancement, we now 
+
+live in a fast-paced society where everything is gradually being digitalized making life easier. 
+
+As a developing country, most businesses in Cameroon strive to make advantage of the digital 
+
+PART IGENERAL 
+
+economy to grow their businesses thereby boosting the economy as well. To achieve such a 
+
+goal enterprise, need qualified personnel having skills in computer sciences and related fields. 
+
+INTRODUCTION 
+
+Second year students in AICS Cameroon, are required to carry out a three (3) months’ academic 
+
+internship  at  an  enterprise  to  put  into  practice  the  knowledge  gotten  from  school  in  the 
+
+General Introduction 
+
+professional milieu. For this reason, we applied for an internship at Realize, which specializes 
+
+in providing IT solutions. While there, we were attributed the theme “DEVELOPMENT OF A 
+
+PATIENTS’  CONSULTATION  AND  FOLLOW-UP  PLATFORM  FOR  CAMEROON 
+
+GOVERNMENT  HOSPITALS”.  We  divided  this  report  into  eight  (8)  parts  which  are  as 
+
+follows: 
+
+1.  Insertion Document: In this book, we shall present the company in which we spent our 
+
+internship period and the integration of interns. 
+
+2.  Existing System: Here, we shall present the already present system in place, that is the 
+
+one used for consultation and follow-up purposes. 
+
+3.  Specification  Book:  In  this  book,  we  specify  the  needs  of  the  user  taking  into 
+
+considerations the time and cost of the project. 
+
+4.  Analysis Document: Here, we shall present the analysis method chosen together with 
+
+the presentation of all the diagrams used for the analysis of this project. 
+
+5.  Conception phase:  This presents the generic and detailed conception of the project to 
+
+bring out real world constituents. 
+
+6.  The  Realisation  phase:  This  phase  will  permit  us  to  visualize  the  implementation 
+
+process of the solution. 
+
+7.  Test of functionalities: In this phase, we shall present to you the different functionalities 
+
+or modules of our application and how they work. 
+
+8.  The User Guide: This elaborates on all conditions necessary to use the application and 
+
+how to use it. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  1 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART I 
+
+INSERTION PHASE 
+
+PART I 
+
+INSERTION PHASE 
+
+PART I 
+
+INSERTION PHASE 
+
+PART I 
+
+INSERTION PHASE 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  2 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+This section of the report will cover details of how we were welcomed in the host company, 
+
+presentation, organization and brief introduction to our project. 
+
+Content 
+
+ INTRODUCTION 
+
+I.  WELCOMING AND INSERTION 
+
+II.  GENERAL 
+
+PRESENTATION 
+
+OF 
+
+THE 
+
+COMPANY 
+
+III. ORGANIZATION OF REALIZE 
+
+IV. GEOGRAPHICAL LOCATION 
+
+V.  BRIEF  PRESENTATION  OF  THE  PROJECT 
+
+THEME 
+
+ CONCLUSION 
+
+INTRODUCTION 
+
+I.  WELCOME AND INSERTION 
+
+II.  GENERAL 
+
+PRESENTATION 
+
+OF 
+
+THE 
+
+COMPANY 
+
+III.  ORGANIZATION OF THE COMPANY 
+
+IV.  GEOGRAPHICAL LOCATION 
+
+V.  BRIEF  PRESENTATION  OF  THE  PROJECT 
+
+THEME 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  3 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+The  insertion  phase  in  a  company  is  a  period  during  which  we  discover  our  working 
+
+environment, the staff of the company and other interns. Here, we will begin by discussing our 
+
+first two weeks in the company, how we were welcomed and how we began adapting to our 
+
+internship environment, we will proceed by exploring the history of the company, discovering 
+
+its missions, learning what its major activities are, and witnessing some of its key realisations. 
+
+We will also get to understand how the company is structured administratively and functionally 
+
+so  that  it  operates  effectively  and  accomplishes  its  goals.  Furthermore,  we  will  look  at  the 
+
+hardware  equipment  used  by  the  company,  and  the  software  resources  used  in  its  daily 
+
+operations. We will then introduce our chosen theme for the internship period, briefly elaborate 
+
+on it. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  4 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+I.  WELCOME AND INSERTION 
+
+We  arrived  at  REALIZE  on  Monday  03rd  July  2023,  at  09:00  a.m.  we  were 
+
+received by the director of the IT department, Mr. TANUE Monette, who introduced me 
+
+to our workspace, gave us an official welcome to the enterprise, its activities and its 
+
+different  rules  and  regulations.    Also,  we  discussed  on  the  enterprise’s  preferred 
+
+languages and frameworks, our professional supervisor encouraged us through his past 
+
+working experiences in different enterprises. 
+
+The  first  week  we  did  verification  of  concept  with  basic  HTML  and  CSS  to 
+
+ensure that everybody was at  the same level before kicking off. There was a talk on 
+
+project ideas, we were advised to propose project ideas and we were assigned the tasks 
+
+to carry out research on these ideas. The objective was that the enterprise did not want 
+
+to impose some themes on us. 
+
+The second week we proceeded with  verification of JavaScript concepts  with 
+
+some  exercises,  to  test  our  reasoning  and  understanding  faculties. We  also  discussed 
+
+about  the  specification  book  with  our  professional  supervisor  and  its  different 
+
+components, with him explaining what was required from us in each component. We 
+
+discussed further on our different project ideas to give it shape. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  5 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+II.  GENERAL PRESENTATION OF REALIZE 
+
+A.  Background: 
+
+Realize  is  a  Cameroon  based  non-governmental  tech  start-up  institute  founded  by 
+
+Ndelogakeh Daniel in 2022 which proposes IT solutions and empowers the use of new 
+
+technologies in Cameroon. 
+
+B.  Missions 
+
+The  mission  of  Realize  mainly  relates  to  the  empowerment  and  the  perpetuation  of 
+
+Technology use. These include: 
+
+❖  Design and realize mobile-oriented software for companies and individuals. 
+
+❖  Assist newborn companies for quick growth using computer sciences. 
+
+❖  Provide  training  and  certifications  to  improve  qualified  human  resources  in 
+
+many fields of study. 
+
+❖  Take  an  active  part  in  the  sustainable  development  of  the  world  through 
+
+innovative solutions and virtual reality. 
+
+C.  Vision :  
+
+At Realize, we believe that the true potential of every organization and individual can 
+
+be unlocked through the harmonious fusion of analysis, development, realization, and 
+
+data analytics. Our vision propels us forward, guiding us to make a lasting impact on 
+
+the digital landscape and shape a future where innovation knows no bounds." 
+
+D.  Activities 
+
+The activities of Realize range from computer sciences, engineering, and training. We 
+
+can outline the following: 
+
+➢  Conception realization, and hosting of websites. 
+
+➢  Software development and maintenance. 
+
+➢  Training in Software related fields. 
+
+➢  Conception and realization of multimedia. 
+
+➢  IT consulting and innovation 
+
+➢  IT support  
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  6 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+III.  ORGANIZATION OF REALIZE 
+
+A.  Administrative organization 
+
+Realize is administratively organized as follows: 
+
+a.  The General management 
+
+This is the highest level of the company, which takes care of the following: 
+
+➢  Proper functioning of each department. 
+
+➢  Define project strategies. 
+
+➢  Provide leadership and guidance to the company’s employees. 
+
+➢  Makes critical decision that could affect the company’s operations or reputation 
+
+➢  Severe as a point of contact for key stakeholders such as investors etc. 
+
+b.  Human resource department 
+
+This department is in charge of the following: 
+
+➢  Recruitment and Hiring. 
+
+➢  Acts as a liaison between employees and management; 
+
+➢  Manages employee compensation and benefits programs; 
+
+➢  Develops and implements company policies and procedures, ensuring 
+
+compliance with employment laws and regulations. 
+
+➢  Manages administrative tasks related to employee records, data management, 
+
+and HR systems. 
+
+c.  Communication Department 
+
+This department is in charge of the following: 
+
+➢  Handles public relations activities, which involve managing the company’s 
+
+reputation and image. 
+
+➢  Responsible for crafting and delivering messages to external stakeholders such 
+
+as customers etc. 
+
+➢  It fosters effective communication within the company. 
+
+➢  They create and manage content across different platforms and channels. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  7 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d.  Department of Financial Affairs 
+
+This department is in charge of the following: 
+
+➢  Responsible for developing and managing the company’s financial plans and 
+
+budgets. 
+
+➢  Prepare and present accurate and timely financial reports to management, 
+
+stakeholders, and regulatory authorities. 
+
+➢  Responsible for managing costs and expenses within the organization. 
+
+➢  Ensures compliance with tax laws and regulations. Etc. 
+
+e.  Technical department 
+
+This department is in charge of the following: 
+
+➢  Managing the company’s technological infrastructure, including networks and 
+
+hardware. 
+
+➢  Play a role in managing and maintaining the company’s data. 
+
+➢  Implementing and maintaining cybersecurity measures to protect the 
+
+company’s digital assets from potential threats. 
+
+➢  Interacts with technology vendors and manages relationships with external 
+
+service providers. Etc. 
+
+f.  Software Engineering Department 
+
+This department is in charge of the following: 
+
+➢  Primarily responsible for developing software applications and systems. 
+
+➢  Responsible for maintaining and supporting software applications throughout 
+
+their lifecycle. 
+
+➢  Evaluation and realization of projects etc.  
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  8 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+B. FUNCTIONAL ORGANISATION OF REALIZE 
+
+The functional branch of realize is organized as follows, 
+
+Figure 1: Functional Organization of Realize 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  9 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+IV.  GEOGRAPHICAL LOCATION 
+
+Figure 2: GEOGRAPHICAL LOCATION OF REALIZE 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  10 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+V.  BRIEF PRESENTATION OF THE PROJECT THEME 
+
+Following our arrival at REALIZE, we were encouraged to suggest innovative project 
+
+ideas for our internship. Following the mission of REALIZE that demonstrate the company’s 
+
+willingness to take active part in the sustainable development of the world through innovative 
+
+solutions,  we  saw  the  room  for  creativity  in  our  project  idea  and  proposed  the  theme 
+
+“DEVELOPMENT  OF  A  PATIENTS’  CONSULTATION  AND  FOLLOW-UP 
+
+PLATFORM  FOR  CAMEROON  GOVERNMENT  HOSPITALS”.  This  system  that  we 
+
+named iKare is made up of an admin dashboard, a super admin dashboard that is the Minister 
+
+of Public Health, Patient’s dashboard, Doctor’s dashboard for trained medical professionals. 
+
+           iKare’s patient’s dashboard provide the patients with a list of available hospitals from 
+
+which he/she can get a list of trained medical personnels in various fields where they can book 
+
+for an appointment for consultation or in cases of emergency locate the closest hospital or free 
+
+health professional, a chat section for discussions with these medical professionals on light or 
+
+less serious cases, a geolocalisation section where they can locate the different pharmacies that 
+
+are opened at that particular time, that have the required drugs they are looking for and most 
+
+importantly that are not far from their current position. Consultations are also made through 
+
+video calls. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  11 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+Our  insertion  phase  at  REALIZE  lasted  for  two  (2)  weeks.  We  discovered  the  amazing 
+
+environment  where  we  found  ourselves  in.  This  environment  gives  room  for  hard  work, 
+
+perseverance  and  collaboration,  what  most  students  are  looking  for.  We  learned  about  the 
+
+missions  of  the  company,  its  activities. We  met  and  got  acquainted  with  the  staff  and  other 
+
+interns  at  REALIZE.  Finally,  we  chose  our  theme  “DEVELOPMENT  OF A  PATIENTS’ 
+
+CONSULTATION  AND 
+
+FOLLOW-UP 
+
+PLATFORM 
+
+FOR  CAMEROON 
+
+GOVERNMENT HOSPITALS”. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  12 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART II 
+
+EXISTING SYSTEM 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  13 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+The existing system is a document that provides a view of the system currently in place, that is 
+
+how it carries out its different activities, also it provides a deep understanding of this system 
+
+associated to the various limitations, the problems that result from these and the solution we 
+
+propose. 
+
+Content 
+
+INTRODUCTION 
+
+I. 
+
+II. 
+
+PRESENTATION OF THE THEME  
+
+STUDY  OF  THE  EXISTING 
+
+SYSTEM 
+
+III. 
+
+CRITICISMS  OF  THE  EXISTING 
+
+SYSTEM 
+
+IV. 
+
+PROBLEMATICS 
+
+V. 
+
+PROPOSED SOLUTION 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  14 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+As Engineers our role in the society is problem-solving which is targeted at making life 
+
+easier  for  everyone  and  in  order  to  bring  forth  a  solution,  we  ought  to  ask  ourselves  some 
+
+questions to know why the problem exist in the first place and how it is being dealt with at the 
+
+time. The existing system refers to the system put in place to carry out the work done in the 
+
+field  on  which  our  theme  is  based.  Understanding  this  system  is  a  great  step  in  solving  the 
+
+problems that we might identify. It’s of great importance that we take into consideration this 
+
+system before proposing a suitable solution that will ameliorate or replace the current one. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  15 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+I.  PRESENTATION OF THE PROJECT THEME 
+
+Our  theme  is  “DEVELOPMENT  OF  A  PATIENTS’  CONSULTATION  AND 
+
+FOLLOW-UP  PLATFORM  FOR  CAMEROON  GOVERNMENT  HOSPITALS”.  This 
+
+application (iKare) will enable a distance consultation of patients by doctors. If we take the case 
+
+of Corona Virus in 2020, we recall that it is an air borne disease, so easily transmitted in crowded 
+
+areas.  In  our  case  a  hospital  is  not  only  crowded  but  also  a  container  of  so  many  diseases 
+
+especially during a pandemic. The idea is not to eliminate visits to a doctor by a patient which 
+
+in my opinion is impossible, we want to limit such visits to limit the spread of diseases, transport 
+
+costs and all other issues. Consultation will be done through video calls, chat messages for less 
+
+serious  cases,  patients  can  also  book  for  appointments  with  doctors  for  consultation  either 
+
+online or physically. At the end, depending on the doctor’s diagnosis the patient will receive a 
+
+prescription of drugs he/she needs to buy. The application is also equipped with a pharmacy 
+
+search section, where a list of pharmacies closer to the patient is displayed, the patient filters 
+
+the list by drug name, opened pharmacies. 
+
+In case lab tests are required, the patient can book an appointment for lab tests at his 
+
+desired time. Also, while taking the drugs, the patient is been follwed-up by a series of forms 
+
+he  fills  concerning,  the  progress  of  his  medication  and  how  is  feeling.  If  the  current  health 
+
+situation is not good after 2/3 of the medications taken, the doctor is alerted. 
+
+iKare  does  not  only  allow  consultations,  scheduling  doctors  program,  searching 
+
+pharmacies,  booking  appointments  for  lab  tests  but  also  patients  follow-up. All  these  to  the 
+
+patients’ advantage. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  16 
+
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+II.  DESCRIPTION OF THE EXISTING SYSTEM 
+
+We notice more and more an overheating of health centers because of the  
+
+exponential increase of patients in Africa in general and in Cameroon in particular.  
+
+As a result, health professionals are faced with a busy and often poorly organized 
+
+schedule. Also, patients are constantly encountering problems during their medical  
+
+follow-up. This is because they have to wait in long lines to be seen or even not be  
+
+able to see a doctor. Even if an appointment has been made, it is possible that it is  
+
+cancelled and the patient is not aware of it. 
+
+From a survey carried out from the 28th of July to 01st August 2023, the following 
+
+results were obtained: 
+
+Figure 3: Doctor Survey Question 1 
+
+•  75% of the doctors work in a hospital while the 25% of the ones left are redistributed 
+
+equally in a clinical center, health center and medical practice. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  17 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Figure 4: Doctor Survey Question 2 
+
+•  75% of doctors don’t attend by appointments.  
+
+In which 10 regions do you work
+
+9
+
+8
+
+7
+
+6
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0
+
+Adamawa
+
+Centre West
+
+Littoral
+
+Figure 5: Doctor Survey Question 3 
+
+66.4% of the doctors work in Yaounde. 
+
+From the above results, we came out with the following observations 
+
+❖  Most health institutions consult without making appointments. A patient arriving at the 
+
+institution usually encounters long queues. The patient usually waits for quite a long 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  18 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+time before his parameters like body temperature, blood pressure, weight are collected 
+
+by nurses after he/she is done with the consultation fee. 
+
+❖  During the various exchanges between the patient and the doctor, certain questions are 
+
+asked by the specialist in order to be able to identify the history and the illness from 
+
+which the patient is suffering.  
+
+❖  At the end of the consultation, the doctor diagnoses and based on this diagnosis issues 
+
+prescription to the patient. 
+
+❖  The patient buys the drugs at the health institute’s pharmacy or if not available moves 
+
+around looking for another where he can purchase the drug.  
+
+❖  If  there  are  any  tests  to  be  carried  out,  the  patient  pays  for  the  tests  and  goes  to  the 
+
+laboratory  where  he  gives  a  sample  of  his  blood,  faeces,  urine  or  any  other  organic 
+
+matter  to  the  lab  technician  for  analysis.  The  duration  of  the  tests  and  results  vary 
+
+according to the specific tests involved. It usually varies from hours to days or weeks. 
+
+❖  Some follow ups are done at the level of the health institution (inpatient follow-ups) 
+
+while others are done through calls (outpatient follow-ups) or doctors can schedule an 
+
+appointment  with  the  patient  to  try  to  see  the  evolution  of  the  prescribed  treatment, 
+
+possibly present the results of a prescribed examination in order to find the anomaly. 
+
+❖  In  case  of  emergency  the  patients  are  first  taken  care  of  before  any  identification 
+
+according to the severity of the disease. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  19 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+III.  LIMITATIONS OF THE EXISTING SYSTEM 
+
+At  the  end  of  our  collection  of  information  concerning  the  medical  consultation  process  in 
+
+hospitals, we find that this system has weaknesses that should not be overlooked despite their 
+
+warm welcome. However, it should be noted that some observations have been made within the 
+
+clinic and it would be wise for us to suggest solutions to the various problems noted. 
+
+Table 1: Limitations, Consequence and proposed solution 
+
+LIMITATIONS 
+
+CONSEQUENCE 
+
+PROPOSE SOLUTION 
+
+A queue of sick people such 
+
+-  The  care  of  patients  is  not 
+
+-  System  proposes  available 
+
+as  dizziness  or  a  headache, 
+
+easy 
+
+doctors 
+
+for 
+
+remote 
+
+the patient is forced to line up 
+
+ - Purchase and consumption 
+
+consultation.  
+
+and wait for long hours to get 
+
+of  drugs  offered  by  street 
+
+-  Set  up  spaces  for  "Online 
+
+a doctor's advice 
+
+vendors. 
+
+doctors". 
+
+Huge 
+
+transport  costs 
+
+for 
+
+Calls 
+
+to 
+
+neighborhood 
+
+Reduce  these  expenses  by 
+
+people living in remote areas 
+
+doctors 
+
+without a nearby hospital. 
+
+setting  up an online medical 
+
+consultation, 
+
+no  matter 
+
+where the patient is. 
+
+Little  or  no  communication 
+
+Self-medication  resulting  in 
+
+Facilitate 
+
+the 
+
+dialogue 
+
+between  the  doctor  and  the 
+
+death  of  the  patient  in  most 
+
+between  the  doctor  and  his 
+
+patient, the latter who will be 
+
+cases. 
+
+patient by setting up a video 
+
+forced to travel whenever the 
+
+disease progresses. 
+
+call module. 
+
+Drugs  not  always  found  in 
+
+Unnecessary  moving  around 
+
+Developing  a  platform  that 
+
+the  nearby  health  institute’s 
+
+town  in  search  of  the  drugs 
+
+facilitates 
+
+search 
+
+of 
+
+pharmacy or nearby hospitals 
+
+which  can  delay  time  of 
+
+pharmacies  depending  on 
+
+(pharmacies). 
+
+taking  the  drugs  and  can 
+
+location, drugs available, day 
+
+cause death in severe cases. 
+
+shifts. 
+
+Appointments  and  schedules 
+
+Patient is not well taken care 
+
+Developing  a  platform  that 
+
+still done manually 
+
+of 
+
+and  might 
+
+lead 
+
+to 
+
+manages  appointments  and 
+
+confusions and forgetfulness. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  20 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+schedules 
+
+to  avoid 
+
+these 
+
+confusions 
+
+Transport  costs  spent  on 
+
+Patient  does  not  arrive  on 
+
+Enhance  follow-up  through 
+
+outpatient follow-ups 
+
+time  and  is  not  well  taken 
+
+daily surveys on the platform 
+
+care of. 
+
+and alerting a doctor in case 
+
+of  unexpected  change  or 
+
+behavior. 
+
+IV.  PROBLEMATIC 
+
+Since dialogue is the basis of a medical consultation, it is more than necessary that it be done 
+
+in a simpler and more explicit way as possible because human lives are at stake. Through these 
+
+various observations, we ask ourselves the question HOW CAN WE FACILITATE ONLINE 
+
+COMMUNICATION  BETWEEN  PATIENTS  AND  DOCTORS,  FOLLOW-UPS  OF 
+
+PATIENTS AND ACCESS TO PRESCRIBED DRUGS FROM PHARMACIES? We will 
+
+try to offer a solution through our application. 
+
+V.  PROPOSED SOLUTION 
+
+After our study and criticism of the existing situation, we propose to design a Web and a mobile 
+
+application that will allow the citizen (Health professionals and Patients) of Cameroon to:  
+
+Health Professionals  
+
+  Have Electronic Agenda to manage availability and Appointment.  
+
+  Chat with patients. 
+
+  Consult through video calls. 
+
+  Set patients prescription online.  
+
+Patients  
+
+  Localize all nearby health institutes.  
+
+  View Health Specialist availability from different health institutes. 
+
+  Chat will health professionals.  
+
+  Receive notification after appointment reschedule.  
+
+  View medical prescription. 
+
+  Localize nearby, opened pharmacies. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  21 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+Having reached the end of this part, we studied the existing system by questioning different 
+
+health professionals in different institutes through the survey that enabled us to come out with 
+
+the limitations of the system that leads to the consequences and we proposed solutions to the 
+
+various limitations. Finally we proposed our solution which is a mobile and web application. 
+
+This step is necessary because we need to understand how the system put in place currently 
+
+works before we can facilitate or ameliorate the processes been carried out in this system. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  22 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART III 
+
+SPECIFICATION BOOK 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  23 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+The  Specification  book  is  a  document  which  is  been  established  by  the  customer  needing  a 
+
+particular  product  and  the  producer  (engineer)  who  is  to  create  the  product,  which  is  to  be 
+
+respected to its fullness during the realization of the product. From this, we obtain the major 
+
+importance of the specification book. 
+
+Content 
+
+INTRODUCTION 
+
+I. 
+
+II. 
+
+III. 
+
+IV. 
+
+V. 
+
+VI. 
+
+CONTEXT AND JUSTIFICATION 
+
+OBJECTIVES OF THE PROJECT 
+
+EXPRESSION OF NEEDS 
+
+ESTIMATED COST OF THE PROJECT 
+
+PROJECT PLANNING 
+
+LIST  OF 
+
+PARTICIPAANTS  AND 
+
+DELIVERABLES. 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  24 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      
+   
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+The specification book of our report helps us provide details about our theme to improve our 
+
+understanding of it and increase the likelihood of it succeeding. To delimitate the scope of our 
+
+project, we will specify the context of our theme. From the context, we will list the problems 
+
+we have decided to address throughout the project. After presenting our solution, we will talk 
+
+about the objective we have set for the project. Also, we will explore the needs to which our 
+
+system will respond both at the functional and non-functional level. We will then look at the 
+
+estimated financial requirements for our project and establish a plan we will follow to complete 
+
+our project on time. From here, we will discuss what is expected of us by the end of the project 
+
+under the project deliverables. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  25 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+I.  CONTEXT AND JUSTIFICATION 
+
+A. Context 
+
+Cameroon is a home to closely 28,703,875 million inhabitants and in situations where a 
+
+pandemic is declared, the feeling of anxiety and uncertainty can overwhelm people, and health 
+
+system  can  struggle  to  cope  with  an  uncontrolled  and  exponential  demand.  There  are 
+
+approximately  1.1  physicians  and  7.8  nurses  and  midwives  per  10,000  populations  (WHO 
+
+AHWO Cameroon Fact Sheet, 2010).  
+
+A survey carried out from July 29th to July 31st, 2023, revealed the following results. 
+
+Figure 6: Patient Survey question 1 
+
+We can see from the above that, of the 48 people who answered to the questions from the 
+
+survey, 87,5% encounter queues when going to the hospital. Also, 
+
+Figure 7: Patient Survey Question 2 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  26 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+It’s clear that only, 29.2% of those interviewed don’t have a problem getting a prescribed drug, 
+
+the rest are distributed between locating the pharmacy that’s opened at that moment, locating 
+
+the pharmacies nearby, getting the drug from the opened pharmacy, or knowing ahead of time 
+
+the price of the drug you are looking for ensuring you have enough money on you. 
+
+Figure 8: Patient Survey Question 3 
+
+We can also see that 72.9% of those who answered often forget to take medications, they might 
+
+have many things in mind and can’t even see the time pass. 
+
+Figure 9: Patient Survey Question 4 
+
+We  can  also  notice  that  75%  of  those  who  answered  require  follow-up  each  time  they  are 
+
+prescribed a drug or each time they are on medication. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  27 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+B. Justification  
+
+The  health  sector  is  experiencing  a  growing  number  of  patients.  As  a  result,  with 
+
+hospitals and clinics overheated, the management of patients and their medical follow-up is a 
+
+major problem for patients and doctors. Insofar as it is for the most part impossible to know the 
+
+availability of health professionals and to make an appointment or to be consulted on time. Even 
+
+after  consultation,  patients  do  not  know  how  to  continue  especially  when  the  hospital’s 
+
+pharmacy does not have the required drugs, they are looking for. They might be moving around 
+
+the whole town looking for a specific drug because either the pharmacies they find don’t have 
+
+that specific drug, they are closed, or the price of the drug is beyond their expectations. 
+
+For this reason, iKare will allow the patient(s) to be consulted remotely, without having 
+
+to  follow  a  queue,  or  by  taking  appointments  depending  on  your  availability. The  notion  of 
+
+distance  here  means  that  the  doctor  and  the  patient  are  not  in  the  same  place  during  the 
+
+consultation;  and  this  will  limit  the  risk  of  contamination,  save  time,  and  have  centralized 
+
+management of patient data. Also, iKare will favor searching of pharmacies by filter, that is 
+
+according to those nearby, opened, having the required drugs and raising awareness concerning 
+
+the price of the medication. Patients will be able to book appointments for lab tests. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  28 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+II.  OBJECTIVES OF THE PROJECT 
+
+A.  GENERAL OBJECTIVE 
+
+  The main objective of this project is to  facilitate remote consultation, follow-ups of 
+
+patients and facilitate the search of pharmacies. 
+
+B.  SPECIFIC OBJECTIVES 
+
+❖  The patients will be able to log into the platform, book for an appointment for video 
+
+consultations. 
+
+❖  Be consulted, diagnosed and issued prescriptions according to the diagnosis carried 
+
+out by the doctor. 
+
+❖  Book for tests in a laboratory if required, the tests are sent directly to the laboratory 
+
+from the doctor. 
+
+❖  Receive a list of all pharmacies and applying a filter by location, drug searched and 
+
+pharmacy type (day / night). 
+
+❖  To be followed up, during the illness to recovery period, through regular surveys on 
+
+how they feel. 
+
+❖  Discuss with doctors through chat messages for less serious cases. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  29 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+III.  EXPRESSION OF NEEDS 
+
+1. Functional Needs 
+
+In this context, functional requirements describe what the system or application should 
+
+do. The modules are as follows; 
+
+❖  The administrator (admin) should be able to: 
+
+➢  Account Creation:  The health Institute Admin is responsible for creating 
+
+the  health  professionals’  accounts  and  lab  administrators’  accounts  for  a 
+
+particular health institute. 
+
+➢  Account Management: Here users can manage their account by modifying 
+
+some of their information.  
+
+➢  User Authentication: Allow the users to register or login into the application 
+
+while  also  providing  a  secure  mechanism  to  recover  their  account  in  case 
+
+they forgot their password or otherwise. In addition, the user account must 
+
+be confirmed to ensure identity proof.  
+
+➢  Manage  Electronic  Record  Book:  Here  the  patients  can  upload  recent 
+
+medical booklets, these records are kept secured on the platform, each time 
+
+medical personnel wishes to access it, he/she requires permission from the 
+
+patient. Also, the patient’s data are encrypted using sophisticated algorithms. 
+
+➢  Localize pharmacies: Here patients will get a view of all pharmacies nearby, 
+
+opened by that time and which have the required drugs they are looking for.  
+
+➢   Manage  Appointment:  Here  doctors  have  an  agenda  where  they  can 
+
+validate,  cancel,  re-schedule  an  appointment,  view  their  appointment  date 
+
+and even set a reminder.  
+
+➢  Follow-up: Allow the users to answer a series of questions each time they 
+
+take a specific drug, this allows the production of a dataset and notifies the 
+
+doctor in charge when the patient situation is abnormal.  
+
+➢  Exchange  between  Patient  and  Health  Professional:  It  provides  an 
+
+interface where the doctor can have online  consultation with patients who 
+
+make  an  appointment. Allows  health  specialists  to  create  meeting  an  add 
+
+more  participants,  also  a  translation  module  will  enable  native  speakers 
+
+communicate with medical professionals, removing language barriers. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  30 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+2. Non-Functional Needs 
+
+They specify the quality attribute of a software system. They judge the software system 
+
+of application based on Performance, Responsiveness,  Usability, Security, Portability 
+
+and other non-functional standards that are critical to its success. Failing to meet non-
+
+functional requirements can result in a system that fails to satisfy user need. 
+
+Performance, Scalability and Security 
+
+Performance defines how fast a software system, or its piece responds to certain 
+
+user’s action under certain workload. In most cases, this metric explains how much a 
+
+user must wait before the target operation happens (the page renders, a transaction is 
+
+processed, etc.) given the overall number of users at the moment. But it’s not always 
+
+like  that.  Performance  requirement  may  describe  background  processes  invisible  to 
+
+users. Our goal will be to provide our users with the best performance as it affects the 
+
+overall user experience.  
+
+Scalability  accesses  the  highest  workloads  under  which  the  system  will  still 
+
+meet the performance requirements. In this project we will mainly leverage the power 
+
+of cloud storage and third-party API’s.  
+
+  The application should have a friendly user interface (UI) and should be easy 
+
+to use.  
+
+   The code should be clear to facilitate future development and improvement.  
+
+  The web application should be resizable when opened on any device (android 
+
+phone, computer, tablet web browsers 
+
+Security is also one of the most important aspects of any system, especially the 
+
+ones dealing with sensitive user’s information. 
+
+  The  application  should  provide  a  strong  security  mechanism  to  reassure 
+
+user’s that they can trust it for their sensitive information. 
+
+  Some  of 
+
+the  security  principles 
+
+include  reassuring  confidentiality, 
+
+accountability, Integrity, Authentication. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  31 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+     
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+IV.  PROJECT PLANNING 
+
+a.  Chronogram of activities 
+
+Table 2: Chronogram of activities 
+
+PHASE 
+
+OBJECTIVE 
+
+OUTPUT 
+
+DURATION 
+
+PERIOD 
+
+INSERTION 
+
+Collection of 
+information on 
+the enterprise 
+
+Insertion book 
+
+2 weeks 
+
+EXISTING SYSTEM 
+
+Study of the 
+existing system 
+
+Existing 
+System 
+
+SPECIFICATION 
+BOOK 
+
+Specification of 
+the user needs 
+
+Specification 
+Book 
+
+5 days 
+
+5 days 
+
+ANALYSIS 
+
+CONCEPTION 
+
+REALIZATION 
+
+TEST OF 
+FUNCTIONALITIES 
+
+Capture of 
+needs Use case 
+and textual 
+description 
+Modelling 
+
+Preliminary 
+conception and 
+Detailed 
+conception 
+
+Implementation 
+Unitary test 
+Integration Test 
+Development, 
+Deployment, 
+Component 
+diagrams 
+
+Testing of the 
+software and 
+debugging 
+
+Analysis Book 
+
+2 weeks 
+
+Conception 
+book 
+
+2 weeks 
+
+Realization 
+book 
+
+3 weeks 
+
+Test of 
+functionalities 
+
+5 days 
+
+INSTALLATION 
+AND USER GUIDE 
+
+Documenting 
+software 
+
+User Guide 
+
+5 days 
+
+03rd July to 
+14th July 
+
+17th  July  to 
+21st July 
+
+24th July to 
+28th July 
+
+31st July to 
+11th August 
+
+14th August 
+to 25th 
+August 
+
+28th  August 
+15th 
+to 
+September 
+
+18th 
+September 
+to 22nd 
+September 
+
+25th 
+September 
+to 29th 
+September  
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  32 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+b.  Gantt Project planning 
+
+Figure 10: Gantt project planning 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  33 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+V.  ESTIMATED COST OF THE PROJECT 
+
+a. 
+
+Software Resources 
+
+Table 3: Software Resources (source : Mercurial  2022) 
+
+RESOURCES  DESIGNATION 
+
+USAGE 
+
+QUANTITY 
+
+Formatting 
+
+Microsoft Office 
+
+Writing of the 
+
+365  
+
+report 
+
+Cloud 
+
+Storage 
+
+Web 
+
+browser 
+
+Google Cloud 
+
+Saving our report 
+
+Google Chrome 
+
+View web pages 
+
+Code Editor 
+
+Project 
+
+planning 
+
+Visual Studio 
+
+Code 
+
+Gantt Project 
+
+Illustrating 
+
+tool 
+
+Ichogram 
+
+For writing the 
+
+code of the 
+
+application 
+
+For building a 
+
+Gantt chart 
+
+For building a 
+
+geographical 
+
+location of the 
+
+enterprise 
+
+UML 
+
+Sybase 
+
+For drawing 
+
+Analysis 
+
+PowerAMC 
+
+UML diagrams 
+
+For testing the 
+
+Expo Go 
+
+mobile 
+
+application 
+
+Testing 
+
+Mobile App 
+
+TOTAL 1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+1 
+
+8 
+
+UNIT COST 
+
+(FCFA) 
+
+47 998 
+
+Freemium 
+
+Freeware 
+
+Freeware 
+
+Freemium 
+
+Freemium 
+
+Freemium 
+
+Freemium 
+
+47 998 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  34 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+b.  Hardware Resources 
+
+Table 4: Hardware resources (source: https://www.scribd.com/document/561202966/mercuriale-2022) 
+
+RESOURCES 
+
+HARDWARE 
+
+Quantity 
+
+Computer 
+
+LAPTOP HP ELITEBOOK 
+
+8540P CORE I5, DISQUE 
+
+DUR 500 GO, RAM 4 GO, 
+
+ECRAN LARGE 15" HD 
+
+Printer 
+
+Printers 
+
+Network 
+
+Local network installation 
+
+Removable Disk 
+
+Removable Disk 
+
+Smart phone 
+
+Smart phone 
+
+TOTAL 2 
+
+1 
+
+1 
+
+1 
+
+1 
+
+2 
+
+6 
+
+UNIT COST 
+
+(FCFA) 
+
+402 500 
+
+546 250 
+
+300 000 
+
+11 555 
+
+150 000 
+
+1 410 305 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  35 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  Human resources 
+
+Table 5: Human Resources (source : Mercurial 2022) 
+
+ROLE 
+
+Project 
+Manager 
+
+Analyst 
+
+UI/UX 
+Designer 
+
+Programmer 
+
+Tester 
+
+Margin error 
+
+TOTAL 3 
+
+NUMBER OF 
+DAYS 
+
+QUANTITY 
+
+COST PER 
+DAY 
+
+TOTAL 
+PRICE (FCFA) 
+
+90 
+
+21 
+
+07 
+
+30 
+
+14 
+
+/ 
+
+01 
+
+01 
+
+01 
+
+01 
+
+02 
+
+/ 
+
+30 000 
+
+2 700 000 
+
+25 000 
+
+525 000 
+
+20 000 
+
+140 000 
+
+15 000 
+
+10 000 
+
+/ 
+
+450 000 
+
+140 000 
+
+1,475,000 
+
+4 840 000 
+
+d.  Global Estimation 
+
+Table 6: Global Estimation 
+
+TOTAL 1(FCFA) 
+
+TOTAL 2(FCFA)  TOTAL 3(FCFA) 
+
+OVERALL TOTAL 
+(FCFA) 
+
+47 998 
+
+1 410 305 
+
+4 840 000 
+
+6 298 303 
+
+SIX MILLION TWO HUNDRED AND NINETY-EIGHT THOUSAND THREE 
+HUNDRED AND THREE 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  36 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+VI.  CONSTRAINTS 
+
+1.  Technical constraint  
+
+For  the  development  of  our  system,  we  have  sufficiently  robust  tools  to  guarantee  a 
+
+minimum  of  security,  extensibility  and  excellent  scalability.  Moreover, 
+
+the 
+
+programming  phase  will  have  to  follow  all  the  technical  standards  for  a  better 
+
+performance in  a reduced execution time, this is  why the choice of the development 
+
+technologies is crucial. 
+
+2.   Time Constraint 
+
+ The project will be realized in 13 weeks (3 months) starting from the beginning date, 
+
+July 3rd, 2023.  
+
+3.  Cost constraint  
+
+The realization of our project will require expenditures in human resources, material 
+
+and software a total cost of 6 298 303 FCFA. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  37 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+VII. LIST OF PARTICIPANTS AND DELIVERABLES 
+
+a.  LIST OF PARTICIPANTS 
+
+Table 7: List of participants 
+
+NAME 
+
+FUNCTION 
+
+ROLE 
+
+Mr. TANUE Monette 
+
+Mr. AGBOR Anderson 
+
+KAMENI SEPDEU Ange 
+
+Chris 
+
+Follows up interns at the 
+
+company level 
+
+Follows up student at the 
+
+academic level 
+
+Professional supervisor 
+
+Academic Supervisor 
+
+AICS Student Intern 
+
+Student at AICS 
+
+b. DELIVERABLES 
+
+1.  In project management, any component materializing the result of a realization service is 
+
+called a deliverable. In the case of our project, the deliverables are:  A report composed of 
+
+the following document  
+
+❖  The application.  
+
+❖  The user guide. 
+
+❖  The powerpoint. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  38 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+Reaching the end of this part. The list of objectives to be achieved has been enumerated and 
+
+made clear. The specification book permitted us to present the different actors associated with 
+
+the project as well as the requirement and the provisional planning needed for the achievement 
+
+of our project. We will move directly to the next part which is the analysis phase. In the analysis 
+
+phase,  we  will  model  our  system  with  a  modelling  language  and  a  unified  process,  do  a 
+
+comparative study of uml and merise. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  39 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART IV 
+
+ANALYSIS BOOK 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  40 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+The main objective of the analysis phase is to capture the user’s need, the delimitation of the 
+
+field of study and to have a clear understanding of the system in study. To achieve this, we will 
+
+use UML (Unified Modelling Language) with the 2TUP (2 Track Unified Process) as method 
+
+applied to UML to analyze the system. We will start by doing a comparison between UML and 
+
+MERISE, of various unified processes and lastly, we will present the modelling of the solution 
+
+we propose (Our software). 
+
+Content 
+
+INTRODUCTION 
+
+I. 
+
+METHODOLOGY 
+
+1.  COMPARATIVE  STUDY  OF  UML 
+
+AND MERISE. 
+
+2.  COMPARATIVE 
+
+STUDY 
+
+OF 
+
+UNIFIED PROCESSES. 
+
+II. 
+
+CHOICE OF THE ANALYSIS METHOD 
+
+III.  MODELLING  OF  THE  PROPOSED 
+
+SOLUTION 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  41 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+System development can be thought of as having two major components: System analysis and 
+
+system design which both help in understanding the details of the existing system or the system 
+
+to be designed. The analysis and design of information systems has most of the time vocation 
+
+to allow the creation of databases, which must represent as closely as possible the reality of the 
+
+field studied thus requiring the use of a design method. This is why our choice will be directed 
+
+on the UML method as it offers much to developers seeking a user-centered approach and / or 
+
+a wide scope in design. This part of the report consists of the comparative study of UML and 
+
+MERISE,  unified  processes  and  finally  the  various  diagrams  that  meet  the  functional  need 
+
+requirements. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  42 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+I.  METHODOLOGY 
+
+1. COMPARATIVE STUDY OF UML AND MERISE 
+
+a.  MERISE 
+
+MERISE  stands  for  “Méthode  d’Etude  et  de  Réalisation  Informatique  pour  des  Systèmes 
+
+d’Entreprise”. Although it is prescriptive to some extent, MERISE permits the participation of 
+
+end users and senior management as well as data processing professionals in its decision cycle. 
+
+MERISE is a method for designing, developing and carrying out IT projects. The goal of this 
+
+method is to achieve the design of an information system. The MERISE method is based on the 
+
+separation of data and processing to be carried out in several conceptual and physical models. 
+
+The essentials of the approach lie in its three cycles: the decision cycle, the life cycle and the 
+
+abstraction cycle, which cover data and process elements equally. The separation of data and 
+
+processing ensures longevity in model. Indeed, the arrangement of data does not have to be 
+
+often overhauled, while treatments are more frequently. 
+
+b. UML 
+
+UML  (Unified  Modelling  Language)  is  a  standard  notation  for  the  modelling  of  real  world 
+
+objects  as  a  first  step  in  developing  an  object-oriented  design  methodology.  Its  notation  is 
+
+derived  from  and  unifies  the  notations  of  three  object-oriented  design  and  analysis 
+
+methodologies:  Grady  Booch's  methodology  for  describing  a  set  of  objects  and  their 
+
+relationships,  James  Rumbaugh's  Object-Modelling  Technique  (OMT),  Ivar  Jacobson's 
+
+approach which includes a use case methodology. Other ideas also contributed to UML, which 
+
+was the result of a work effort by Booch, Rumbaugh, Jacobson, and others to combine their 
+
+ideas, working under the sponsorship of Rational Software. UML captures information about 
+
+the static and dynamic view of a system. UML 2.5 comprises of 14 diagrams which represent 
+
+the different views of a system. The 14 diagrams can be subdivided into two, Static or structural 
+
+and Dynamic diagrams. These diagrams include; 
+
+i.  STATIC OR STRUCTURAL DIAGRAMS 
+
+  Class diagram;  
+
+  Object diagram;  
+
+  Component diagram;  
+
+  Deployment diagram; 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  43 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+  Composite Structure diagram;  
+
+  Package diagram; 
+
+  Profile Diagram; 
+
+ii.  BEHAVIOURAL OR DYNAMIC DIAGRAMS 
+
+  Use case diagrams;  
+
+  Activity diagram;  
+
+  State machine diagram;  
+
+  Sequence diagram;   
+
+  Communication diagram;  
+
+  Global Interaction diagram; 
+
+  Timing Diagram; 
+
+Figure 11: UML 2.5 diagrams overview (source: https://creately.com/blog/diagrams/uml-diagram-types-examples/) 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  44 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+On very important notice is that UML is not a method but a modelling language. As such to 
+
+give it an approach we need to associate UML to a Unified Process (UP) in other to give our 
+
+conception a methodology to follow. There exist several Unified Processes, but our modelling 
+
+approach will be the 2TUP (Two-track unified process) which we will use in the course of our 
+
+project.  
+
+Table 8: Differences between UML and MERISE 
+
+MERISE 
+
+UML 
+
+It  stands  for  Méthode  d'Étude  et  de 
+
+Unified Modeling Language 
+
+Réalisation  Informatique  pour  les  Systèmes 
+
+d'Entreprises 
+
+MERISE is a systemic method of analysis 
+
+UML is however not a method but rather an 
+
+and design of information systems. That is, 
+
+object  modeling  language  to  which  it  is 
+
+it uses a systems approach. 
+
+necessary to associate an approach to make it 
+
+a  method.  This  is  the  case  with  the  2TUP 
+
+method; RUP and XP. 
+
+MERISE proposes to consider the real 
+
+UML offers a different approach from that of 
+
+system from two points of view: - A static 
+
+MERISE  in  that  it  combines  data  and 
+
+view (data) - A dynamic view (treatments). 
+
+processing. Because with UML, centralizing 
+
+That is, with the MERISE method, we have 
+
+the  data  of  a  type  and  the  associated 
+
+a separate study of the data and the 
+
+processing  makes  it  possible  to  limit  the 
+
+treatments. 
+
+Rational 
+
+maintenance points in the code and facilitates 
+
+access to information in the event of software 
+
+development. In addition, UML describes the 
+
+dynamics of the information system as a set 
+
+of  operations  attached  to  the  objects  of  the 
+
+system. 
+
+Object 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  45 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+2. COMPARATIVE STUDY OF UNIFIED PROCESSES 
+
+a. A Unified Process 
+
+A Unified Process is a process of development of software constructed on UML; it is iterative, 
+
+incremental, centered on architecture, driven by use cases and requirements.  
+
+Iteration  is  distinct  sequence  of  activities  with  a  basic  plan  and  evaluation  criterion  that 
+
+produces an internal or external output. Either the content of an iteration is improved, or the 
+
+evolution of the system is evaluated by users.  
+
+An increment is the difference between two released products at the end of two iterations. Each 
+
+iteration that the group is capable of integrating the technical environment in order to develop 
+
+a final product and give users the possibility of having tangible results.  
+
+Centered  on  architecture  the  different  models  derived  during  the  establishment  of  system 
+
+must be reliable and coherent.  
+
+Driven  by  use  case  and  requirements  enables  the  clear  definition  of  a  users’  needs  and 
+
+priorities respectively thereby minimizing the risk of project failure. 
+
+b. The Two Track Unified Process (2 TUP) 
+
+2TUP  is  a  unified  process  which  is  built  on  UML  and  has  as  objective  to  bring  solution  to 
+
+constraints  of  functional  and  technical  changes  imposed  on  information  systems  by 
+
+strengthening  controls  on  development  capacities.  It  proposes  a Y-sharped  development  life 
+
+cycle that separates the functional aspect from the technical aspects, and the merging of these 
+
+two  forms  the  implementation  aspect.  2TUP  distinguishes  therefore  two  branches:  the 
+
+functional and technical branches, the combination of the result of these two branches forms 
+
+the third: the realization branch – where we realize our system. The diagram below illustrates 
+
+the branches of 2TUP. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  46 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Figure 12: 2TUP diagram (source: https://www.mysciencework.com/omniscience/pervasive-mobile-healthcare-system-based 
+on-cloud-computing). 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  47 
+
+ 
+ 
+ 
+ 
+ 
+ 
+   
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+a.  The left branch (functional branch)  
+
+It  captures  the  functional  needs  of  a  system.  This  ensures  the  production  of 
+
+software that meets  the needs/requirements of the user. The analysis here  consists of 
+
+studying  precisely the functional  specification in  order to  obtain  an idea  of what  the 
+
+system is going to realize, and its result does not depend on any technology. 
+
+b.  The right branch (Technical branch) 
+
+The  technical  branch  enumerates  the  technical  needs  and  proposes  a  generic 
+
+design  validated by a prototype. The technical  needs include  constraints  and choices 
+
+related to the conception of the system, the tools and equipment as well as the integration 
+
+constraint with the existing system condition.  
+
+c.  The middle branch (Realization or Implementation branch) 
+
+In this branch,  we study the preliminary  conception,  detailed  conception, and 
+
+documentation  of  the  system.  The  realization  branch  supports  the  following: 
+
+Preliminary conception: This is the most sensitive step of 2TUP as it is the confluence 
+
+of the functional and technical branch. It is completed when the deployment model, the 
+
+operating model, the logical model, interphases and the software configuration model 
+
+are defined. We have the following diagrams: 
+
+  Component Diagram ;  
+
+  Deployment Diagram ; 
+
+  Package Diagram ; 
+
+  Composite Structure Diagram ; 
+
+Detailed conception: This is the detailed design of each feature of the system. We have 
+
+the following diagrams:  
+
+  Class; 
+
+  Object;  
+
+  Sequence;  
+
+  Timing Diagram; 
+
+Coding and testing: This is the phase where we program the designed features and test 
+
+the coded features.  
+
+The recipe: Also known as the deliverables is the validation phase of the functions of 
+
+the developed system. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  48 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+II.  CHOICE OF THE ANALYSIS METHOD 
+
+The  reason  why  we  chose  UML  modelling  language  and  the  software  development  process 
+
+2TUP instead of many others that exist, include:  
+
+UML is the current standard for programming in an object-oriented language. For this 
+
+reason, it is widely understood and well known making it easy for a new programmer to join 
+
+the project and be productive from the very first day.  
+
+UML diagrams allow teams to virtualize how a project is or will be working, and they 
+
+can  be  used  in  any  field,  not  just  software  engineering.  The  diagrams  will  allow  teams  to 
+
+virtualize together how a system, or a process will work or did work. It can provide new ideas 
+
+for how teams have to collaborate to achieve the goal of the workflow process.  
+
+2TUP  is  centered  around  the  creation  and  maintenance  of  a  model,  rather  than  the 
+
+production of mountain documents.  
+
+2TUP is user oriented as it permits the development of software that responds to the 
+
+needs of the users through the study of the user needs.  
+
+2TUP is iterative and incremental, hence it enables the project team to produce refined 
+
+amelioration if necessary and easily integrate it in the already existing system.  
+
+2TUP  by  permitting  the  project  team  identify  and  test  the  key  functionalities  of  the 
+
+system limits the risk related to building the system. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  49 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+III.  MODELLING OF THE PROPOSED SOLUTION 
+
+A. Capture of Functional Needs 
+
+The first step of the left (functional) branch of Two Track Unified Process (2TUP) is the 
+
+capture of the functional needs. At this step, we capture the intended behavior of the system 
+
+that maybe express as services, tasks or functions the system is required to perform. 
+
+1. USE CASE DIAGRAM 
+
+a)  Definition 
+
+Use  case  diagram  shows  the  functionalities  of  a  system,  their  interdependencies  and 
+
+how they relate with actors of the system. A use case is a specification of behaviour. The 
+
+main objectives of the use case diagram are:  
+
+❖  Provide a high-level view of the system.   
+
+❖  Identify the functions of the system.  
+
+Use  case  diagrams  are  completed  with  a  textual  description  of  each  use  case  that  is 
+
+intended to define the use case in greater details. 
+
+b)  Formalism 
+
+Figure 13: Use Case Diagram formalism 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  50 
+
+<<extend>>System<<include>>Actor 1Actor 2UseCase 1UseCase 2UseCase 3Cas_4UseCase 4Actor 3 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 9: Use Case Diagram Component 
+
+Elements 
+
+Notation 
+
+Actors 
+
+Use case 
+
+Association 
+
+Include 
+
+Description 
+
+Represents 
+
+an 
+
+entity 
+
+that 
+
+directly  interacts 
+
+with  the  system. 
+
+The actor is what 
+
+performs 
+
+the 
+
+different 
+
+possible  actions 
+
+of the system 
+
+A 
+
+use 
+
+case 
+
+represents 
+
+a 
+
+functionality  of 
+
+the  system.  It  is 
+
+an action that can 
+
+be  performed  by 
+
+an actor. 
+
+it  indicates  that 
+
+an  actor 
+
+takes 
+
+part 
+
+in  a  use 
+
+Case. 
+
+An 
+
+inclusion 
+
+denotes  that  an 
+
+included  action 
+
+must 
+
+be 
+
+performed 
+
+before 
+
+the 
+
+including  action 
+
+can 
+
+be 
+
+performed. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  51 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Extend 
+
+Generalization 
+
+System 
+
+An 
+
+extension 
+
+denotes  that  an 
+
+extending  action 
+
+may 
+
+be 
+
+performed  while 
+
+an 
+
+extended 
+
+action  is  being 
+
+performed. 
+
+This  shows  that 
+
+an actor or a use 
+
+case is  a kind  of 
+
+another  abstract 
+
+or 
+
+concrete 
+
+actors  can  be 
+
+defined and later 
+
+specialized using 
+
+generalization 
+
+relationship. 
+
+It  is  a  container 
+
+of 
+
+use 
+
+cases 
+
+which 
+
+interact 
+
+with 
+
+external 
+
+actors 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  52 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c)  The Actors of our System 
+
+Table 10: Actors of our System 
+
+Actor 
+
+Role 
+
+Administrator 
+
+The administrator is responsible of managing 
+
+the  accounts  of  patients  and  health 
+
+professionals  (validating, deleting  accounts) 
+
+and general functioning of the system. 
+
+Super Administrator 
+
+He also manages the whole system and all the 
+
+users (including the administrator) 
+
+Patient 
+
+The  user  that  receives  services  from  the 
+
+health professionals and the apps 
+
+Health Professional (Doctor) 
+
+These  are  verified  personnel  in  charge  of 
+
+counselling and providing consultation to the 
+
+users. 
+
+Geolocation API 
+
+Aids  in  the  geographical  location  of  the 
+
+searched and selected pharmacy 
+
+Payment API 
+
+Provides payment services to the application 
+
+SMS API 
+
+in terms of MTN mobile money and Orange 
+
+Money. 
+
+Provides  a  service  to  send  SMS  to  users, 
+
+notifying them of updates on your account. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  53 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d.  General Use Case Diagram 
+
+Figure 14: General Use Case Diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  54 
+
+<<include>><<actor>> PAYMENT APIIKare System<<extend>><<include>><<include>><<include>><<include>><<include>><<include>><<include>><<include>>userdoctorpatienthealth institute adminsystem superadminconsult accountAuthenticateconsult list of usersdo patients consultationsend prescriptionconsult list of professionalsbook appointmentmake paymentconsul list of pharmacies<<actor>> GEOLOCATION APIsearch pharmacyconsult pharmacy location<<extend>>nursesconsult follow-upslab technicianconsult lab test requests<<include>><<include>>consult list of techniciansconsult appointments<<include>>order drugs<<include>> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e.  Consult appointment use case diagram 
+
+Figure 15 manage appointment use case diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  55 
+
+<<extend>>iKare consult appointment<<include>>doctorauthenticationconsult appointmentsaccept appointmentcancel appointmentdecline appointmentnursereshuffle appointmentview patient listedit appointment<<extend>><<extend>><<extend>><<extend>><<extend>> 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+f.  Consultation use case diagram 
+
+Figure 16: consultation use case diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  56 
+
+iKare Consultation<<include>>doctorauthenticatedo patients consultationremoteonsite 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+g.  Textual description of use cases 
+
+Table 11: Authenticate Textual Description 
+
+Title 
+
+Authenticate 
+
+Summary 
+
+The user needs to authenticate 
+
+Actors 
+
+Date 
+
+Patient, Health Professional, Lab technician 
+
+September 11, 2023 
+
+Stakeholder 
+
+iKare Directors 
+
+Version 
+
+1.0 
+
+Precondition (s) 
+
+1.  The app is launched. 
+
+2.  The actor has an account on the platform. 
+
+Triggers 
+
+The user clicks on login button 
+
+Nominal Scenario 
+
+1.  The system displays the login form. 
+
+2.  The actor fills and submits the form. 
+
+3.  The system verifies conformity of the form fields 
+
+4.  The system sends the data to the dbms. 
+
+5.  The dbms returns result of the query. 
+
+6.  The system displays a success message to the actor. 
+
+Alternative Scenarios 
+
+7.  At step 4 of the nominal scenario, the user enters 
+
+mismatched or missing information. 
+
+8.  The system displays an error message then returns to 
+
+step 2 of the nominal scenario. 
+
+Postcondition of success  The user has access to his/her dashboard 
+
+Postcondition of failure  The user does not have access to the platform 
+
+Non-functional 
+requirement 
+
+Entering the password must not be visible on the screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  57 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 12:  Book appointment textual description 
+
+Title 
+
+Book appointment 
+
+Summary 
+
+The user books for a consultation appointment. 
+
+Actors 
+
+Date 
+
+Patient 
+
+September 11, 2023 
+
+Stakeholder 
+
+iKare Directors 
+
+Version 
+
+1.0 
+
+Precondition (s) 
+
+The actor is authenticated. 
+
+Triggers 
+
+The user clicks on book appointment button. 
+
+Nominal Scenario 
+
+1.  The actor has authenticated. 
+
+2.  The system displays the list of hospitals. 
+
+3.  The actor selects a hospital from list. 
+
+4.  The system displays the doctors from the hospital. 
+
+5.  The actor selects a doctor. 
+
+6.  The system displays a form. 
+
+7.  The actor fills and submits the form. 
+
+8.  The system displays a success message 
+
+Alternative Scenarios 
+
+9.  At step 4 of the nominal scenario, the user enters 
+
+mismatched or missing information. 
+
+10. The system displays an error message then returns to 
+
+step 2 of the nominal scenario. 
+
+Postcondition of success  The user has booked for an appointment. 
+
+Postcondition of failure  The user has not booked for an appointment. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  58 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 13: Video Consultation textual description 
+
+Title 
+
+Video Consultation 
+
+Summary 
+
+The user needs to consult through video calls. 
+
+Actors 
+
+Date 
+
+Health Professional 
+
+September 11, 2023 
+
+Stakeholder 
+
+iKare Directors 
+
+Version 
+
+1.0 
+
+Precondition (s) 
+
+The actor has authenticated 
+
+Triggers 
+
+The user clicks on consult button 
+
+Nominal Scenario 
+
+1.  The actor authenticates. 
+
+2.  The system displays a list of upcoming appointments. 
+
+3.  The actor clicks on appointment card. 
+
+4.  The system displays the appointment details. 
+
+5.  The actor clicks on launch call button. 
+
+6.  The system displays video consultation UI. 
+
+Alternative Scenarios 
+
+7.  At step 5 lack of network connectivity arises 
+
+8.  The system displays an error message 
+
+Postcondition of success  The actor is able to consult. 
+
+Postcondition of failure  The actor can’t consult. 
+
+Non-functional 
+requirement 
+
+There must be a good network connectivity. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  59 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+2. COMMUNICATION DIAGRAM 
+
+a.  Definition 
+
+Communication Diagrams model the interactions between objects in a sequence. They 
+
+describe both the static structure and the dynamic behavior of a system. It is a simplified 
+
+version of a Collaboration Diagram introduced in UML 2.0. A communication diagram 
+
+is more focused on showing the collaboration of objects rather than the time sequence. 
+
+b.  Formalism 
+
+Figure 17: Communication Diagram formalism 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  60 
+
+8.3: Message_118.4: Message_128.5: Message_13Objet_1Objet_2Objet_3Objet_4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  Components of a Communication Diagram 
+
+Table 14: Elements of a communication diagram 
+
+ELEMENT 
+
+NOTATION 
+
+DESCRIPTION 
+
+Message 
+
+Connectors 
+
+Dependency 
+
+Lifeline 
+
+Designs  a  particular 
+
+communication 
+
+between lifelines. 
+
+It 
+
+represents 
+
+the 
+
+relationships  that  exist 
+
+between lifelines 
+
+A  dependency 
+
+is  a 
+
+relationship 
+
+that 
+
+signifies a single or a set 
+
+of  model  elements  for 
+
+their specification 
+
+An object represents an 
+
+individual participant in 
+
+the 
+
+interaction 
+
+conversation. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  61 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d.  Authenticate Communication Diagram 
+
+Figure 18:Auhenticate Communication Diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  62 
+
+7.2: displays user does not exist error message7.1: displays error message3: fills and submit form2: displays login form1: send authentication request6: treats query result5: process and sends query results4: sends form datausersystemDBMS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e.  Book appointment communication diagram 
+
+Figure 19 Book appointment communication diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  63 
+
+8.2: display success message8.1: display doctor busy and referrals5.1: display validation errors3: fill and submit form2: display appointment form1: request for appointment6: process and send query result5.2: send appointment data7: treats query results4: verify form conformitysystempatientDBMS 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+3. SEQUENCE DIAGRAM 
+
+a.  Definition 
+
+A Sequence diagram describes interactions among classes in terms of an exchange of 
+
+messages over time. They are also called event diagrams. A Sequence diagram is a good 
+
+way to visualize and validate various runtime scenarios. These can help to predict how 
+
+a system will behave and to discover responsibilities a class may need to have in the 
+
+process of modelling a new system.  
+
+b.  Formalism 
+
+Figure 20: Formalism of sequence diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  64 
+
+sequence diagram formalismMessage_6Message_5Message_4Message_3Message_2Message_1Objet_1Objet_2Objet_3oknot okaltMessage_6Message_5Message_4Message_3Message_2Message_1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  Components of Sequence Diagram 
+
+Table 15: Elements of sequence diagram 
+
+ELEMENT 
+
+NOTATION 
+
+DESCRIPTION 
+
+Lifelines 
+
+Asynchronous 
+
+Message 
+
+Synchronous 
+
+Message 
+
+Self-Message 
+
+Return Message 
+
+Actor 
+
+They  represent  rows 
+
+or  objects  instances 
+
+that participate in the 
+
+sequence 
+
+being 
+
+modelled. 
+
+It  is  a  message  that 
+
+receives  an  indirect 
+
+response. 
+
+It  is  a  message  that 
+
+sends 
+
+and  want 
+
+response  before 
+
+it 
+
+continues a process 
+
+self-message 
+
+can 
+
+represent a recursive 
+
+call  of  an  operation, 
+
+or 
+
+one  method 
+
+calling 
+
+another 
+
+method belonging to 
+
+the same object. 
+
+It 
+
+represents 
+
+the 
+
+response 
+
+of 
+
+a 
+
+message. 
+
+They 
+
+send 
+
+and 
+
+receive message. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  65 
+
+Objet_4Message_3Message_3Message_1Message_1Message_2Message_2Message_6Message_6Acteur_1 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Combined 
+
+Interaction 
+
+Fragment 
+
+An  articulation  of 
+
+interaction  diagram, 
+
+defined 
+
+by 
+
+an 
+
+operator 
+
+and 
+
+operands. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  66 
+
+oknot okalt 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d.  Authenticate sequence diagram 
+
+Figure 21: Authenticate Sequence Diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  67 
+
+Authenticate2.3: displays invalid format error message2.2.2.3: display invalid credentials error message2.2.2.2: displays user dashboard2.2.2.1: treate validation result2.2.2: return validation result2.2: sends user verification query2.2.1: executes user verification query2.1: verify form conformity2: fill login details and submit1.1: display login form1: click on login buttonusersystemDBMScorrect formatIncorrect formataltif user credentials are validIf user credentials are not validalt2.3: displays invalid format error message2.2.2.3: display invalid credentials error message2.2.2.2: displays user dashboard2.2.2.1: treate validation result2.2.2: return validation result2.2: sends user verification query2.2.1: executes user verification query2.1: verify form conformity2: fill login details and submit1.1: display login form1: click on login button 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e.  Book appointment sequence diagram 
+
+Figure 22 Book appointment sequence diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  68 
+
+booking consultation appointment4.2.2.5: displays database error message4.2.2.4: display form errors4.2.2.3: display duplicate error message4.2.2.2: display success message4.2: save appointment request4.2.2.1: treat save result4.2.2: return result4.2.1: executes save appointment query4.1: verify conformity of form fields4: fill and submit form3.1: display appointment form3: click on book2.1: display doctor's info2: select a doctor1.1.2.2: display doctor's list1.1.2.1: treats database result1.1.2: returns result1.1.1: executes doctor fetch query1.1: sends fetch doctor's query1: click on appointmentpatientsystemDBMSrefAuthenticate()no database errordatabase erroraltCorrect data formatIncorrect data formataltno duplicate formif there is a duplicatealt4.2.2.5: displays database error message4.2.2.4: display form errors4.2.2.3: display duplicate error message4.2.2.2: display success message4.2: save appointment request4.2.2.1: treat save result4.2.2: return result4.2.1: executes save appointment query4.1: verify conformity of form fields4: fill and submit form3.1: display appointment form3: click on book2.1: display doctor's info2: select a doctor1.1.2.2: display doctor's list1.1.2.1: treats database result1.1.2: returns result1.1.1: executes doctor fetch query1.1: sends fetch doctor's query1: click on appointment 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+4. ACTIVITY DIAGRAM 
+
+a.  Definition 
+
+An  activity  diagram  is  a  graphical  representation  of  workflows  that  show  the  steps 
+
+needed in the realization of a process; showing the details from a start point to an end 
+
+point  through  all  decisions  and  actions  that  can  possible  be  performed.  Activity 
+
+diagrams  are  intended  to  model  both  the  computational  and  organizational  process. 
+
+They  flow  can  be  sequential,  branched  or  concurrent.  Below  is  an  activity  diagram 
+
+formalism. 
+
+b.  Formalism 
+
+Figure 23: Formalism of activity diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  69 
+
+Partition 1Partition 2Partition 3action 1action 3action 2action 4action 5action 7action 8Decision_1Decision_2[ok][not ok]action 6[ok][not ok] 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  Elements of activity diagram 
+
+Table 16: Elements of activity diagram 
+
+Element 
+
+Activity 
+
+Action 
+
+Activity edge 
+
+Initial node 
+
+Final node 
+
+Object node 
+
+Decision node 
+
+Merge node 
+
+Diagrammatic Representation  Description 
+
+Used  to  represent  a  set  of 
+
+actions. 
+
+Represent  a 
+
+task 
+
+to  be 
+
+performed. 
+
+A 
+
+directed 
+
+connection 
+
+between two activity nodes 
+
+through  which  tokens  may 
+
+flow 
+
+Shows the beginning of an 
+
+activity or set of actions. 
+
+Stops  all  controls  and 
+
+object flows in an activity. 
+
+Represents 
+
+an 
+
+object 
+
+connected  to  a  series  of 
+
+object flows. 
+
+Represents a test condition 
+
+that 
+
+slits  an 
+
+incoming 
+
+activity  edge  into  opposite 
+
+outgoing activity edges. 
+
+Reunite different decision  
+
+paths  created  using  a 
+
+decision node. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  70 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Fork node 
+
+Join node 
+
+Swimlane and partition 
+
+Slits behaviour into parallel 
+
+or  concurrent 
+
+flows  of 
+
+activities (or actions). 
+
+Unites  a  set  of  parallel  or 
+
+concurrent 
+
+flows 
+
+of 
+
+activities or actions. 
+
+A way of grouping 
+
+activities performed by the 
+
+same actor in an activity 
+
+diagram or to group 
+
+actions in the same thread. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  71 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d.  Authenticate activity diagram 
+
+Figure 24 Authenticate activity diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  72 
+
+usersystemDBMSlaunch applicationclicks on skip buttonfills and submit formdisplay splash screendisplay login formverify conformity of form fieldsok ?display error message[yes][no]valid ?verifies query resultdisplays dashboardsend credentials verification querydisplay credentials errorexecutes credentials verification query[no][yes]authenticate 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e.  Consultation activity diagram 
+
+Figure 25:Consultation activity diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  73 
+
+doctorsystemdbmspatientclick on appointment iconAuthenticateselects an appointment from listclick on patient infochoose consultation modesends query to get all appointmentsverify resultGooddisplay error messagedisplay list of appointmentsdisplay appointment detailssends request to databasesends confirm requestaccepted ?[no]display patient infochoice ?verify modevideo callchat[video call]display request rejected error[yes][no][chat][yes]sends update decision querytreats resultexecutes queryexecutes patient info request queryexecutes update decision queryselects and send decisionconsultation 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+f.  Book appointment activity diagram 
+
+Figure 26 Book appointment activity diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  74 
+
+Book Consultation AppointmentpatientsystemDBMSselect doctor from listAuthenticatefill and submit appointment formclick on book appointment buttondisplay doctor's informationverify conformity of fieldsIsValid ?sends doctor availability query[yes]display error messageverify resultsis doctor busy?display success messagedisplay appointment formdisplay error message and propose available doctorsexecutes doctor availability query[no][yes][no] 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+In the analysis phase, we chose a software development process and modelling language, after 
+
+which we  explained the functional  need of our system, we saw the use case diagram  which 
+
+shows the relationship between the actors and use case (the action the actor can perform on the 
+
+system),we saw the communication diagram which represents the architecture of the system 
+
+based on object oriented programming, we saw the sequence diagram which represents the flow 
+
+of messages between elements in the system, and lastly the activity diagram which shows the 
+
+workflow of our system. We will now move to the conception phase in which we will present 
+
+the Technical branch of our system together with related diagrams. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  75 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART V 
+
+CONCEPTION PHASE 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  76 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+The conception phase will permit us to present in an orderly manner the components necessary 
+
+for the good functioning of our software and also the architecture used for the proposed solution. 
+
+It bridges the gap between the analysis phase and the realization phase.  
+
+Content 
+
+INTRODUCTION 
+
+1.  TECHNICAL BRANCH 
+
+A.  GENERIC DESIGN 
+
+B.  CAPTURE  OF  TECHNICAL 
+
+NEEDS 
+
+TEST OF FUNCTIONALITIES 
+C.  RELATED UML DIAGRAMS 
+
+i.  CLASS DIAGRAM 
+
+ii. 
+
+STATE 
+
+MACHINE 
+
+DIAGRAM 
+
+iii. 
+
+PACKAGE DIAGRAM 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  77 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+The  conceptual  phase  will  describe  in  detail  the  necessary  specifications,  features  and 
+
+operations that will satisfy the functioning requirements of the proposed system as modelled in 
+
+the analysis phase. This phase is meant to identify and consider essential components (hardware 
+
+/or  software),  structure  (network  capabilities),  processes  and  procedures  for  the  system  to 
+
+accomplish  it  objectives.  We  will  look  at  some  diagrams  such  as  the  class  diagram,  state 
+
+machine diagram and package diagram. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  78 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+A. GENERIC DESIGN 
+
+a. Hardware diagram of the system 
+
+The hardware diagram simply shows how the system components of our system are deployed; 
+
+it shows the positioning of each device into it right proportion. 
+
+iKare server 
+
+Figure 27: Hardware diagram of the system 
+
+b High Level Architecture of the System 
+
+The high-level architecture diagram provides an overview of the entire system, identifying the 
+
+main components that would be developed for the product and their interfaces 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  79 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+B. CAPTURE OF TECHNICAL NEEDS 
+
+a. Physical Architecture 
+
+The design of the DBMS depends on its architecture. An n-tier architecture partitions 
+
+on  the  whole  system  into  related  but  separated  n  modules,  which  can  be  independently 
+
+modified,  altered,  changed  or  replace. A  large  amount  of  data  on  web  servers,  personal 
+
+computers (pc)  and others are link with  networks with  the help  of basic  client  or server 
+
+architecture.  
+
+Within the scope of our project, we made use of the n-tier architecture This architecture 
+
+separate  it  tiers  from  each  other  based  upon  the  user  and  the  manipulated  data  in  the 
+
+database. Each layer has a well-defined communication interface, and the evolution of the 
+
+layer is independent of the other. The n-tier of our system is made up of: 
+
+  The  hardware  tier,  which  represents  our  IOT  device  to  collect  vitals  and  it  is 
+
+connected directly to our mobile phone using a wired connection.  
+
+  The client tier, which is also known as our presentation interphase.  
+
+  Application Tier, which represents our webserver.  
+
+  The data tier, which represents our DBMS server. 
+
+Figure 28: n-tier Architecture (Source: https://www.pinterest.es/pin/752241943987565648/) 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  80 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+b. Logical Architecture 
+
+Model  View  controller  or  MVC  as  it  is  popularly  called,  is  a  software  design  patten  for 
+
+developing application. A model view controller patten is made up of the following three parts.  
+
+❖  Model: The lowest level of the patten which is responsible for maintaining data.  
+
+❖  View: This is responsible for displaying all or a portion of data to the user.  
+
+❖  Controller: It handles software codes that controls the interactions between the model 
+
+and the view.  
+
+MVC  is  popular  as  it  isolates  the  application  logic  from  the  user  interface  and  supports 
+
+separation of concerns. Here the controller receives all requests for the application then works 
+
+with the model to prepare data needed by the view. The view then uses the data prepared by the 
+
+controller to produce a final response. The MVC can be represented as follows : 
+
+Figure 29: The MVC architecture (Source: https://www.freecodecamp.org/news/the-model-view-controller-pattern-mvc 
+architecture-and-frameworks-explained/) 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  81 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+C. RELATED UML DIAGRAMS 
+
+1. CLASS DIAGRAM 
+
+a.  Definition 
+
+A class diagram is a static diagram. It represents the static view of an application. class 
+
+diagram is not only used for visualizing, describing and documenting different aspect of 
+
+the system but also for constructing executable code of the software application. Class 
+
+diagram describes the attribute and operation of a class and constraints imposed on the 
+
+system. Its purpose is to model the static view of an application. 
+
+b.  Formalism 
+
+Figure 30: Formalism of Class Diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  82 
+
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 17: Elements of class diagram 
+
+Element 
+
+Representation 
+
+Description 
+
+Class 
+
+Composition 
+
+Aggregation 
+
+Dependency 
+
+A  class 
+
+is  an 
+
+element 
+
+defines 
+
+attributes 
+
+that 
+
+the 
+
+and 
+
+behaviors  that  an 
+
+object 
+
+can 
+
+generate 
+
+If  a  parent  of  a 
+
+composite 
+
+is 
+
+deleted,  usually, 
+
+all  its  parts  are 
+
+deleted with it. 
+
+If  the  parent  of 
+
+the  aggregate  is 
+
+deleted,  usually 
+
+the  children  are 
+
+not deleted. 
+
+It existed between 
+
+two classes, if one 
+
+changes 
+
+it  may 
+
+cause  the  change 
+
+in  the  order,  but 
+
+the  other  way 
+
+around 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  83 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Generalization 
+
+Association 
+
+it  a  relationship 
+
+between  a  whole 
+
+thing 
+
+(called 
+
+superclass)  and  a 
+
+more 
+
+thing 
+
+specific 
+
+(called 
+
+subclass) 
+
+It is a general type 
+
+of 
+
+relationship 
+
+between 
+
+elements,  it  may 
+
+include 
+
+cardinality,  roles 
+
+etc. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  84 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  iKare class diagram 
+
+Figure 31: System class diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  85 
+
+1..1is administered by1..1administers1..*is owned by1..*owns1..*belongs1..*has1..*is managed by1..*manages1..*is consulted by1..*consults1..*is managed by1..*manages1..1is booked by0..*books1..1is managed by1..*manages1..1is managed by0..*manages1..*receives prescription from1..*issues prescription to1..1is filled 1..*fills1..*managed by1..*manages1..*sent by0..*sendsUser-----userIdnameemailpasswordtelephone: String: String: String: String: String++++++setUserDetails ()getName ()getEmail ()getUserPhone ()getPassword ()deleteNotifications ()...: void: String: String: String: String: voidPatient-dob: Date+++++setPatientInfo ()getPatientInfo ()bookAppointment ()attendConsultation ()searchPharmacy ()...: void: Patient: void: void: StringHealthProfessional---experiencehealthInstitutespeciality: int: String: int+++++setProfessionalInfo ()getProfessionalInfo ()consult ()manageAppointments ()issuePrescription ()...: void: HealthProfessional: void: Appointment: PrescriptionInstituteAdmin++++createAccounts ()validateAccounts ()suspendAccounts ()blockAccounts ()...: void: Account: void: voidSuperAdmin-----superIdsuperadmin_namesuperadmin_emailsuperadmin_passwordtel_number: String: String: String: String: String++++setSuperAdminDetails ()getSuperAdminDetails ()createAdminAccounts ()validateAccounts ()...: void: SuperAdmin: InstituteAdmin: voidLabTechnician+++setTechnicianName ()getTechnicianName ()validateRequests ()...: void: String: TestRequestPayment---payment_idpaymentDatepaymentType: String: Date: String++setPaymentDetails ()getPaymentDetails ()...: void: PaymentTestRequest--depositDateretrievalDate: Date: Date++setRetrievalDate ()validate ()...: void: voidLabTest--technicianIdtest_id: String: String+++setLabTestDetails ()getTechnicianId ()getTestId ()...: void: String: StringAppointment---appointmentIdappointmentDateappointmentDetails: String: Date: String++++++setAppointmentId ()getAppointmentId ()setAppointmentDetails ()getAppointmentDetails ()setAppointmentDate ()getAppointmentDate ()...: void: String: void: String: void: DateConsultation-----consultation_idpatientIdprofessionalIdconsultation_datediagnosis: String: String: String: Date: String++++++setConsultationId ()getConsultationId ()setConsultationDate ()getConsultationDate ()setDiagnosis ()getDiagnosis ()...: void: String: void: Date: void: StringAppointmentHealthProfessional--appointmentIdprofessionalId: String: StringNotifications-----notificationIdcontentdatesenderIdreceiverId: String: String: Date: String: String++++++++++setNotificationId ()getNotificationId ()setNotificationContent ()getNotificationContent ()setNotificationDate ()getNotificationDate ()setSenderId ()getSenderId ()setReceiverId ()getReceiverId ()...: void: String: void: String: void: Date: void: String: void: StringPrescription-----prescriptionIdpatientIdprofessionalIdcontentdate: String: String: String: String: Date+++setContent ()getContent ()setPrescriptionIdDate ()...: void: String: voidFollowupForms---formIdformContentdate: String: String: Date++++++setFormContent ()getFormContent ()setFormId ()getFormId ()setDate ()getDate ()...: void: String: void: String: void: DateRequest---requestIdrequestTyperequestStatus: String: String: String++setRequestInfo ()getRequestInfo (): void: RequestProfessionalFollowupForm---formIdprofessionalIdfollowup_date: String: String: Date++++setFollowupDetails ()getFollowupDate ()getProfessionalId ()getFormId ()...: void: Date: String: StringPatientRequest---requestIdpatientIdrequestDate: String: String: Date++setRequestDate ()getRequestDate ()...: void: DateHospital----hospital_idhospitalNamecreationDatelocation: String: String: Date: String++setHospitalDetails ()getHospitalDetails ()...: void: HospitalAuthenticationManager{abstract} ++login ()register ()...: int: intRole--role_idrole_name: String: String++setRole ()getRole ()...: int: StringAccount---accountIdcreationDateactiveState: String: Date: short++++++setActiveState ()setCreationDate ()setAccountId ()getActiveState ()getCreationDate ()getAccountId ()...: void: void: void: String: String: String 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d.  Business Rules 
+
+R1: A user manages one or more notifications, and a notification is managed by only 
+
+one user. 
+
+R2: A user owns one or more roles, and a role is owned by one or more users. 
+
+R3: A lab technician manages one or more requests, and a request is managed by one or 
+
+more lab technicians. 
+
+R4:  An  Institute  admin  administers  one  and  only  one  hospital  and  a  hospital  is 
+
+administered by one Institute Admin. 
+
+R5:  A  super  admin  manages  one  or  more  institute  admins  and  Institute  admin  is 
+
+managed by one super admin. 
+
+R6: A patient sends zero or many requests and a request is sent by one or more patients. 
+
+R7:  A  health  professional  issues  prescription  to  one  or  more  patients  and  a  patient 
+
+receives prescription from one or more health professionals. 
+
+R8: A patient is consulted by one or more health professionals and a health professional 
+
+consults one or more patients. 
+
+R9: A patient books one or more appointments and an appointment is booked by one 
+
+patient. 
+
+R10: A patient fills one or more follow-up forms, and a follow-up form is filled by one 
+
+patient. 
+
+R11: A health professional manages one or more appointments, and an appointment is 
+
+managed by one or more health professional. 
+
+R12: A health professional manages one or more follow-up forms, and a follow-up form 
+
+is managed by one or more health professional. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  86 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+2. STATE MACHINE DIAGRAM 
+
+a.  Definition 
+
+A  state  machine  diagram  describes  the  behaviour  of  a  single  object  in  response  to  a 
+
+series of events in a system. Also known as the state machine diagram, it models the 
+
+dynamic flow of control from the state of a particular object within a system. 
+
+b.  Formalism  
+
+Figure 32: Formalism of state machine diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  87 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 18: Elements of state machine diagram 
+
+Element 
+
+Representation 
+
+State 
+
+First 
+
+(Initial 
+
+State) 
+
+Final State 
+
+Transition 
+
+Choice 
+
+pseudo 
+
+state 
+
+Terminate 
+
+Description 
+
+Models 
+
+a 
+
+situation  during 
+
+which  a  certain 
+
+invariant 
+
+condition holds. 
+
+It  represents  a 
+
+default 
+
+vertex, 
+
+that  is,  a  source 
+
+for 
+
+a 
+
+single 
+
+transaction to the 
+
+default 
+
+or 
+
+composite state. 
+
+A 
+
+state 
+
+specifying 
+
+that 
+
+the 
+
+enclosing 
+
+region 
+
+is 
+
+complete. 
+
+A 
+
+direction 
+
+relation  between 
+
+a  source  and  a 
+
+target vertex. 
+
+A 
+
+diamond 
+
+symbol 
+
+that 
+
+indicates 
+
+a 
+
+dynamic 
+
+condition  with 
+
+branched 
+
+potential results 
+
+Implies  that  the 
+
+execution  of  a 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  88 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Diagram 
+
+overview 
+
+state by means of 
+
+it 
+
+context 
+
+is 
+
+terminated. 
+
+A 
+
+placeholder 
+
+for 
+
+the 
+
+linked 
+
+states  in  a  state 
+
+machine 
+
+diagram. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  89 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  Account state machine diagram 
+
+Figure 33 Account state machine diagram 
+
+d.  Consultation state machine diagram 
+
+Figure 34 Consultation state machine diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  90 
+
+<<user creates account>><<admin validates account>><<admin suspends account>><<admin reactivates account>><<admin deletes account>><<denies user>>pendingactivateDeletesuspend<<doctor does not choose video>><<doctor chooses video>><<request for interview>>videoonsiteIn progressChat 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e.  Appointment state machine diagram 
+
+Figure 35 Appointment state machine diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  91 
+
+<<request for appointment>><<request sent>><<request cancelled>><<system denies appointment>><<system validates appointment>><<appointment saved>>in progressnot validateapproveddisapprovedsaved 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+3. PACKAGE DIAGRAM 
+
+a.  Definition 
+
+  This is a structural diagram used to show the organization and arrangement of various 
+
+model elements in the form of packages. A package diagram is the grouping of related uml 
+
+elements such as classes, diagrams or even other packages. 
+
+b.  Formalism 
+
+Figure 36: Formalism of package diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  92 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 19: Elements of package diagram 
+
+Element 
+
+Representation 
+
+Description 
+
+Package 
+
+Package 
+
+import 
+
+Package 
+
+access 
+
+Package 
+
+merge 
+
+A 
+
+package 
+
+is 
+
+a 
+
+namespace 
+
+use 
+
+to 
+
+group 
+
+related 
+
+elements; 
+
+it 
+
+is 
+
+a 
+
+mechanism  used 
+
+to 
+
+group  elements  into  a 
+
+better  structure  in  a 
+
+system. 
+
+A relationship Indicate 
+
+that,  functionality  has 
+
+been 
+
+imported  from 
+
+one 
+
+package 
+
+to 
+
+another. 
+
+A 
+
+relationship 
+
+Indicates 
+
+that 
+
+one 
+
+package 
+
+requires 
+
+assistance 
+
+from 
+
+the 
+
+function  of  another 
+
+package. 
+
+It 
+
+is  a  relationship 
+
+which  shows  that,  the 
+
+functionality  of 
+
+two 
+
+packages are combines 
+
+to a single function. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  93 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  iKare package diagram 
+
+Figure 37 iKare package diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  94 
+
+Package 2<<access>><<import>><<import>><<import>><<access>><<access>><Texte par défaut><Texte par défaut>Online Medical PlatformPackage_3Package_4IndexPatientHealth professionalslab technicianPharmacy serviceCashierAdminUsersOnline ConsultationAppointmentConsultationMongo DBDatabaseFollow upsDrug requestPayments<<import>><<import>><<access>>manage appointmentsDrug requestAppointmentsFunctionalitiesVideoConsultationmanage follow-upsFollow-upsmanage drug requests 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+In  the  conception  phase,  we  set  as  objective  to  plane  the  different  aspect  of  our  system  by 
+
+showing how it will be structure and deployed within existing technical architectures. We began 
+
+by considering the technical constraints for our system, after which we proceeded to identify 
+
+the components of our system, how they are grouped together and how they should be deployed 
+
+on appropriate deployment targets. We finished this phase by looking at interactions between 
+
+the various aspects  and actors of our system. The next  phase of our report is  the realization 
+
+phase where we will look at aspects concerning the implementation of our system. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  95 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART VI 
+
+REALIZATION PHASE 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  96 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+In this phase we will to straight forward in the implementation of our solution, we will base 
+
+ourselves  on  the  analysis  and  conception  phases  and  also  present  the  component  and 
+
+deployment diagrams. 
+
+Content 
+
+INTRODUCTION 
+
+I. 
+
+II. 
+
+DEPLOYMENT DIAGRAM 
+
+COMPONENT DIAGRAM 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  97 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+Here in the realization phase, we will see some diagrams related to the physical aspect pf the 
+
+system  like  libraries,  documents,  as  well  as  the physical  topology  of  the  components  of  the 
+
+system when the software is been deployed. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  98 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+1. DEPLOYMENT DIAGRAM 
+
+a.  Definition 
+
+Deployment  diagram  is  a  structural  diagram  used  to  visualize  the  topology  of  the 
+
+physical components of a system, where the software is deployed. They consist of nodes 
+
+and their relationship. It is related to the component diagram because the components 
+
+are deployed using the deployment diagram. A deployment diagram consists of nodes. 
+
+Nodes are nothing but physical hardware used to deploy the application. 
+
+b.  Formalism 
+
+Figure 38: Formalism of deployment diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  99 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 20: Elements of deployment diagram 
+
+Element 
+
+Representation 
+
+Description 
+
+Node 
+
+Artifact 
+
+Component 
+
+Association 
+
+It is  a hardware used 
+
+to 
+
+deploy 
+
+the 
+
+application 
+
+An artifact is a major 
+
+product,  which 
+
+is 
+
+produced  or  used 
+
+during 
+
+the 
+
+development  of  a 
+
+software. 
+
+diagrams, 
+
+E.g 
+
+data 
+
+models, setup scripts 
+
+It 
+
+represents 
+
+a 
+
+modular  part  of  a 
+
+system 
+
+encapsulates 
+
+that 
+
+its 
+
+content  and  whose 
+
+manifestation 
+
+is 
+
+replaceable  within  it 
+
+environment. 
+
+An  association  helps 
+
+to connect two nodes 
+
+together 
+
+which 
+
+permits 
+
+them 
+
+to 
+
+communicate 
+
+together 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  100 
+
+association 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+c.  System deployment diagram 
+
+Figure 39 iKare deployment diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  101 
+
+TCP/IPhttps/httpClient Server<<component>>APK(ANDROID)Client Server2<<component>>IPA(IOS)Web/Appication ServerAPI<<component>>Google Map API<<component>>SMS API<<component>>PAYMENT APIBackend Server<<component>>Node JsDatabase Server<<component>>Mongo DB<<component>>DBMShttps/httphttps/httpusers pc<<component>>Web browserhttps/http 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+2. COMPONENT DIAGRAM 
+
+a.  Definition 
+
+Component  diagrams  are  used  to  model  the  physical  aspect  of  a  system.  Now  the 
+
+question  is  what  are  this  physical  aspect?  They  are  elements  such  as  Executables, 
+
+libraries, files, document etc. which resides in a node. The component diagram does not 
+
+describe the functionality of the system, but it describes the components used to make 
+
+those functionalities. 
+
+b.  Formalism 
+
+c.   
+
+Figure 40: Formalism of component diagram (Source: https://www.pinterest.com/pin/551128073157994549/) 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  102 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Table 21: Elements of component diagram 
+
+Name 
+
+Representation 
+
+Description 
+
+A Component 
+
+Dependency 
+
+Required Interface 
+
+Provided Interface 
+
+Port 
+
+A component is an abstract 
+
+logical  unit  block  of  a 
+
+system.it  is  represented  as 
+
+a  rectangle  with  smaller 
+
+rectangle in the upper right 
+
+corner  which  saves  as  it 
+
+icon for recognition. 
+
+Dependency  is  a  directed 
+
+relationship  which  is  used 
+
+to 
+
+show 
+
+that 
+
+some 
+
+components are dependent 
+
+on  others  for  their  correct 
+
+functioning. 
+
+It is a straight line from the 
+
+component  box  with  an 
+
+attached 
+
+half 
+
+circle 
+
+representing 
+
+interfaces 
+
+where 
+
+a 
+
+component 
+
+requires 
+
+information 
+
+in 
+
+order  to  perform  its  own 
+
+functions. 
+
+It is a straight line from the 
+
+component  box  with  an 
+
+attached 
+
+circle 
+
+representing 
+
+interfaces 
+
+where 
+
+a 
+
+component 
+
+produces information used 
+
+by required interfaces 
+
+A  port  (represented  by  a 
+
+small square at the end of a 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  103 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+required 
+
+or 
+
+provided 
+
+interface) is used when the 
+
+components  delegate  the 
+
+interfaces  to  an  internal 
+
+class. 
+
+d.  System mobile component diagram 
+
+Figure 41 iKare mobile component diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  104 
+
+<<component>>User<<component>>mobile app<<component>>Register.js<<component>>Login.js<<component>>Dashboard.jsPort_1<<component>>assets<<component>>images<<component>>utilsPort_1Interface_1Port_1<<component>>web server<<component>>model<<component>>controllerPort_1Port_2Port_3Interface_2<<component>>DatabaseMongo DBPort_1<<component>>Google and Twilio APIsGoogle Geolocation APITwilio SMS APIPort_1Interface_3Interface_4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e.  System web component diagram 
+
+Figure 42 iKare mobile component diagram 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  105 
+
+<<component>>User<<component>>web<<component>>Register.js<<component>>Login.js<<component>>Dashboard.jsPort_1<<component>>assets<<component>>images<<component>>utilsPort_1Interface_1Port_1<<component>>web server<<component>>model<<component>>controllerPort_1Port_2Port_3<<component>>DatabaseMongo DBPort_1<<component>>Google and Twilio APIsGoogle Geolocation APITwilio SMS APIPort_1Interface_2Interface_3Interface_4 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+In our realization phase, we implemented our application. In other to accomplish this phase, we 
+
+made used of our analysis and conception phase. We also drew the deployment and component 
+
+diagrams which depict the structure of our system in terms of modules, files, assets, how the 
+
+different elements interact with each other. We will move to the test of functionalities phase, 
+
+where we will examine the different modules present in our app and how beneficial they are to 
+
+its different users.  
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  106 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART VII 
+
+TEST OF FUNCTIONALITIES 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  107 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+In this phase, we will present the various functionalities of our application. 
+
+Content 
+
+INTRODUCTION 
+
+1.  APPLICATION FUNCTIONALITIES 
+
+2.  TESTS SHOWCASES 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  108 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+The test of functionalities phase helps us to know more about the solution we are building be it 
+
+web or mobile. It provides the different functionalities or modules found in our application and 
+
+how they are beneficial to the users. Hence, we are going to explore the different functionalities 
+
+present in iKare. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  109 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+1. APPLICATION FUNCTIONALITIES 
+
+  Authentication 
+
+This functionality enables the users to have access to their workspace or dashboard. In 
+
+case he/she does not have an account he/she will register. 
+
+  Consultation 
+
+It enables communication between the health professional and the patient through video 
+
+calls or chat for diagnosis. 
+
+  Book and Manage Appointments 
+
+It helps patients book appointments for consultation and health professionals to either 
+
+edit, cancel, approve the appointments received from patients. 
+
+  Pharmacy Search 
+
+At  the  end  of  a  consultation,  the  health  professional  often  issues  prescriptions  to 
+
+patients, this module helps patients quickly identify the pharmacies nearby, having the 
+
+drugs they are looking for and opened at the time. 
+
+  Follow-ups 
+
+When drugs have been taken, a regular follow-up is needed to make sure that the drugs 
+
+taken by the patients have the desired effect on them. If the patient is not relieved from 
+
+his illness, the doctor will be informed. 
+
+  E-Health Record 
+
+This  module  helps  in  keeping  track  of  patients’  past  records,  to  enable  effective 
+
+diagnosis to be carried out by future health professionals. 
+
+  Account and Notification Management 
+
+The users are capable of modifying account details by editing their passwords, profile, 
+
+name,  emails,  profile  pictures.  Notifications  are  received  by  doctors  and  patients  to 
+
+remind  them  of  approaching  consultations,  account  creation  (Health  staff)  and 
+
+validation, also reminding patients to take drugs.   
+
+  Log out 
+
+It enables users to close a working session. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  110 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+2. TESTS SHOWCASES 
+
+The following are the tests carried out  using mocha, chai  and  chai-http on  our APIs’ 
+
+endpoints. 
+
+i) 
+
+Admin Modules tests 
+
+Here we have tested : 
+
+❖  /api/admin/getAdmins routes that enables the super administrator to get 
+
+the list of all the admins created on the platform. 
+
+❖  /api/admin/createAdmin that enables the super admin to create an admin. 
+
+If  an  admin  already  exists  with  that  email  address,  it  returns  an  error 
+
+message.  In  this  our  case,  there  is  a  technical  issue  (due  to  network 
+
+connectivity) reason why there is one 1 failing. 
+
+Figure 43: Admin Modules tests 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  111 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+ii) 
+
+Health Professional Creation and Manage modules 
+
+Here we tested 
+
+❖  /api/admin/getProfessionals endpoint that enables an administrator to get 
+
+all the health professionals registered in that institute. 
+
+❖  /api/admin/createProfessional endpoint that enables an administrator to 
+
+create a professional if that matricle is not yet registered, in the reverse 
+
+case an error message displays. 
+
+Figure 44: Professional Modules tests 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  112 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+iii) 
+
+Patient modules 
+
+Here we tested: 
+
+❖  /api/patient/saveAppointment endpoint that enables a patient to actually 
+
+book for an appointment. 
+
+Figure 45: Book appointment test showcase 
+
+❖  /api/patient/checkAvailability endpoint enables checking of availability 
+
+of any health professional before booking an appointment. 
+
+Figure 46: Doctor's availability test showcase 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  113 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+In the test of functionalities phase we explained the different functionalities of our application 
+
+and the benefits to the various users (patient, health professional, admin, lab technician, super 
+
+admin). This phase is essential in the understanding of the application. We will move to the last 
+
+phase which is the installation and user guide where we will elaborate on how to install and use 
+
+iKare. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  114 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PART VIII 
+
+INSTALLATION GUIDE AND 
+
+USER GUIDE 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  115 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+Preamble 
+
+The purpose of the user guide is to provide users of our platform with step-by-step instructions 
+
+on how to install and use the system. 
+
+Content 
+
+INTRODUCTION 
+
+I. 
+
+II. 
+
+INSTALLATION OF THE APPLICATION 
+
+SHOW CASE 
+
+CONCLUSION 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  116 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+INTRODUCTION 
+
+This is the final phase of our report. In this phase we will walk through the requirements for 
+
+our system, the necessary installation process, accessing our system and its features, all this 
+
+in a step-by-step manner to facilitate the setting up of the platform for the first-time users. 
+
+The steps of different processes will be accompanied by images. After we will showcase 
+
+our application by viewing the different screens. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  117 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+I. 
+
+INSTALLATION OF THE APPLICATION 
+
+A. DATABASE SERVER INSTALLATION 
+
+To deploy a software, we need to install it database server, in our case in MongoDB will be 
+
+installed in our system which is windows. 
+
+Figure 47 mongodb logo 
+
+STEP 1 : Downloading  the mongoDB  MSI installer package 
+
+We go to https://www.mongodb.com/try/download/community in other to download MongoDB 
+
+an note that we are downloading the community version since it is free and open source. 
+
+Figure 48 Downloading MongoDB  community version 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  118 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+STEP 2: Install MongoDB with the installation Wizard 
+
+A.  Make  sure  you  logged  in  as  a  user  with  admin  privileges.  Then  navigate  to  your 
+
+downloads folder and double click on the .msi package you just downloaded. This will 
+
+launch the installation wizard. 
+
+Figure 49 Launching the installation wizard 
+
+B.  Click on the next button 
+
+Figure 50 Clicking on next 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  119 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+C.  Accept the license agreement then click Next 
+
+Figure 51: Agreement License 
+
+D.  Select the Complete setup 
+
+Figure 52 Select complete setup 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  120 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+E.  Select “Run service as Network Service user” and make a note of the data directory, 
+
+we’ll need this later. 
+
+Figure 53: Run service network user 
+
+F.  Select mongo DB compass since you don’t have that already 
+
+Figure 54: Selecting MongoDB compass and clicking next 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  121 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+G.  Click Install to begin installation 
+
+Figure 55: Click on install to start installation 
+
+H.  Click on finish to complete installation 
+
+Figure 56: Click on finish to complete installation 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  122 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+B. MOBILE APPLICATION INSTALLATION 
+
+To be able to use iKare mobile application, we need to download the APK file or IPA file and 
+
+install it. After installing it, run the application. 
+
+II.  SHOWCASES 
+
+a.  Here we have the login screen 
+
+Figure 57: iKare login Screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  123 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+b)  This is the register screen 
+
+Figure 58: iKare register screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  124 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+d)  Here we have the patient’s welcome screen 
+
+Figure 59: iKare patient's welcome screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  125 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+e)  Hospital Lists Screen 
+
+Figure 60: Hospital List Screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  126 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+f)  This interface is for booking appointments by patients 
+
+Figure 61: Book Appointment Screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  127 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+g)  Doctor’s home screen 
+
+Figure 62: Doctor's home screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  128 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+h)  Doctor’s Appointments Screen 
+
+Figure 63: Doctor's appointment Screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  129 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+i)  Prescription Screen 
+
+Figure 64: Prescription Screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  130 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+j)  Consultation Screens 
+
+Figure 65: Chat Screen 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  131 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+C. Web Application 
+
+i) 
+
+Creation of Institute Admins page 
+
+Figure 66: Admin Creation Page 
+
+ii) 
+
+View Health Professional page 
+
+Figure 67: List of Health Professionals page 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  132 
+
+ 
+ 
+ 
+ 
+ 
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION 
+
+Having put in place the platform, it was not sufficient for we had to produce a manual that will 
+
+help its various users. That is why we presented the different tools to be installed and how they 
+
+are to be installed in order to run this application without any problem and how the users will 
+
+use this platform once the environment is set up. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  133 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+PERSPECTIVES 
+
+Considering the fact that this project can be improved to a higher extend, as perspectives we 
+
+can bring some ameliorations such as: 
+
+  Implementing an IOT smart tool for collecting vitals. 
+
+  Using Virtual and Augmented Reality for Health Conferences. 
+
+  Developing an AI model for Cameroon. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  134 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+GENERAL CONCLUSION 
+
+Having  come  to  an  end  of  our  project  and  the  end  of  our  internship  at  REALIZE,  we  have 
+
+achieved a lot from our internship period, it was very challenging and demanding, we had to 
+
+manage stress, failures and successes. Our stay in REALIZE was very profitable, we learned 
+
+how to adapt to the professional milieu and to also work in team. For our project we worked on 
+
+the  theme  “DEVELOPMENT  OF  A  PATIENTS’  CONSULTATION  AND  FOLLOW-UP 
+
+PLATFORM  FOR  CAMEROON  GOVERNMENT  HOSPITALS”,  our  greatest  desire  is  to 
+
+facilitate consultation, follow-up of patients and access to prescribe drugs by doctors. We began 
+
+by identifying the current system in place for the consultation process, project constraints and 
+
+requirements in the specification book, then we went forth to analyze our system (iKare) using 
+
+UML-2TUP methodology. We made use of Sybase Power AMC, a modelling software used to 
+
+draw our various diagrams. In order to realize our project, we used react-native for mobile front-
+
+end, React js for the front-end, NodeJS for the backend and MongoDB as our database. Our 
+
+system, iKare will enable patients to book appointments for consultations, be consulted by a 
+
+medical professional, receive notifications or reminders for medications or consultations. We 
+
+won’t end here, updates and important improvements are going to be made in the nearest future 
+
+in terms of functionality, security to make it more reliable. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  135 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+ANNEXES 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+BIBLIOGRAPHY 
+
+  Mercurial 2022      
+
+  International Journal of Database Management Systems ( IJDMS ) Vol.10, No.2, April 
+
+2018. 
+
+  Tracking 100 Core Health Indicators in Cameroon in 2019 & SDG Focus-En. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xiii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+WEBOGRAPHY 
+
+  https://www.tutorialspoint.com/object_oriented_analysis_design/index.htm 
+
+  Object 
+
+Oriented Analysis & Design Tutorial. July 15th, 2023, 09:00 PM. 
+
+  https://icograms.com/designer  Designing  a  geolocalisation  diagram.  July  31st,  2023 
+
+09:00 PM. 
+
+  https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-
+
+class-diagram/ What is a Class Diagram? August 21st, 2023, 09:00 PM. 
+
+  https://formik.org/docs/guides/validation FORMIK documentation. August 24th 2022 
+
+10:30 AM. 
+
+  https://console.twilio.com/?frameUrl=/console  SMS  API  information.  August  31st, 
+
+2023, 5:30PM  
+
+  https://primereact.org  DataTable. September 18th, 2023, 3:30 PM. 
+
+  https://www.mongodb.com/docs/mongoid/current/reference/associations/  
+
+Associations. September 21st, 2023, 4:30PM 
+
+  https://redux.js.org/tutorials/essentials/part-5-async-logic  Async  Logic  and  Data 
+
+Fetching. September 22nd, 2023, 12:30PM. 
+
+  https://github.com/videosdk-live/webrtc/blob/main/react-native-webrtc-app/client 
+
+React Native Video Calling App with react-native-webrtc. September 24th, 2023, 6:30 
+
+PM. 
+
+  https://www.scaler.com/topics/react-native-webrtc/    React  Native  Video  Calling App 
+
+with react-native-webrtc. September 24th, 2023, 7:30 PM. 
+
+  https://www.digitalocean.com/community/tutorials/test-a-node-restful-api-with-
+
+mocha-and-chai  Test a Node RESTful API with Mocha and Chai. September 25th, 2023, 9:00 
+
+PM. 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xiv 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+TABLE OF CONTENT 
+
+DEDICATION ........................................................................................................................... i 
+
+ACKNOWLEDGEMENT ....................................................................................................... ii 
+
+CONTENT ............................................................................................................................... iii 
+
+LIST OF FIGURES .................................................................................................................. v 
+
+LIST OF TABLES ................................................................................................................. viii 
+
+GLOSSARY ............................................................................................................................. ix 
+
+ABSTRACT .............................................................................................................................. x 
+
+RESUME .................................................................................................................................. xi 
+
+GENERAL INTRODUCTION ............................................................................................... 1 
+
+PART I ....................................................................................................................................... 2 
+
+INSERTION PHASE ............................................................................................................... 2 
+
+Preamble ................................................................................................................................. 3 
+
+Content ................................................................................................................................... 3 
+
+INTRODUCTION .................................................................................................................. 4 
+
+I.  WELCOME AND INSERTION ..................................................................................... 5 
+
+II. 
+
+GENERAL PRESENTATION OF REALIZE ............................................................. 6 
+
+A. 
+
+Background: ............................................................................................................. 6 
+
+B.  Missions ................................................................................................................... 6 
+
+C. 
+
+Vision : ..................................................................................................................... 6 
+
+D.  Activities .................................................................................................................. 6 
+
+III.  ORGANIZATION OF REALIZE ............................................................................... 7 
+
+A.  Administrative organization ..................................................................................... 7 
+
+B. 
+
+FUNCTIONAL ORGANISATION OF REALIZE ..................................................... 9 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xv 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+IV.  GEOGRAPHICAL LOCATION ............................................................................... 10 
+
+ .............................................................................................................................................. 10 
+
+V. 
+
+BRIEF PRESENTATION OF THE PROJECT THEME ........................................... 11 
+
+CONCLUSION .................................................................................................................... 12 
+
+PART II ................................................................................................................................... 13 
+
+EXISTING SYSTEM ............................................................................................................. 13 
+
+Preamble ............................................................................................................................... 14 
+
+Content ................................................................................................................................. 14 
+
+INTRODUCTION ................................................................................................................ 15 
+
+I.  PRESENTATION OF THE PROJECT THEME ........................................................... 16 
+
+II. 
+
+DESCRIPTION OF THE EXISTING SYSTEM ...................................................... 17 
+
+III.  LIMITATIONS OF THE EXISTING SYSTEM ....................................................... 20 
+
+IV. 
+
+PROBLEMATIC ....................................................................................................... 21 
+
+V. 
+
+PROPOSED SOLUTION .......................................................................................... 21 
+
+CONCLUSION .................................................................................................................... 22 
+
+PART III .................................................................................................................................. 23 
+
+SPECIFICATION BOOK ..................................................................................................... 23 
+
+Preamble ............................................................................................................................... 24 
+
+Content ................................................................................................................................. 24 
+
+INTRODUCTION ................................................................................................................ 25 
+
+I.  CONTEXT AND JUSTIFICATION ............................................................................. 26 
+
+A. 
+
+B. 
+
+II. 
+
+A. 
+
+B. 
+
+Context ....................................................................................................................... 26 
+
+Justification ................................................................................................................ 28 
+
+OBJECTIVES OF THE PROJECT ........................................................................... 29 
+
+GENERAL OBJECTIVE .......................................................................................... 29 
+
+SPECIFIC OBJECTIVES .......................................................................................... 29 
+
+III.  EXPRESSION OF NEEDS ....................................................................................... 30 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xvi 
+
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+1.  Functional Needs ........................................................................................................... 30 
+
+2.  Non-Functional Needs ................................................................................................... 31 
+
+Performance, Scalability and Security ............................................................................. 31 
+
+IV. 
+
+PROJECT PLANNING ............................................................................................. 32 
+
+a. 
+
+b. 
+
+Chronogram of activities ..................................................................................... 32 
+
+Gantt Project planning ........................................................................................... 33 
+
+V. 
+
+ESTIMATED COST OF THE PROJECT ................................................................. 34 
+
+a.  Software Resources ................................................................................................... 34 
+
+b. 
+
+Hardware Resources .............................................................................................. 35 
+
+c.  Human resources ....................................................................................................... 36 
+
+d. 
+
+Global Estimation .................................................................................................. 36 
+
+VI.  CONSTRAINTS ........................................................................................................ 37 
+
+VII.  LIST OF PARTICIPANTS AND DELIVERABLES ................................................ 38 
+
+a.  LIST OF PARTICIPANTS ........................................................................................ 38 
+
+b. 
+
+DELIVERABLES .................................................................................................. 38 
+
+CONCLUSION .................................................................................................................... 39 
+
+PART IV .................................................................................................................................. 40 
+
+ANALYSIS BOOK ................................................................................................................. 40 
+
+Preamble ............................................................................................................................... 41 
+
+Content ................................................................................................................................. 41 
+
+INTRODUCTION ................................................................................................................ 42 
+
+I.  METHODOLOGY ........................................................................................................ 43 
+
+1.  COMPARATIVE STUDY OF UML AND MERISE .................................................... 43 
+
+a.  MERISE ..................................................................................................................... 43 
+
+b.  UML .............................................................................................................................. 43 
+
+2.  COMPARATIVE STUDY OF UNIFIED PROCESSES............................................... 46 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xvii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+a. 
+
+b. 
+
+A Unified Process ................................................................................................... 46 
+
+The Two Track Unified Process (2 TUP) ............................................................... 46 
+
+II. 
+
+CHOICE OF THE ANALYSIS METHOD ............................................................... 49 
+
+III.  MODELLING OF THE PROPOSED SOLUTION .................................................. 50 
+
+A. 
+
+Capture of Functional Needs.................................................................................. 50 
+
+1. 
+
+2. 
+
+3. 
+
+4. 
+
+USE CASE DIAGRAM ........................................................................................... 50 
+
+COMMUNICATION DIAGRAM ............................................................................ 60 
+
+SEQUENCE DIAGRAM ........................................................................................ 64 
+
+ACTIVITY DIAGRAM ............................................................................................ 69 
+
+CONCLUSION .................................................................................................................... 75 
+
+PART V .................................................................................................................................... 76 
+
+CONCEPTION PHASE ........................................................................................................ 76 
+
+Preamble ............................................................................................................................... 77 
+
+Content ................................................................................................................................. 77 
+
+ .............................................................................................................................................. 77 
+
+INTRODUCTION ................................................................................................................ 78 
+
+A. GENERIC DESIGN ........................................................................................................ 79 
+
+a. Hardware diagram of the system .................................................................................. 79 
+
+b High Level Architecture of the System........................................................................... 79 
+
+B. 
+
+CAPTURE OF TECHNICAL NEEDS ...................................................................... 80 
+
+a. 
+
+b. 
+
+Physical Architecture ............................................................................................. 80 
+
+Logical Architecture ............................................................................................... 81 
+
+C. 
+
+RELATED UML DIAGRAMS ................................................................................. 82 
+
+1. 
+
+2. 
+
+3. 
+
+CLASS DIAGRAM ................................................................................................. 82 
+
+STATE MACHINE DIAGRAM ............................................................................... 87 
+
+PACKAGE DIAGRAM ........................................................................................... 92 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xviii 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+CONCLUSION .................................................................................................................... 95 
+
+PART VI .................................................................................................................................. 96 
+
+REALIZATION PHASE ....................................................................................................... 96 
+
+Preamble ............................................................................................................................... 97 
+
+Content ................................................................................................................................. 97 
+
+INTRODUCTION ................................................................................................................ 98 
+
+1. 
+
+DEPLOYMENT DIAGRAM ................................................................................... 99 
+
+2. COMPONENT DIAGRAM ............................................................................................. 102 
+
+CONCLUSION .................................................................................................................. 106 
+
+PART VII ............................................................................................................................... 107 
+
+TEST OF FUNCTIONALITIES ......................................................................................... 107 
+
+Preamble ............................................................................................................................. 108 
+
+Content ............................................................................................................................... 108 
+
+INTRODUCTION .............................................................................................................. 109 
+
+1.  APPLICATION FUNCTIONALITIES ....................................................................... 110 
+
+2.  TESTS SHOWCASES ................................................................................................ 111 
+
+CONCLUSION .................................................................................................................. 114 
+
+PART VIII ............................................................................................................................. 115 
+
+INSTALLATION GUIDE AND USER GUIDE ................................................................ 115 
+
+Preamble ............................................................................................................................. 116 
+
+Content ............................................................................................................................... 116 
+
+INTRODUCTION .............................................................................................................. 117 
+
+I. 
+
+INSTALLATION OF THE APPLICATION ............................................................... 118 
+
+A. 
+
+DATABASE SERVER INSTALLATION ................................................................ 118 
+
+B.  MOBILE APPLICATION INSTALLATION .......................................................... 123 
+
+II. 
+
+SHOWCASES ..................................................................................................... 123 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xix 
+
+ 
+ 
+ 
+ 
+ 
+ 
+DEVELOPMENT OF A PATIENTS’ CONSULTATION AND FOLLOW-UP 
+
+PLATFORM FOR CAMEROON GOVERNMENT HOSPITALS 
+
+C.  Web Application ....................................................................................................... 132 
+
+CONCLUSION .................................................................................................................. 133 
+
+PERSPECTIVES ................................................................................................................ 134 
+
+GENERAL CONCLUSION ................................................................................................ 135 
+
+ANNEXES ............................................................................................................................... xii 
+
+BIBLIOGRAPHY ................................................................................................................. xiii 
+
+WEBOGRAPHY ................................................................................................................... xiv 
+
+TABLE OF CONTENT ......................................................................................................... xv 
+
+KAMENI SEPDEU ANGE CHRIS 
+African Institute of Computer Sciences (AICS) Cameroon 
+Paul Biya Technological Center of Excellence 
+Second Year, Software Engineering for 2022-2023 Academic year 
+
+  xx 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+

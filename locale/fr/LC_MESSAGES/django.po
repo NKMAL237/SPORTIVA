@@ -1,0 +1,517 @@
+# French translation catalogue for Sportiva CM.
+msgid ""
+msgstr ""
+"Project-Id-Version: Sportiva CM 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-24 11:25+0100\n"
+"PO-Revision-Date: 2026-08-24 11:25+0100\n"
+"Last-Translator: Sportiva CM Team <admin@sportiva.cm>\n"
+"Language-Team: French <fr@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+# Navbar & Common Links
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Events"
+msgstr "Événements"
+
+msgid "Organizations"
+msgstr "Organisations"
+
+msgid "News & Feed"
+msgstr "Actualités & Fil"
+
+msgid "Marketplace"
+msgstr "Marché Sportif"
+
+msgid "Sponsorships"
+msgstr "Sponsorats"
+
+msgid "User Management"
+msgstr "Gestion des Utilisateurs"
+
+msgid "Logout"
+msgstr "Déconnexion"
+
+msgid "Log In"
+msgstr "Se Connecter"
+
+msgid "Get Started"
+msgstr "Commencer"
+
+msgid "My Profile"
+msgstr "Mon Profil"
+
+# Home Page
+msgid "Sportiva CM — Cameroon's #1 Sports Promotion Network"
+msgstr "Sportiva CM — Le réseau N°1 de promotion du sport au Cameroun"
+
+msgid "Official Cameroonian Sports Platform"
+msgstr "Plateforme Sportive Officielle du Cameroun"
+
+msgid "Promoting Sports Talent Across"
+msgstr "Promouvoir les talents sportifs à travers le"
+
+msgid "Cameroon"
+msgstr "Cameroun"
+
+msgid "The all-in-one digital network for sports clubs, trainers, athletes, and sponsors. Schedule events, discover local academies, sell sports gear, and get funded via direct WhatsApp connections."
+msgstr "Le réseau numérique tout-en-un pour clubs, entraîneurs, athlètes et sponsors. Organisez des événements, découvrez des académies locales, vendez des équipements et obtenez des financements par WhatsApp direct."
+
+msgid "Discover Events"
+msgstr "Découvrir les Événements"
+
+msgid "Explore Clubs & Map"
+msgstr "Explorer les Clubs & Carte"
+
+msgid "WhatsApp Direct Contact"
+msgstr "Contact WhatsApp Direct"
+
+msgid "Geo-located Venues"
+msgstr "Lieux Géolocalisés"
+
+msgid "Verified Profiles"
+msgstr "Profils Vérifiés"
+
+msgid "Live Map — Cameroon"
+msgstr "Carte en Direct — Cameroun"
+
+msgid "Upcoming"
+msgstr "À venir"
+
+msgid "Registered Athletes"
+msgstr "Athlètes Inscrits"
+
+msgid "Sports Clubs & Academies"
+msgstr "Clubs & Académies de Sport"
+
+msgid "Active Tournaments"
+msgstr "Tournois Actifs"
+
+msgid "Sponsorship Grants"
+msgstr "Subventions de Sponsorat"
+
+msgid "Key Features"
+msgstr "Fonctionnalités Clés"
+
+msgid "Everything You Need to Scale Sports in Cameroon"
+msgstr "Tout ce dont vous avez besoin pour développer le sport au Cameroun"
+
+msgid "Designed specifically for local infrastructure, low connectivity options, and direct mobile communication."
+msgstr "Conçu spécifiquement pour les infrastructures locales, la faible connectivité et la communication mobile directe."
+
+msgid "Event & Tournament Management"
+msgstr "Gestion des Événements & Tournois"
+
+msgid "Create, schedule, and track attendance for football matches, basketball leagues, athletic meets, and fitness sessions with calendar integration."
+msgstr "Créez, planifiez et suivez les présences aux matchs de football, ligues de basket, rencontres d'athlétisme et séances de fitness."
+
+msgid "Verified Club & Trainer Directory"
+msgstr "Annuaire Vérifié des Clubs & Entraîneurs"
+
+msgid "Public profile pages for clubs, training academies, and personal trainers with interactive Leaflet map locations in Douala, Yaoundé, and beyond."
+msgstr "Pages de profil public pour clubs, académies et entraîneurs personnels avec carte interactive à Douala, Yaoundé et ailleurs."
+
+msgid "Media Feed & News Highlights"
+msgstr "Fil d'Actualités & Temps Forts Média"
+
+msgid "Share video highlights, match articles, photo galleries, and news. Engage with likes, comments, and sports hashtags."
+msgstr "Partagez les vidéos, articles de matchs, galeries photos et actualités. Interagissez avec mentions j'aime, commentaires et hashtags."
+
+msgid "Equipment Marketplace"
+msgstr "Marché d'Équipements Sportifs"
+
+msgid "Buy and sell sports gear, boots, jerseys, and equipment directly with local sellers through one-click WhatsApp chat integration."
+msgstr "Achetez et vendez des équipements sportifs, chaussures et maillots directement avec les vendeurs via WhatsApp."
+
+msgid "Sponsorship & Funding System"
+msgstr "Système de Sponsorat & Financement"
+
+msgid "Post funding requests for team travel, equipment, or tournament fees. Connect with local and international sponsors with progress tracking."
+msgstr "Publiez des demandes de financement pour déplacements, équipements ou frais de tournois avec suivi des progrès."
+
+msgid "WhatsApp & Offline Friendly"
+msgstr "Adapté à WhatsApp & Hors-Ligne"
+
+msgid "Direct integration with WhatsApp for instant inquiries, event sharing, and smooth usage even with low connectivity."
+msgstr "Intégration directe avec WhatsApp pour demandes instantanées, partage d'événements et utilisation fluide."
+
+msgid "Ready to Join the"
+msgstr "Prêt à rejoindre le réseau"
+
+msgid "Network?"
+msgstr "?"
+
+msgid "Create your account today as an Athlete, Club Manager, Coach, or Sponsor and start promoting sports in Cameroon!"
+msgstr "Créez votre compte dès aujourd'hui comme Athlète, Gestionnaire de Club, Entraîneur ou Sponsor et promouvez le sport au Cameroun !"
+
+msgid "Register Now — Free"
+msgstr "S'inscrire Maintenant — Gratuit"
+
+msgid "Sign In to Account"
+msgstr "Se Connecter au Compte"
+
+# Events
+msgid "Events & Tournaments"
+msgstr "Événements & Tournois"
+
+msgid "Sports Events & Tournaments"
+msgstr "Événements Sportifs & Tournois"
+
+msgid "Browse upcoming football matches, marathon races, and sports leagues across Cameroon."
+msgstr "Parcourez les matchs de football à venir, marathons et ligues sportives à travers le Cameroun."
+
+msgid "Create New Event"
+msgstr "Créer un Nouvel Événement"
+
+msgid "Log in to Create Event"
+msgstr "Se connecter pour créer un événement"
+
+msgid "Filter by City"
+msgstr "Filtrer par Ville"
+
+msgid "All Cities"
+msgstr "Toutes les Villes"
+
+msgid "Filter by Sport"
+msgstr "Filtrer par Sport"
+
+msgid "All Sports"
+msgstr "Tous les Sports"
+
+msgid "Event Type"
+msgstr "Type d'Événement"
+
+msgid "All Event Types"
+msgstr "Tous les Types d'Événements"
+
+msgid "Details & RSVP"
+msgstr "Détails & Inscription"
+
+msgid "No Events Found"
+msgstr "Aucun Événement Trouvé"
+
+msgid "Try adjusting your search criteria."
+msgstr "Essayez d'ajuster vos critères de recherche."
+
+# Organizations
+msgid "Sports Organizations & Clubs"
+msgstr "Organisations & Clubs Sportifs"
+
+msgid "Discover verified sports academies, training centers, and clubs across Cameroon."
+msgstr "Découvrez des académies sportives vérifiées, centres d'entraînement et clubs à travers le Cameroun."
+
+msgid "Register Your Organization"
+msgstr "Enregistrer votre Organisation"
+
+msgid "Log in to Register Club"
+msgstr "Se connecter pour enregistrer un club"
+
+msgid "Geolocation Directory"
+msgstr "Annuaire de Géolocalisation"
+
+msgid "Locations Found"
+msgstr "Emplacements Trouvés"
+
+msgid "All Cities in Cameroon"
+msgstr "Toutes les Villes du Cameroun"
+
+msgid "All Sports Categories"
+msgstr "Toutes les Catégories Sportives"
+
+msgid "Clear Filters"
+msgstr "Effacer les Filtres"
+
+msgid "No Organizations Found"
+msgstr "Aucune Organisation Trouvée"
+
+msgid "Try adjusting your city or sports category filter."
+msgstr "Essayez d'ajuster votre filtre de ville ou de catégorie sportive."
+
+# News & Feed
+msgid "News & Media Feed"
+msgstr "Actualités & Fil Média"
+
+msgid "Sports News & Highlights"
+msgstr "Actualités Sportives & Temps Forts"
+
+msgid "Latest videos, match results, and community posts across Cameroon."
+msgstr "Dernières vidéos, résultats de matchs et publications communautaires au Cameroun."
+
+msgid "2 hours ago"
+msgstr "Il y a 2 heures"
+
+msgid "Amazing highlights from yesterday's Youth League finals at Stade Ahmadou Ahidjo! Special shoutout to Canon Yaoundé U18 team for the victory."
+msgstr "Superbes moments forts des finales de la Ligue des Jeunes hier au Stade Ahmadou Ahidjo ! Bravo à l'équipe U18 de Canon Yaoundé pour la victoire."
+
+msgid "Likes"
+msgstr "J'aime"
+
+msgid "Comments"
+msgstr "Commentaires"
+
+# Marketplace
+msgid "Sports Gear Marketplace"
+msgstr "Marché d'Équipements Sportifs"
+
+msgid "Sports Equipment Marketplace"
+msgstr "Marché d'Équipements Sportifs"
+
+msgid "Buy and sell sports gear, boots, and jerseys directly with sellers in Cameroon."
+msgstr "Achetez et vendez des équipements sportifs, chaussures et maillots directement avec des vendeurs au Cameroun."
+
+msgid "Sell an Item"
+msgstr "Vendre un Article"
+
+msgid "Log in to Sell Item"
+msgstr "Se connecter pour vendre"
+
+msgid "Sports Discipline"
+msgstr "Discipline Sportive"
+
+msgid "Item Condition"
+msgstr "Condition de l'Article"
+
+msgid "All Conditions"
+msgstr "Toutes les Conditions"
+
+msgid "Brand New"
+msgstr "Neuf"
+
+msgid "Price"
+msgstr "Prix"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Chat Seller on WhatsApp"
+msgstr "Contacter le Vendeur sur WhatsApp"
+
+msgid "No Items Found in Marketplace"
+msgstr "Aucun Article Trouvé dans le Marché"
+
+msgid "Try adjusting your city, discipline, or condition filter."
+msgstr "Essayez d'ajuster vos filtres de ville, discipline ou condition."
+
+msgid "Back to Marketplace"
+msgstr "Retour au Marché"
+
+msgid "Posted by"
+msgstr "Publié par"
+
+msgid "Chat on WhatsApp"
+msgstr "Discuter sur WhatsApp"
+
+msgid "Description"
+msgstr "Description"
+
+# Sponsorships
+msgid "Sponsorship & Grants"
+msgstr "Sponsorats & Subventions"
+
+msgid "Sponsorship & Funding Campaigns"
+msgstr "Campagnes de Sponsorat & Financement"
+
+msgid "Support athlete travel, tournament fees, and club equipment across Cameroon."
+msgstr "Soutenez le déplacement des athlètes, les frais de tournois et les équipements de clubs au Cameroun."
+
+msgid "Request Sponsorship"
+msgstr "Demander un Sponsorat"
+
+msgid "Log in to Create Campaign"
+msgstr "Se connecter pour créer une campagne"
+
+msgid "Raised"
+msgstr "Récoltés"
+
+msgid "of"
+msgstr "sur"
+
+msgid "View Campaign"
+msgstr "Voir la Campagne"
+
+msgid "Sponsor"
+msgstr "Sponsoriser"
+
+msgid "No Sponsorship Campaigns Found"
+msgstr "Aucune Campagne de Sponsorat Trouvée"
+
+msgid "Be the first to launch a funding campaign."
+msgstr "Soyez le premier à lancer une campagne de financement."
+
+# Auth & User Account
+msgid "Welcome Back"
+msgstr "Bon retour parmi nous"
+
+msgid "Access your Sportiva CM account"
+msgstr "Accédez à votre compte Sportiva CM"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Email Address"
+msgstr "Adresse Email"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte ?"
+
+msgid "Register here"
+msgstr "Inscrivez-vous ici"
+
+msgid "Register"
+msgstr "S'inscrire"
+
+msgid "Join Sportiva CM"
+msgstr "Rejoindre Sportiva CM"
+
+msgid "Create your sports profile in Cameroon"
+msgstr "Créez votre profil sportif au Cameroun"
+
+msgid "Role on Platform"
+msgstr "Rôle sur la Plateforme"
+
+msgid "Athlete / Sports Fan"
+msgstr "Athlète / Passionné de Sport"
+
+msgid "Club / Sports Academy"
+msgstr "Club / Académie Sportive"
+
+msgid "Coach / Personal Trainer"
+msgstr "Entraîneur / Coach Personnel"
+
+msgid "Sponsor / Business Partner"
+msgstr "Sponsor / Partenaire Commercial"
+
+msgid "City in Cameroon"
+msgstr "Ville au Cameroun"
+
+msgid "WhatsApp Phone Number"
+msgstr "Numéro WhatsApp"
+
+msgid "Create Free Account"
+msgstr "Créer un Compte Gratuit"
+
+msgid "Already registered?"
+msgstr "Déjà inscrit ?"
+
+msgid "Log in here"
+msgstr "Connectez-vous ici"
+
+msgid "Not specified"
+msgstr "Non spécifié"
+
+msgid "Account Status"
+msgstr "Statut du Compte"
+
+msgid "Verified Profile"
+msgstr "Profil Vérifié"
+
+msgid "Standard Account"
+msgstr "Compte Standard"
+
+# User Management
+msgid "User Management & Role Permissions"
+msgstr "Gestion des Utilisateurs & Permissions"
+
+msgid "User Management & Tab Access Control"
+msgstr "Gestion des Utilisateurs & Contrôle d'Accès aux Onglets"
+
+msgid "Configure user roles and specify which navigation tabs each user is authorized to access."
+msgstr "Configurez les rôles d'utilisateurs et spécifiez les onglets de navigation autorisés pour chaque utilisateur."
+
+msgid "Search user, email..."
+msgstr "Rechercher un utilisateur, email..."
+
+msgid "All Roles"
+msgstr "Tous les Rôles"
+
+msgid "Reset"
+msgstr "Réinitialiser"
+
+msgid "Role-Based Access Rules Matrix"
+msgstr "Matrice des Règles d'Accès par Rôle"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "Role"
+msgstr "Rôle"
+
+msgid "City & Contact"
+msgstr "Ville & Contact"
+
+msgid "Authorized Navigation Tabs"
+msgstr "Onglets de Navigation Autorisés"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Edit Tabs & Role"
+msgstr "Modifier Onglets & Rôle"
+
+msgid "Manage Access Rights for"
+msgstr "Gérer les Droits d'Accès pour"
+
+msgid "Primary User Role"
+msgstr "Rôle Principal de l'Utilisateur"
+
+msgid "Enable or disable user account access."
+msgstr "Activer ou désactiver l'accès au compte utilisateur."
+
+msgid "Customize Permitted Navigation Tabs"
+msgstr "Personnaliser les Onglets de Navigation Autorisés"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Save Changes"
+msgstr "Enregistrer les Modifications"
+
+msgid "No users found matching your criteria."
+msgstr "Aucun utilisateur trouvé selon vos critères."
+
+# Footer
+msgid "Connecting athletes, clubs, trainers, sponsors, and fans across Cameroon. Empowering the next generation of sporting talent."
+msgstr "Connecter les athlètes, clubs, entraîneurs, sponsors et supporters à travers le Cameroun. Stimuler la prochaine génération de talents sportifs."
+
+msgid "Top Sports Cities"
+msgstr "Principales Villes Sportives"
+
+msgid "Platform"
+msgstr "Plateforme"
+
+msgid "Find Local Events"
+msgstr "Trouver des Événements Locaux"
+
+msgid "Join a Sports Club"
+msgstr "Rejoindre un Club Sportif"
+
+msgid "Sports News Feed"
+msgstr "Fil d'Actualités Sportives"
+
+msgid "Buy & Sell Equipment"
+msgstr "Acheter & Vendre des Équipements"
+
+msgid "Apply for Sponsorship"
+msgstr "Demander un Sponsorat"
+
+msgid "Language Selection"
+msgstr "Sélection de la Langue"
+
+msgid "Switch between English and French."
+msgstr "Basculez entre l'Anglais et le Français."
+
+# Messages & Errors
+msgid "Please log in to access this tab."
+msgstr "Veuillez vous connecter pour accéder à cet onglet."
+
+msgid "Access Denied: Your account role does not have permission to access the '%(tab)s' tab."
+msgstr "Accès Refusé : Le rôle de votre compte ne vous permet pas d'accéder à l'onglet '%(tab)s'."

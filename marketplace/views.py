@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django import forms
+from accounts.decorators import tab_required
 from .models import Product, ProductCategory
 
 
@@ -20,7 +21,10 @@ class ProductForm(forms.ModelForm):
         }
 
 
+@tab_required('marketplace')
 def marketplace_list(request):
+
+
     """List available sports equipment for sale."""
     city_filter = request.GET.get('city', '')
     cat_filter = request.GET.get('category', '')

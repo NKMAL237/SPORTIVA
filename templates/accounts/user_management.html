@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "User Management & Role Permissions" %} — Sportiva CM{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  
+  <!-- Header Section -->
+  <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+    <div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-indigo-500 flex items-center justify-center text-slate-900 font-bold shadow-lg">
+          <i class="fa-solid fa-users-gear text-lg text-white"></i>
+        </div>
+        {% trans "User Management & Tab Access Control" %}
+      </h1>
+      <p class="text-slate-400 text-sm mt-1">
+        {% trans "Configure user roles and specify which navigation tabs each user is authorized to access." %}
+      </p>
+    </div>
+
+    <!-- Search & Filter Controls -->
+    <form method="get" class="flex flex-wrap items-center gap-3">
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-500 text-xs"></i>
+        <input type="text" name="search" value="{{ search_query }}" placeholder="{% trans 'Search user, email...' %}" 
+               class="pl-9 pr-4 py-2 bg-slate-800 border border-slate-700/80 rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 w-48 sm:w-64 transition-all">
+      </div>
+
+      <select name="role" onchange="this.form.submit()" class="px-3 py-2 bg-slate-800 border border-slate-700/80 rounded-xl text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+        <option value="">{% trans "All Roles" %}</option>
+        {% for role_code, role_name in roles %}
+          <option value="{{ role_code }}" {% if selected_role == role_code %}selected{% endif %}>{{ role_name }}</option>
+        {% endfor %}
+      </select>
+
+      {% if search_query or selected_role %}
+        <a href="{% url 'user_management' %}" class="px-3 py-2 bg-slate-800/60 hover:bg-slate-800 border border-slate-700 text-slate-400 hover:text-white rounded-xl text-sm transition-colors">
+          <i class="fa-solid fa-rotate-left mr-1"></i>{% trans "Reset" %}
+        </a>
+      {% endif %}
+    </form>
+  </div>
+
+  <!-- Role Tab Guidelines Banner -->
+  <div class="mb-8 p-4 rounded-2xl bg-gradient-to-r from-slate-800/90 via-slate-800/60 to-slate-900 border border-slate-700/80 shadow-lg">
+    <h2 class="text-sm font-semibold text-emerald-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+      <i class="fa-solid fa-shield-halved text-emerald-400"></i> {% trans "Role-Based Access Rules Matrix" %}
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs text-slate-300">
+      <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+        <span class="font-semibold text-emerald-300">🏃 Athlete:</span>
+        <p class="text-slate-400 mt-0.5">Home, Events, Feed, Marketplace</p>
+      </div>
+      <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+        <span class="font-semibold text-amber-300">🏛️ Organization:</span>
+        <p class="text-slate-400 mt-0.5">Home, Events, Organizations, Feed, Sponsorships</p>
+      </div>
+      <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+        <span class="font-semibold text-blue-300">🏋️ Trainer:</span>
+        <p class="text-slate-400 mt-0.5">Home, Events, Organizations, Feed, Marketplace</p>
+      </div>
+      <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800">
+        <span class="font-semibold text-purple-300">🤝 Sponsor:</span>
+        <p class="text-slate-400 mt-0.5">Home, Organizations, Feed, Sponsorships</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Management Table -->
+  <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-sm">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm text-slate-300">
+        <thead class="bg-slate-900/80 text-xs font-semibold uppercase tracking-wider text-slate-400 border-b border-slate-700/80">
+          <tr>
+            <th class="px-6 py-4">{% trans "User" %}</th>
+            <th class="px-6 py-4">{% trans "Role" %}</th>
+            <th class="px-6 py-4">{% trans "City & Contact" %}</th>
+            <th class="px-6 py-4 text-center">{% trans "Authorized Navigation Tabs" %}</th>
+            <th class="px-6 py-4 text-right">{% trans "Action" %}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-700/50">
+          {% for item in users_data %}
+            {% with u=item.user_obj allowed=item.allowed_tabs %}
+              <tr class="hover:bg-slate-800/80 transition-colors group">
+                
+                <!-- User Info -->
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center space-x-3">
+                    {% if u.avatar %}
+                      <img src="{{ u.avatar.url }}" class="w-10 h-10 rounded-full object-cover border border-emerald-500/50">
+                    {% else %}
+                      <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center text-white font-bold text-base border border-slate-600">
+                        {{ u.username|slice:":1"|upper }}
+                      </div>
+                    {% endif %}
+                    <div>
+                      <div class="font-semibold text-white flex items-center gap-2">
+                        {{ u.username }}
+                        {% if u.is_superuser %}
+                          <span class="px-2 py-0.5 text-[10px] bg-rose-900/80 text-rose-300 rounded-full border border-rose-700 uppercase font-bold">Admin</span>
+                        {% elif u.is_staff %}
+                          <span class="px-2 py-0.5 text-[10px] bg-indigo-900/80 text-indigo-300 rounded-full border border-indigo-700 uppercase font-bold">Staff</span>
+                        {% endif %}
+                      </div>
+                      <div class="text-xs text-slate-400">{{ u.email }}</div>
+                    </div>
+                  </div>
+                </td>
+
+                <!-- Role -->
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-900/90 border border-slate-700 text-slate-200">
+                    {{ u.get_role_display }}
+                  </span>
+                </td>
+
+                <!-- City & Contact -->
+                <td class="px-6 py-4 whitespace-nowrap text-xs text-slate-300">
+                  <div class="flex items-center gap-1.5">
+                    <i class="fa-solid fa-location-dot text-emerald-400"></i> {{ u.city }}
+                  </div>
+                  {% if u.phone_number %}
+                    <div class="text-slate-400 mt-0.5 flex items-center gap-1">
+                      <i class="fa-brands fa-whatsapp text-emerald-400"></i> {{ u.phone_number }}
+                    </div>
+                  {% endif %}
+                </td>
+
+                <!-- Allowed Tabs Badges -->
+                <td class="px-6 py-4 text-center">
+                  <div class="flex flex-wrap justify-center gap-1.5 max-w-md mx-auto">
+                    {% for tab_key, tab_name in all_tabs %}
+                      {% if tab_key in allowed %}
+                        <span class="px-2.5 py-1 text-[11px] font-medium rounded-lg bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 shadow-sm flex items-center gap-1">
+                          <i class="fa-solid fa-check text-[10px] text-emerald-400"></i> {{ tab_name }}
+                        </span>
+                      {% else %}
+                        <span class="px-2 py-1 text-[11px] font-medium rounded-lg bg-slate-900/50 text-slate-600 border border-slate-800 line-through opacity-60">
+                          {{ tab_name }}
+                        </span>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </td>
+
+                <!-- Action Button -->
+                <td class="px-6 py-4 whitespace-nowrap text-right">
+                  <button onclick="toggleModal('modal-{{ u.id }}')" 
+                          class="px-3 py-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/40 rounded-xl text-xs font-semibold transition-all">
+                    <i class="fa-solid fa-sliders mr-1"></i>{% trans "Edit Tabs & Role" %}
+                  </button>
+                </td>
+
+              </tr>
+
+              <!-- Permission Edit Modal for each user -->
+              <div id="modal-{{ u.id }}" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+                <div class="bg-slate-900 border border-slate-700/90 rounded-2xl max-w-xl w-full shadow-2xl overflow-hidden p-6 text-slate-200">
+                  
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                    <div>
+                      <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-user-gear text-emerald-400"></i>
+                        {% trans "Manage Access Rights for" %} <span class="text-emerald-400">{{ u.username }}</span>
+                      </h3>
+                      <p class="text-xs text-slate-400 mt-0.5">ID #{{ u.id }} — {{ u.email }}</p>
+                    </div>
+                    <button onclick="toggleModal('modal-{{ u.id }}')" class="p-2 text-slate-400 hover:text-white rounded-lg">
+                      <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                  </div>
+
+                  <form method="post" action="{% url 'user_update_tabs' user_id=u.id %}">
+                    {% csrf_token %}
+
+                    <!-- Role Select -->
+                    <div class="mb-5">
+                      <label class="block text-xs font-semibold uppercase text-slate-400 tracking-wider mb-2">
+                        {% trans "Primary User Role" %}
+                      </label>
+                      <select name="role" class="w-full px-4 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500">
+                        {% for role_code, role_name in roles %}
+                          <option value="{{ role_code }}" {% if u.role == role_code %}selected{% endif %}>{{ role_name }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                    <!-- Active Account Toggle -->
+                    <div class="mb-6 flex items-center justify-between p-3 bg-slate-800/60 rounded-xl border border-slate-700/60">
+                      <div>
+                        <span class="text-sm font-semibold text-white">{% trans "Account Status" %}</span>
+                        <p class="text-xs text-slate-400">{% trans "Enable or disable user account access." %}</p>
+                      </div>
+                      <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" name="is_active" {% if u.is_active %}checked{% endif %} class="sr-only peer">
+                        <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
+                      </label>
+                    </div>
+
+                    <!-- Custom Tab Access Checkboxes -->
+                    <div class="mb-6">
+                      <label class="block text-xs font-semibold uppercase text-slate-400 tracking-wider mb-3">
+                        {% trans "Customize Permitted Navigation Tabs" %}
+                      </label>
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {% for tab_key, tab_name in all_tabs %}
+                          <label class="flex items-center space-x-3 p-3 bg-slate-800/80 rounded-xl border border-slate-700/80 cursor-pointer hover:border-emerald-500/50 transition-colors">
+                            <input type="checkbox" name="tab_{{ tab_key }}" 
+                                   {% if tab_key in allowed %}checked{% endif %}
+                                   class="w-4 h-4 text-emerald-500 bg-slate-900 border-slate-600 rounded focus:ring-emerald-500">
+                            <div>
+                              <span class="text-sm font-medium text-white">{{ tab_name }}</span>
+                              <span class="block text-[10px] text-slate-400 font-mono">key: {{ tab_key }}</span>
+                            </div>
+                          </label>
+                        {% endfor %}
+                      </div>
+                    </div>
+
+                    <!-- Submit & Cancel -->
+                    <div class="flex items-center justify-end space-x-3 border-t border-slate-800 pt-4">
+                      <button type="button" onclick="toggleModal('modal-{{ u.id }}')" 
+                              class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-sm font-medium transition-colors">
+                        {% trans "Cancel" %}
+                      </button>
+                      <button type="submit" 
+                              class="camer-btn px-5 py-2 text-sm font-semibold rounded-xl shadow-lg">
+                        <i class="fa-solid fa-floppy-disk mr-1.5"></i>{% trans "Save Changes" %}
+                      </button>
+                    </div>
+
+                  </form>
+
+                </div>
+              </div>
+            {% endwith %}
+          {% empty %}
+            <tr>
+              <td colspan="5" class="px-6 py-12 text-center text-slate-500">
+                <i class="fa-solid fa-users-slash text-3xl mb-2 text-slate-600 block"></i>
+                {% trans "No users found matching your criteria." %}
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggleModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.classList.toggle('hidden');
+    }
+  }
+</script>
+{% endblock %}

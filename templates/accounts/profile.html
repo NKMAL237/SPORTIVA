@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load i18n static %}
 
-{% block title %}My Profile — Sportiva CM{% endblock %}
+{% block title %}{% trans "My Profile" %} — Sportiva CM{% endblock %}
 
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 py-12">
@@ -20,12 +21,12 @@
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-slate-800 text-sm">
       <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-        <span class="text-slate-400 text-xs block mb-1">WhatsApp Number</span>
-        <span class="font-semibold text-emerald-400">{{ user.phone_number|default:"Not specified" }}</span>
+        <span class="text-slate-400 text-xs block mb-1">{% trans "WhatsApp Phone Number" %}</span>
+        <span class="font-semibold text-emerald-400">{{ user.phone_number|default:_("Not specified") }}</span>
       </div>
       <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
-        <span class="text-slate-400 text-xs block mb-1">Account Status</span>
-        <span class="font-semibold text-amber-400">{% if user.is_verified %}Verified Profile ✓{% else %}Standard Account{% endif %}</span>
+        <span class="text-slate-400 text-xs block mb-1">{% trans "Account Status" %}</span>
+        <span class="font-semibold text-amber-400">{% if user.is_verified %}{% trans "Verified Profile" %} ✓{% else %}{% trans "Standard Account" %}{% endif %}</span>
       </div>
     </div>
   </div>

@@ -92,3 +92,85 @@ def profile_view(request):
         'recent_posts': Post.objects.filter(author=user)[:3],
     }
     return render(request, 'accounts/profile.html', context)
+
+
+from .decorators import tab_required
+from django.shortcuts import get_object_or_404
+
+
+@login_required
+@tab_required('user_management')
+def user_management_view(request):
+    """
+    User Management Dashboard:
+    Lists all users, supports filtering by role and search,
+    and displays active tab permissions for each user.
+    """
+    search_query = request.GET.get('search', '').strip()
+    role_filter = request.GET.get('role', '')
+
+    queryset = User.objects.all().order_by('-date_joined')
+
+    if search_query:
+        queryset = queryset.filter(
+            models.Q(username__icontains=search_query) |
+            models.Q(email__icontains=search_query) |
+            models.Q(city__icontains=search_query)
+        )
+    if role_filter:
+        queryset = queryset.filter(role=role_filter)
+
+    # Attach computed allowed_tabs for UI rendering
+    users_with_tabs = []
+    for u in queryset:
+        users_with_tabs.append({
+            'user_obj': u,
+            'allowed_tabs': u.get_allowed_tabs(),
+            'custom_overrides': u.custom_allowed_tabs or {},
+        })
+
+    all_tabs = User.ALL_TABS
+    roles = User.Role.choices
+
+    context = {
+        'users_data': users_with_tabs,
+        'all_tabs': all_tabs,
+        'roles': roles,
+        'search_query': search_query,
+        'selected_role': role_filter,
+    }
+    return render(request, 'accounts/user_management.html', context)
+
+
+@login_required
+@tab_required('user_management')
+def user_update_tabs_view(request, user_id):
+    """
+    Updates role and custom tab access permissions for a specific user.
+    """
+    target_user = get_object_or_404(User, pk=user_id)
+    if request.method == 'POST':
+        new_role = request.POST.get('role', target_user.role)
+        is_active = request.POST.get('is_active') == 'on'
+
+        # Build custom allowed tabs dict from form checkboxes
+        new_custom_tabs = {}
+        for tab_key, _ in User.ALL_TABS:
+            field_name = f"tab_{tab_key}"
+            if field_name in request.POST:
+                new_custom_tabs[tab_key] = True
+            else:
+                new_custom_tabs[tab_key] = False
+
+        target_user.role = new_role
+        target_user.is_active = is_active
+        target_user.custom_allowed_tabs = new_custom_tabs
+        target_user.save()
+
+        messages.success(
+            request,
+            f"Permissions updated successfully for user '{target_user.username}'."
+        )
+
+    return redirect('user_management')
+

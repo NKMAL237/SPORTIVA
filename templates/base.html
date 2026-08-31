@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007A3D">
+  <link rel="manifest" href="{% url 'manifest' %}">
   <title>{% block title %}Sportiva CM — Cameroon Sports Network{% endblock %}</title>
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Local Offline-Ready Tailwind CSS -->
+  <script src="{% static 'vendor/tailwind/tailwind.js' %}"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -23,15 +25,19 @@
     }
   </script>
 
-  <!-- FontAwesome Icons CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Local Offline FontAwesome Icons -->
+  <link rel="stylesheet" href="{% static 'vendor/fontawesome/css/all.min.css' %}">
 
-  <!-- Leaflet CSS & JS for Interactive Cameroon Maps -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <!-- Local Offline Leaflet CSS & JS for Interactive Cameroon Maps -->
+  <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}">
+  <script src="{% static 'vendor/leaflet/leaflet.js' %}"></script>
 
-  <!-- Custom Stylesheet -->
+  <!-- Custom Stylesheet (Local Typography & Glassmorphism) -->
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+  <!-- Offline Map & App Scripts -->
+  <script src="{% static 'js/offline-map.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
 
   {% block extra_head %}{% endblock %}
 </head>

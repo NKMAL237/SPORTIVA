@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django import forms
+from accounts.decorators import tab_required
 from .models import Campaign, Pledge
 
 
@@ -31,7 +32,9 @@ class PledgeForm(forms.ModelForm):
         }
 
 
+@tab_required('sponsorships')
 def sponsorships_list(request):
+
     """List all active sponsorship campaigns."""
     city_filter = request.GET.get('city', '')
     cat_filter = request.GET.get('category', '')

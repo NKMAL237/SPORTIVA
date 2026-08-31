@@ -10,7 +10,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
+
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +27,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-pk!8_o-x9t^z5dg7%80g_@)^#-*okqd3kog$)=$^-l(d)po8$x'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-pk!8_o-x9t^z5dg7%80g_@)^#-*okqd3kog$)=$^-l(d)po8$x')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 't')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
+
 
 
 # Application definition
@@ -59,6 +67,7 @@ AUTH_USER_MODEL = 'accounts.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -79,6 +88,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'django.template.context_processors.i18n',
+                'accounts.context_processors.tab_access',
             ],
         },
     },
@@ -120,6 +131,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
+LANGUAGE_CODE = 'en'          # default language
+LANGUAGES = [
+    ('en', 'English'),
+    ('fr', 'Français'),
+]
+
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Africa/Douala'
@@ -145,4 +165,6 @@ CRISPY_TEMPLATE_PACK = "tailwind"
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
-
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]

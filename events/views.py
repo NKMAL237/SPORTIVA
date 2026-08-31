@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from accounts.decorators import tab_required
 from .models import Event, EventCategory, EventAttendance
 from organizations.models import SportsCategory
 from .forms import EventForm
 
 
+@tab_required('events')
 def events_list(request):
+
     """List of sports events and tournaments with filter options."""
     city_filter = request.GET.get('city', '')
     sport_filter = request.GET.get('sport', '')

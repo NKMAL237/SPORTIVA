@@ -110,14 +110,12 @@
   document.addEventListener('DOMContentLoaded', function() {
     var lat = {{ organization.latitude }};
     var lng = {{ organization.longitude }};
-    var map = L.map('detail-map').setView([lat, lng], 13);
+    var map = window.createSportivaMap ? window.createSportivaMap('detail-map', [lat, lng], 13) : L.map('detail-map').setView([lat, lng], 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    L.marker([lat, lng]).addTo(map)
-      .bindPopup("<b>{{ organization.name|escapejs }}</b><br>{{ organization.address|escapejs }}").openPopup();
+    if (map) {
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup("<div class='p-1'><b>{{ organization.name|escapejs }}</b><br><span class='text-xs text-slate-400'>{{ organization.address|escapejs }}</span></div>").openPopup();
+    }
   });
 </script>
 {% endblock %}

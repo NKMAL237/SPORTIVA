@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n static %}
 
-{% block title %}News & Media Feed — Sportiva CM{% endblock %}
+{% block title %}{% trans "News & Media Feed" %} — Sportiva CM{% endblock %}
 
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 py-12 space-y-8">
   <div class="flex items-center justify-between pb-6 border-b border-slate-800">
     <div>
-      <h1 class="text-3xl font-extrabold text-white">Sports News & Highlights</h1>
-      <p class="text-slate-400 text-sm mt-1">Latest videos, match results, and community posts across Cameroon.</p>
+      <h1 class="text-3xl font-extrabold text-white">{% trans "Sports News & Highlights" %}</h1>
+      <p class="text-slate-400 text-sm mt-1">{% trans "Latest videos, match results, and community posts across Cameroon." %}</p>
     </div>
   </div>
 
@@ -19,15 +20,15 @@
       </div>
       <div>
         <h4 class="text-sm font-bold text-white">Sportiva CM Media</h4>
-        <span class="text-[11px] text-slate-400">2 hours ago • Yaoundé</span>
+        <span class="text-[11px] text-slate-400">{% trans "2 hours ago" %} • Yaoundé</span>
       </div>
     </div>
     <p class="text-slate-200 text-sm leading-relaxed">
-      🏆 Amazing highlights from yesterday's Youth League finals at Stade Ahmadou Ahidjo! Special shoutout to Canon Yaoundé U18 team for the victory. #SportivaCM #CameroonFootball
+      🏆 {% trans "Amazing highlights from yesterday's Youth League finals at Stade Ahmadou Ahidjo! Special shoutout to Canon Yaoundé U18 team for the victory." %} #SportivaCM #CameroonFootball
     </p>
     <div class="flex items-center space-x-6 pt-3 border-t border-slate-800 text-xs text-slate-400">
-      <button class="hover:text-emerald-400 flex items-center"><i class="fa-regular fa-thumbs-up mr-1.5 text-sm"></i> 142 Likes</button>
-      <button class="hover:text-blue-400 flex items-center"><i class="fa-regular fa-comment mr-1.5 text-sm"></i> 28 Comments</button>
+      <button class="hover:text-emerald-400 flex items-center"><i class="fa-regular fa-thumbs-up mr-1.5 text-sm"></i> 142 {% trans "Likes" %}</button>
+      <button class="hover:text-blue-400 flex items-center"><i class="fa-regular fa-comment mr-1.5 text-sm"></i> 28 {% trans "Comments" %}</button>
     </div>
   </div>
 </div>
