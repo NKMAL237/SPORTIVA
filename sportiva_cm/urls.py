@@ -2,20 +2,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from django.conf.urls.i18n import i18n_patterns
-from django.urls import path, include
-from django.views.i18n import set_language
+from accounts.views import profiles_list_view
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('accounts/', include(('accounts.urls', 'accounts'), namespace='accounts')),
     path('accounts/', include('accounts.urls')),
+    path('profiles/', profiles_list_view, name='profiles_list'),
     path('organizations/', include('organizations.urls')),
     path('events/', include('events.urls')),
     path('media-feed/', include('media_feed.urls')),
     path('marketplace/', include('marketplace.urls')),
     path('sponsorships/', include('sponsorships.urls')),
+    path('chat/', include('chat.urls')),
 ]
 
 if settings.DEBUG:

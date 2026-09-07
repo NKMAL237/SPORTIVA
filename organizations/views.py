@@ -1,51 +1,47 @@
-import json
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db import models
 from accounts.decorators import tab_required
 from .models import OrganizationProfile, SportsCategory
-from .forms import OrganizationForm
+from .forms import OrganizationProfileForm
 
 
 @tab_required('organizations')
 def organizations_list(request):
-
     """
-    Renders list of sports organizations with filtering by city and sport.
-    Passes a JSON payload of organization coordinates for the Leaflet map.
+    Renders list of sports clubs, academies, and organizations with search and filtering.
     """
-    city_filter = request.GET.get('city', '')
+    search_query = request.GET.get('search', '').strip()
+    country_filter = request.GET.get('country', '').strip()
+    city_filter = request.GET.get('city', '').strip()
     sport_filter = request.GET.get('sport', '')
 
     queryset = OrganizationProfile.objects.select_related('sports_category').all()
 
+    if search_query:
+        queryset = queryset.filter(
+            models.Q(name__icontains=search_query) |
+            models.Q(description__icontains=search_query) |
+            models.Q(city__icontains=search_query) |
+            models.Q(country__icontains=search_query)
+        )
+    if country_filter:
+        queryset = queryset.filter(country__icontains=country_filter)
     if city_filter:
-        queryset = queryset.filter(city=city_filter)
+        queryset = queryset.filter(city__icontains=city_filter)
     if sport_filter:
         queryset = queryset.filter(sports_category__id=sport_filter)
 
     categories = SportsCategory.objects.all()
 
-    # Map locations data
-    map_data = [
-        {
-            'id': org.id,
-            'name': org.name,
-            'city': org.city,
-            'lat': org.latitude,
-            'lng': org.longitude,
-            'category': org.sports_category.name,
-            'is_verified': org.is_verified,
-        }
-        for org in queryset
-    ]
-
     context = {
         'organizations': queryset,
         'categories': categories,
+        'search_query': search_query,
+        'selected_country': country_filter,
         'selected_city': city_filter,
         'selected_sport': sport_filter,
-        'map_data_json': json.dumps(map_data),
     }
     return render(request, 'organizations/list.html', context)
 
@@ -61,7 +57,7 @@ def organization_detail(request, pk):
 def organization_create(request):
     """Create a new sports organization profile."""
     if request.method == 'POST':
-        form = OrganizationForm(request.POST, request.FILES)
+        form = OrganizationProfileForm(request.POST, request.FILES)
         if form.is_valid():
             org = form.save(commit=False)
             org.user = request.user
@@ -69,5 +65,5 @@ def organization_create(request):
             messages.success(request, f"Organization '{org.name}' created successfully!")
             return redirect('organization_detail', pk=org.pk)
     else:
-        form = OrganizationForm()
+        form = OrganizationProfileForm()
     return render(request, 'organizations/create.html', {'form': form})

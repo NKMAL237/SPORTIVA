@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Edit Profile & Social Links — SPORTIVA" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl space-y-6">
+    
+    <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+      <div>
+        <h1 class="text-2xl font-black text-white">{% trans "Edit Your Profile" %}</h1>
+        <p class="text-xs text-slate-400">{% trans "Update your athletic profile, social connections, avatar, and sports interests." %}</p>
+      </div>
+      <a href="{% url 'profile' %}" class="px-4 py-2 rounded-xl bg-slate-800 text-xs font-bold text-slate-300 hover:text-white">
+        {% trans "Back to Profile" %}
+      </a>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+      {% csrf_token %}
+
+      <!-- Avatar Upload -->
+      <div class="flex items-center space-x-6 p-4 rounded-2xl bg-slate-900 border border-slate-800">
+        <div class="w-16 h-16 rounded-2xl overflow-hidden bg-slate-800 flex-shrink-0">
+          {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" alt="{{ user.username }}" class="w-full h-full object-cover">
+          {% else %}
+            <div class="w-full h-full bg-cyan-700 flex items-center justify-center text-2xl font-bold text-white">
+              {{ user.username|slice:":1"|upper }}
+            </div>
+          {% endif %}
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-white mb-1">{% trans "Change Profile Photo" %}</label>
+          <input type="file" name="avatar" accept="image/*" class="text-xs text-slate-400 file:mr-3 file:py-1.5 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-white hover:file:bg-slate-700">
+        </div>
+      </div>
+
+      <!-- First & Last Name -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "First Name" %}</label>
+          <input type="text" name="first_name" value="{{ user.first_name }}" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Last Name" %}</label>
+          <input type="text" name="last_name" value="{{ user.last_name }}" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+        </div>
+      </div>
+
+      <!-- Location -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Country" %}</label>
+          <input type="text" name="country" value="{{ user.country }}" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "City" %}</label>
+          <input type="text" name="city" value="{{ user.city }}" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+        </div>
+      </div>
+
+      <!-- Phone / WhatsApp -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Phone / WhatsApp Contact" %}</label>
+        <input type="text" name="phone_number" value="{{ user.phone_number }}" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500" placeholder="+1234567890">
+      </div>
+
+      <!-- Bio -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Bio & Athletic Profile Overview" %}</label>
+        <textarea name="bio" rows="3" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">{{ user.bio }}</textarea>
+      </div>
+
+      <!-- Social Media Links (For Communication between Users) -->
+      <div class="space-y-3 pt-2">
+        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <i class="fa-solid fa-share-nodes text-cyan-400 mr-1.5"></i> {% trans "Social Media & Communication Links" %}
+        </h3>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="relative">
+            <i class="fa-brands fa-telegram absolute left-3.5 top-1/2 -translate-y-1/2 text-cyan-400 text-sm"></i>
+            <input type="text" name="telegram" value="{{ user.telegram }}" placeholder="Telegram username or link" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div class="relative">
+            <i class="fa-brands fa-instagram absolute left-3.5 top-1/2 -translate-y-1/2 text-rose-400 text-sm"></i>
+            <input type="text" name="instagram" value="{{ user.instagram }}" placeholder="Instagram handle (@username)" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div class="relative">
+            <i class="fa-brands fa-x-twitter absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-200 text-sm"></i>
+            <input type="text" name="twitter" value="{{ user.twitter }}" placeholder="Twitter/X handle (@username)" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div class="relative">
+            <i class="fa-brands fa-tiktok absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-sm"></i>
+            <input type="text" name="tiktok" value="{{ user.tiktok }}" placeholder="TikTok username" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div class="relative">
+            <i class="fa-brands fa-linkedin-in absolute left-3.5 top-1/2 -translate-y-1/2 text-blue-400 text-sm"></i>
+            <input type="text" name="linkedin" value="{{ user.linkedin }}" placeholder="LinkedIn Profile URL" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+          <div class="relative">
+            <i class="fa-brands fa-youtube absolute left-3.5 top-1/2 -translate-y-1/2 text-rose-500 text-sm"></i>
+            <input type="text" name="youtube" value="{{ user.youtube }}" placeholder="YouTube channel URL" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          </div>
+        </div>
+      </div>
+
+      <!-- Sports Preferences -->
+      <div class="space-y-2 pt-2">
+        <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">
+          <i class="fa-solid fa-heart text-rose-400 mr-1.5"></i> {% trans "Sports Preferences" %}
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {% for sport in available_sports %}
+            <label class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/60 cursor-pointer flex items-center space-x-2 text-xs text-slate-300 transition-colors has-[:checked]:border-cyan-500 has-[:checked]:text-cyan-300 has-[:checked]:bg-cyan-950/30">
+              <input type="checkbox" name="favorite_sports" value="{{ sport }}" {% if sport in user.favorite_sports %}checked{% endif %} class="rounded border-slate-700 bg-slate-900 text-cyan-500">
+              <span>{{ sport }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="pt-4 flex items-center justify-end space-x-3">
+        <a href="{% url 'profile' %}" class="px-5 py-3 rounded-2xl bg-slate-800 text-slate-300 hover:text-white text-xs font-bold">
+          {% trans "Cancel" %}
+        </a>
+        <button type="submit" class="sportiva-btn px-6 py-3 rounded-2xl text-xs font-bold">
+          <i class="fa-solid fa-floppy-disk mr-1.5"></i> {% trans "Save Changes" %}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

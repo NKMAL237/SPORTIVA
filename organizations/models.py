@@ -16,16 +16,6 @@ class SportsCategory(models.Model):
 
 
 class OrganizationProfile(models.Model):
-    CITY_CHOICES = [
-        ('Yaoundé', 'Yaoundé'),
-        ('Douala', 'Douala'),
-        ('Bafoussam', 'Bafoussam'),
-        ('Garoua', 'Garoua'),
-        ('Bamenda', 'Bamenda'),
-        ('Buea', 'Buea'),
-        ('Maroua', 'Maroua'),
-    ]
-
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
@@ -39,25 +29,24 @@ class OrganizationProfile(models.Model):
         on_delete=models.CASCADE,
         related_name='organizations'
     )
-    city = models.CharField(max_length=100, choices=CITY_CHOICES, default='Yaoundé')
-    address = models.CharField(max_length=255, help_text="Physical address or neighborhood")
-    latitude = models.FloatField(default=3.8480, help_text="GPS Latitude for Leaflet Map")
-    longitude = models.FloatField(default=11.5021, help_text="GPS Longitude for Leaflet Map")
-    description = models.TextField(help_text="Overview of the club, academy, or facility")
+    country = models.CharField(max_length=100, default='Global')
+    city = models.CharField(max_length=100, default='Global City')
+    address = models.CharField(max_length=255, help_text="Physical address, facility, or headquarters")
+    latitude = models.FloatField(default=3.8480, help_text="GPS Latitude for location popup")
+    longitude = models.FloatField(default=11.5021, help_text="GPS Longitude for location popup")
+    description = models.TextField(help_text="Overview of the club, academy, or training facility")
     logo = models.ImageField(upload_to='organizations/', blank=True, null=True)
-    phone_number = models.CharField(max_length=20, blank=True)
-    whatsapp_number = models.CharField(max_length=20, blank=True, help_text="WhatsApp contact format e.g. +237699000000")
+    phone_number = models.CharField(max_length=30, blank=True)
+    whatsapp_number = models.CharField(max_length=30, blank=True, help_text="WhatsApp contact format e.g. +1... or +33... or +237...")
     email = models.EmailField(blank=True)
+    website = models.URLField(blank=True)
     is_verified = models.BooleanField(default=False, help_text="Verified profile badge")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def clean_whatsapp(self):
         if not self.whatsapp_number:
             return ""
-        digits = "".join([c for c in self.whatsapp_number if c.isdigit()])
-        if not digits.startswith("237") and len(digits) == 9:
-            digits = "237" + digits
-        return digits
+        return "".join([c for c in self.whatsapp_number if c.isdigit()])
 
     class Meta:
         ordering = ['-created_at']

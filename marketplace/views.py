@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django import forms
+from django.db import models
 from accounts.decorators import tab_required
 from .models import Product, ProductCategory
 
@@ -9,31 +10,50 @@ from .models import Product, ProductCategory
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['title', 'category', 'description', 'price', 'condition', 'city', 'image', 'whatsapp_number']
+        fields = ['title', 'category', 'description', 'price', 'currency', 'condition', 'country', 'city', 'latitude', 'longitude', 'image', 'whatsapp_number']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500'}),
-            'category': forms.Select(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500'}),
-            'description': forms.Textarea(attrs={'rows': 3, 'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500'}),
-            'price': forms.NumberInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500', 'placeholder': 'Price in FCFA'}),
-            'condition': forms.Select(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500'}),
-            'city': forms.Select(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500'}),
-            'whatsapp_number': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500', 'placeholder': '+237699000000'}),
+            'title': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500'}),
+            'category': forms.Select(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500'}),
+            'description': forms.Textarea(attrs={'rows': 3, 'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500'}),
+            'price': forms.NumberInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500', 'placeholder': 'Price'}),
+            'currency': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500', 'placeholder': 'USD, EUR, FCFA, GBP'}),
+            'condition': forms.Select(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500'}),
+            'country': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500'}),
+            'city': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500'}),
+            'latitude': forms.NumberInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500', 'step': '0.0001'}),
+            'longitude': forms.NumberInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500', 'step': '0.0001'}),
+            'whatsapp_number': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500', 'placeholder': '+1234567890'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name in ['currency', 'country', 'city', 'latitude', 'longitude', 'whatsapp_number', 'image']:
+            if field_name in self.fields:
+                self.fields[field_name].required = False
 
 
 @tab_required('marketplace')
 def marketplace_list(request):
-
-
-    """List available sports equipment for sale."""
-    city_filter = request.GET.get('city', '')
+    """List available sports gear, equipment and items for sale globally."""
+    search_query = request.GET.get('search', '').strip()
+    country_filter = request.GET.get('country', '').strip()
+    city_filter = request.GET.get('city', '').strip()
     cat_filter = request.GET.get('category', '')
     condition_filter = request.GET.get('condition', '')
 
     queryset = Product.objects.filter(is_available=True).select_related('seller', 'category')
 
+    if search_query:
+        queryset = queryset.filter(
+            models.Q(title__icontains=search_query) |
+            models.Q(description__icontains=search_query) |
+            models.Q(city__icontains=search_query) |
+            models.Q(country__icontains=search_query)
+        )
+    if country_filter:
+        queryset = queryset.filter(country__icontains=country_filter)
     if city_filter:
-        queryset = queryset.filter(city=city_filter)
+        queryset = queryset.filter(city__icontains=city_filter)
     if cat_filter:
         queryset = queryset.filter(category__id=cat_filter)
     if condition_filter:
@@ -45,6 +65,8 @@ def marketplace_list(request):
         'products': queryset,
         'categories': categories,
         'conditions': Product.CONDITION_CHOICES,
+        'search_query': search_query,
+        'selected_country': country_filter,
         'selected_city': city_filter,
         'selected_category': cat_filter,
         'selected_condition': condition_filter,

@@ -1,26 +1,49 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}Offline Mode — Sportiva CM{% endblock %}
+{% block title %}Offline Mode — SPORTIVA{% endblock %}
 
 {% block content %}
 <div class="min-h-[70vh] flex items-center justify-center px-4 py-12">
-  <div class="max-w-md w-full glass-panel p-8 rounded-3xl text-center border border-emerald-500/20 shadow-2xl relative overflow-hidden">
-    <!-- Cameroon Accent Glow -->
-    <div class="absolute -top-16 -right-16 w-36 h-36 bg-emerald-500/20 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-amber-500/20 rounded-full blur-3xl"></div>
+  <div class="max-w-md w-full glass-panel p-8 rounded-3xl text-center border border-cyan-500/20 shadow-2xl relative overflow-hidden">
+    <!-- Accent Glows -->
+    <div class="absolute -top-16 -right-16 w-36 h-36 bg-cyan-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-16 -left-16 w-36 h-36 bg-blue-500/20 rounded-full blur-3xl"></div>
 
-    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-slate-800/80 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-2xl shadow-inner">
+    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-slate-800/80 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl shadow-inner">
       <i class="fa-solid fa-satellite-dish animate-pulse"></i>
     </div>
 
     <h1 class="text-2xl font-bold text-white mb-2">{% trans "You are in Offline Mode" %}</h1>
     <p class="text-slate-400 text-sm mb-6 leading-relaxed">
-      {% trans "Sportiva CM is working locally! Cached pages, clubs, events, marketplace items, and tactical sports maps are accessible without an active internet connection." %}
+      {% trans "SPORTIVA is running locally! Cached pages, athlete profiles, clubs, events, marketplace items, and interactive maps are fully accessible without an internet connection." %}
     </p>
 
+    <!-- What's available offline -->
+    <div class="text-left mb-6 space-y-2 bg-slate-900/60 rounded-2xl p-4 border border-slate-800">
+      <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">{% trans "Available Offline" %}</p>
+      <div class="flex items-center gap-2 text-xs text-slate-300">
+        <i class="fa-solid fa-check text-emerald-400 w-4"></i> {% trans "Athlete Profiles & Leaderboards" %}
+      </div>
+      <div class="flex items-center gap-2 text-xs text-slate-300">
+        <i class="fa-solid fa-check text-emerald-400 w-4"></i> {% trans "Clubs & Organizations Directory" %}
+      </div>
+      <div class="flex items-center gap-2 text-xs text-slate-300">
+        <i class="fa-solid fa-check text-emerald-400 w-4"></i> {% trans "Events & Tournament Calendar" %}
+      </div>
+      <div class="flex items-center gap-2 text-xs text-slate-300">
+        <i class="fa-solid fa-check text-emerald-400 w-4"></i> {% trans "Marketplace & Equipment" %}
+      </div>
+      <div class="flex items-center gap-2 text-xs text-slate-300">
+        <i class="fa-solid fa-check text-emerald-400 w-4"></i> {% trans "Sports News (last cached)" %}
+      </div>
+      <div class="flex items-center gap-2 text-xs text-slate-400">
+        <i class="fa-solid fa-clock text-amber-400 w-4"></i> {% trans "Live chat & uploads (syncs on reconnect)" %}
+      </div>
+    </div>
+
     <div class="space-y-3">
-      <a href="{% url 'home' %}" class="camer-btn w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center shadow-lg">
+      <a href="{% url 'home' %}" class="sportiva-btn w-full py-3.5 rounded-xl font-bold text-sm flex items-center justify-center shadow-lg">
         <i class="fa-solid fa-house mr-2"></i> {% trans "Go to Home Dashboard" %}
       </a>
       <button onclick="window.history.back()" class="w-full py-3 rounded-xl font-semibold text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition">
@@ -28,9 +51,9 @@
       </button>
     </div>
 
-    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-center space-x-2 text-xs text-emerald-400 font-medium">
-      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-      <span>Local Offline Engine Active</span>
+    <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-center space-x-2 text-xs text-cyan-400 font-medium">
+      <span class="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+      <span>{% trans "SPORTIVA Offline Engine Active" %}</span>
     </div>
   </div>
 </div>

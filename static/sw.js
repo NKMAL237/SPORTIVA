@@ -1,12 +1,14 @@
-const CACHE_NAME = 'sportiva-cm-cache-v1';
+const CACHE_NAME = 'sportiva-global-v2';
 
 const STATIC_ASSETS = [
   '/',
   '/offline/',
+  '/api/sports-news/',
   '/static/css/styles.css',
   '/static/fonts/fonts.css',
   '/static/js/app.js',
   '/static/js/offline-map.js',
+  '/static/js/location-modal.js',
   '/static/manifest.json',
   '/static/vendor/tailwind/tailwind.js',
   '/static/vendor/fontawesome/css/all.min.css',
@@ -19,6 +21,7 @@ const STATIC_ASSETS = [
   '/static/vendor/leaflet/marker-icon-2x.png',
   '/static/vendor/leaflet/marker-shadow.png'
 ];
+
 
 // Install Event: Pre-cache static shell & assets
 self.addEventListener('install', (event) => {

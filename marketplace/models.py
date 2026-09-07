@@ -21,15 +21,6 @@ class Product(models.Model):
         ('GOOD', 'Good Condition'),
         ('FAIR', 'Fair Condition'),
     ]
-    CITY_CHOICES = [
-        ('Yaoundé', 'Yaoundé'),
-        ('Douala', 'Douala'),
-        ('Bafoussam', 'Bafoussam'),
-        ('Garoua', 'Garoua'),
-        ('Bamenda', 'Bamenda'),
-        ('Buea', 'Buea'),
-        ('Maroua', 'Maroua'),
-    ]
 
     seller = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -43,11 +34,15 @@ class Product(models.Model):
     )
     title = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.PositiveIntegerField(help_text="Price in FCFA")
+    price = models.PositiveIntegerField(help_text="Price in local or selected currency")
+    currency = models.CharField(max_length=10, default='USD', help_text="USD, EUR, FCFA, GBP")
     condition = models.CharField(max_length=20, choices=CONDITION_CHOICES, default='GOOD')
-    city = models.CharField(max_length=100, choices=CITY_CHOICES, default='Yaoundé')
+    country = models.CharField(max_length=100, default='Global')
+    city = models.CharField(max_length=100, default='Global City')
+    latitude = models.FloatField(default=3.8864, help_text="GPS Latitude")
+    longitude = models.FloatField(default=11.5367, help_text="GPS Longitude")
     image = models.ImageField(upload_to='marketplace/', blank=True, null=True)
-    whatsapp_number = models.CharField(max_length=20, blank=True)
+    whatsapp_number = models.CharField(max_length=30, blank=True)
     is_available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -57,13 +52,10 @@ class Product(models.Model):
     def clean_whatsapp(self):
         if not self.whatsapp_number:
             return ""
-        digits = "".join([c for c in self.whatsapp_number if c.isdigit()])
-        if not digits.startswith("237") and len(digits) == 9:
-            digits = "237" + digits
-        return digits
+        return "".join([c for c in self.whatsapp_number if c.isdigit()])
 
     def price_formatted(self):
-        return f"{self.price:,} FCFA"
+        return f"{self.price:,} {self.currency}"
 
     def __str__(self):
-        return f"{self.title} — {self.price_formatted()} ({self.city})"
+        return f"{self.title} — {self.price_formatted()} ({self.city}, {self.country})"

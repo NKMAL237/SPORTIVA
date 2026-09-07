@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n static %}
 
-{% block title %}{{ campaign.title }} — Sportiva CM{% endblock %}
+{% block title %}{{ campaign.title }} — SPORTIVA{% endblock %}
 
 {% block content %}
-<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-  <a href="{% url 'sponsorships_list' %}" class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors">
-    <i class="fa-solid fa-arrow-left mr-2"></i> Back to Sponsorships
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+  <a href="{% url 'sponsorships_list' %}" class="inline-flex items-center text-xs font-semibold text-slate-400 hover:text-cyan-400 transition-colors">
+    <i class="fa-solid fa-arrow-left mr-2"></i> {% trans "Back to Sponsorships" %}
   </a>
 
-  <div class="glass-panel p-8 rounded-3xl border border-slate-800 space-y-6">
+  <div class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6">
     <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
       <div class="space-y-3">
         <div class="flex items-center space-x-2 flex-wrap">
-          <span class="text-xs px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/20">
+          <span class="text-xs px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 font-semibold border border-cyan-500/20">
             {{ campaign.get_category_display }}
           </span>
           <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-semibold border border-emerald-500/20">
@@ -20,86 +21,106 @@
           </span>
         </div>
 
-        <h1 class="text-3xl font-extrabold text-white">{{ campaign.title }}</h1>
-        <p class="text-sm text-slate-400">Created by {{ campaign.creator.username }}</p>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">{{ campaign.title }}</h1>
+        <p class="text-sm text-slate-400">
+          {% trans "Organized by" %} 
+          <a href="{% url 'accounts:profile_detail' campaign.creator.username %}" class="text-cyan-400 font-semibold hover:underline">
+            {{ campaign.creator.get_full_name|default:campaign.creator.username }}
+          </a>
+        </p>
       </div>
 
-      {% if campaign.whatsapp_number %}
-        <a href="https://wa.me/{{ campaign.clean_whatsapp }}?text=Hello,%20I%20want%20to%20support%20{{ campaign.title|urlencode }}" target="_blank" class="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center shadow-md">
-          <i class="fa-brands fa-whatsapp text-base mr-2"></i> Contact on WhatsApp
+      <div class="flex items-center gap-3 flex-wrap">
+        {% if campaign.creator != user %}
+        <a href="{% url 'chat_start' campaign.creator.id %}" class="px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs font-bold border border-white/10 flex items-center transition">
+          <i class="fas fa-comment-dots mr-2 text-cyan-400"></i> {% trans "Direct Chat" %}
         </a>
-      {% endif %}
+        {% endif %}
+        {% if campaign.whatsapp_number %}
+          <a href="https://wa.me/{{ campaign.clean_whatsapp }}?text=Hello,%20I%20want%20to%20support%20'{{ campaign.title|urlencode }}'%20on%20SPORTIVA" target="_blank" class="px-5 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-lg shadow-emerald-600/20 flex items-center transition">
+            <i class="fa-brands fa-whatsapp text-base mr-2"></i> {% trans "WhatsApp" %}
+          </a>
+        {% endif %}
+      </div>
     </div>
 
-    <div class="pt-6 border-t border-slate-800 space-y-3">
-      <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-400">Campaign Overview</h3>
+    <div class="pt-6 border-t border-white/10 space-y-3">
+      <h3 class="text-xs font-bold uppercase tracking-wider text-cyan-400">{% trans "Campaign Overview & Mission" %}</h3>
       <p class="text-slate-300 text-sm leading-relaxed whitespace-pre-line">{{ campaign.description }}</p>
     </div>
 
-    <div class="space-y-3">
+    <div class="space-y-3 p-5 rounded-2xl bg-slate-950/60 border border-white/5">
       <div class="flex justify-between text-sm font-semibold">
-        <span class="text-emerald-400">{{ campaign.raised_amount|floatformat:0 }} FCFA Raised</span>
-        <span class="text-slate-400">Goal: {{ campaign.target_amount|floatformat:0 }} FCFA</span>
+        <span class="text-cyan-400 font-mono">{{ campaign.raised_amount|floatformat:0 }} {{ campaign.currency|default:"USD" }} {% trans "Raised" %}</span>
+        <span class="text-slate-400 font-mono">{% trans "Target:" %} {{ campaign.target_amount|floatformat:0 }} {{ campaign.currency|default:"USD" }}</span>
       </div>
       <div class="w-full h-3 rounded-full bg-slate-800 overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-emerald-500 to-amber-400 rounded-full" style="width: {{ progress }}%"></div>
+        <div class="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full transition-all duration-500" style="width: {{ progress }}%"></div>
       </div>
-      <p class="text-xs text-slate-400">{{ progress }}% funded</p>
+      <div class="flex justify-between items-center text-xs text-slate-400">
+        <span>{{ progress }}% {% trans "funded" %}</span>
+        {% if campaign.deadline %}
+        <span><i class="fas fa-clock mr-1 text-amber-400"></i> {% trans "Deadline:" %} {{ campaign.deadline|date:"M d, Y" }}</span>
+        {% endif %}
+      </div>
     </div>
   </div>
 
-  <div class="glass-panel p-6 rounded-3xl border border-slate-800 space-y-4">
+  <div class="glass-card p-6 rounded-3xl border border-white/10 space-y-6">
     <div class="flex items-center justify-between">
-      <h3 class="text-base font-bold text-white">Supporters</h3>
-      <span class="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-emerald-400 border border-slate-700 font-semibold">
-        {{ pledges|length }} pledges
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <i class="fas fa-heart text-rose-400"></i>
+        <span>{% trans "Backers & Supporters" %}</span>
+      </h3>
+      <span class="text-xs px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold">
+        {{ pledges|length }} {% trans "pledges" %}
       </span>
     </div>
 
     {% if user.is_authenticated %}
-      <form method="post" class="space-y-4">
+      <form method="post" class="space-y-4 p-5 rounded-2xl bg-white/5 border border-white/10">
         {% csrf_token %}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Amount (FCFA)</label>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Contribution Amount" %}</label>
             {{ pledge_form.amount }}
           </div>
-          <div class="flex items-end">
-            <label class="inline-flex items-center gap-2 text-sm text-slate-300">
+          <div class="flex items-center pt-5">
+            <label class="inline-flex items-center gap-2 text-sm text-slate-300 cursor-pointer">
               {{ pledge_form.is_anonymous }}
-              Anonymous pledge
+              <span>{% trans "Make contribution anonymous" %}</span>
             </label>
           </div>
         </div>
         <div>
-          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">Message</label>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Support Message (Optional)" %}</label>
           {{ pledge_form.message }}
         </div>
-        <button type="submit" class="camer-btn w-full py-3 rounded-xl text-sm font-bold shadow-lg">
-          Submit Pledge
+        <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
+          {% trans "Submit Backer Pledge" %}
         </button>
       </form>
     {% else %}
-      <a href="{% url 'login' %}" class="camer-btn w-full py-3 rounded-xl text-sm font-bold shadow-lg inline-flex items-center justify-center">
-        Log in to support this campaign
+      <a href="{% url 'accounts:login' %}" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 inline-flex items-center justify-center transition">
+        {% trans "Log in to back this campaign" %}
       </a>
     {% endif %}
 
-    <div class="space-y-3 pt-3 border-t border-slate-800">
+    <div class="space-y-3 pt-3 border-t border-white/10">
       {% for pledge in pledges %}
-        <div class="flex items-center justify-between rounded-xl bg-slate-900/60 border border-slate-800 px-4 py-3">
+        <div class="flex items-center justify-between rounded-xl bg-slate-950/60 border border-white/5 px-4 py-3">
           <div>
             <p class="text-sm font-semibold text-white">
-              {% if pledge.is_anonymous %}Anonymous{% else %}{{ pledge.sponsor.username }}{% endif %}
+              {% if pledge.is_anonymous %}{% trans "Anonymous Supporter" %}{% else %}{{ pledge.sponsor.get_full_name|default:pledge.sponsor.username }}{% endif %}
             </p>
             {% if pledge.message %}
-              <p class="text-xs text-slate-400">{{ pledge.message }}</p>
+              <p class="text-xs text-slate-400 mt-0.5">{{ pledge.message }}</p>
             {% endif %}
           </div>
-          <span class="text-emerald-400 font-bold">{{ pledge.amount|floatformat:0 }} FCFA</span>
+          <span class="text-cyan-400 font-bold font-mono">{{ pledge.amount|floatformat:0 }} {{ campaign.currency|default:"USD" }}</span>
         </div>
       {% empty %}
-        <p class="text-xs text-slate-500 italic">No pledges yet. Be the first supporter.</p>
+        <p class="text-xs text-slate-500 italic text-center py-4">{% trans "No pledges yet. Be the first backer!" %}</p>
       {% endfor %}
     </div>
   </div>
