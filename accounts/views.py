@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from .models import User, Follow, AthleteExploit, AthleteEndorsement
+from django.utils import timezone  # ← ADDED
+from .models import User, Follow, AthleteExploit, AthleteEndorsement, sportiva_score_annotation
 from .decorators import tab_required
 
 
@@ -123,7 +124,11 @@ def profiles_list_view(request):
     sport_filter = request.GET.get('sport', '').strip()
     sort_by = request.GET.get('sort', 'score')
 
-    queryset = User.objects.filter(is_active=True).select_related().prefetch_related('followers', 'exploits', 'endorsements')
+    queryset = (
+        User.objects.filter(is_active=True)
+        .annotate(**sportiva_score_annotation())
+        .prefetch_related('followers', 'exploits')
+    )
 
     if search_query:
         queryset = queryset.filter(
@@ -155,13 +160,21 @@ def profiles_list_view(request):
         users_list.sort(key=lambda u: u.date_joined, reverse=True)
 
     # Top featured athletes leaderboard
-    top_athletes = [u for u in User.objects.filter(role=User.Role.ATHLETE, is_active=True)]
-    top_athletes.sort(key=lambda u: u.sportiva_score, reverse=True)
-    top_athletes = top_athletes[:5]
+    top_athletes = list(
+        User.objects.filter(role=User.Role.ATHLETE, is_active=True)
+        .annotate(**sportiva_score_annotation())
+        .order_by('-_sportiva_score')[:5]
+    )
+
+    followed_ids = (
+        set(request.user.following.values_list('followed_user_id', flat=True))
+        if request.user.is_authenticated else set()
+    )
 
     context = {
         'profiles': users_list,
         'top_athletes': top_athletes,
+        'followed_ids': followed_ids,
         'search_query': search_query,
         'role_filter': role_filter,
         'country_filter': country_filter,
@@ -428,7 +441,7 @@ def user_management_view(request):
     search_query = request.GET.get('search', '').strip()
     role_filter = request.GET.get('role', '')
 
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = User.objects.all().annotate(**sportiva_score_annotation()).order_by('-date_joined')
 
     if search_query:
         queryset = queryset.filter(

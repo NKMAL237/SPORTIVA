@@ -176,8 +176,8 @@
             {% if user.is_authenticated and user != prof %}
               <form method="post" action="{% url 'toggle_follow' user_id=prof.id %}">
                 {% csrf_token %}
-                <button type="submit" class="w-full py-2 px-3 rounded-xl text-xs font-bold text-center transition-all {% if prof in user.following.all %}bg-slate-800 text-slate-300 hover:bg-rose-900/40 hover:text-rose-300 border border-slate-700{% else %}sportiva-btn{% endif %}">
-                  {% if prof in user.following.all %}{% trans "Following" %}{% else %}+ {% trans "Follow" %}{% endif %}
+                <button type="submit" class="w-full py-2 px-3 rounded-xl text-xs font-bold text-center transition-all {% if prof.id in followed_ids %}bg-slate-800 text-slate-300 hover:bg-rose-900/40 hover:text-rose-300 border border-slate-700{% else %}sportiva-btn{% endif %}">
+                  {% if prof.id in followed_ids %}{% trans "Following" %}{% else %}+ {% trans "Follow" %}{% endif %}
                 </button>
               </form>
             {% else %}

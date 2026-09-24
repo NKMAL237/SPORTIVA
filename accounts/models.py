@@ -135,21 +135,34 @@ class User(AbstractUser):
         return val
 
     @property
+    def social_links(self):
+        """Return only configured social profiles as normalized links."""
+        return {
+            network: self.clean_social_link(network)
+            for network in ('telegram', 'instagram', 'twitter', 'linkedin', 'tiktok', 'youtube')
+            if self.clean_social_link(network)
+        }
+
+    @property
     def sportiva_score(self):
         """Calculates global merit score for athlete/user based on verified exploits and activity."""
+        annotated = getattr(self, '_sportiva_score', None)
+        if annotated is not None:
+            return annotated
+
         base_score = 50
         # Add points from verified exploits
         verified_exploits = self.exploits.filter(status='VERIFIED')
         exploit_points = sum(e.score_points for e in verified_exploits)
-        
+
         # Add points from followers
         follower_points = self.followers.count() * 5
-        
+
         # Add points from endorsements
         endorsement_points = self.endorsements.count() * 10
-        
-        # Event attendances
-        attendance_points = self.event_attendances.count() * 15 if hasattr(self, 'event_attendances') else 0
+
+        # Event attendances (exclude cancelled registrations)
+        attendance_points = self.event_registrations.exclude(status='CANCELLED').count() * 15
 
         return base_score + exploit_points + follower_points + endorsement_points + attendance_points
 
@@ -248,3 +261,45 @@ class AthleteEndorsement(models.Model):
 
     def __str__(self):
         return f"{self.endorsed_by.username} endorsed {self.athlete.username} for {self.skill_or_merit}"
+
+
+def sportiva_score_annotation():
+    """
+    Returns annotate() kwargs computing the same value as User.sportiva_score in SQL.
+
+    Each component is a correlated subquery rather than a joined aggregate so the
+    multi-valued relations cannot fan out and inflate one another. Use it on list
+    querysets to avoid one query per user; User.sportiva_score then reads the
+    annotation instead of hitting the database.
+    """
+    from django.db.models import Count, IntegerField, OuterRef, Subquery, Sum, Value
+    from django.db.models.functions import Coalesce
+    from events.models import EventRegistration
+
+    def _count(qs, group_field, weight):
+        sub = Subquery(
+            qs.filter(**{group_field: OuterRef('pk')})
+              .values(group_field)
+              .annotate(total=Count('id'))
+              .values('total')[:1],
+            output_field=IntegerField(),
+        )
+        return Coalesce(sub, Value(0), output_field=IntegerField()) * weight
+
+    exploit_points = Subquery(
+        AthleteExploit.objects.filter(athlete=OuterRef('pk'), status='VERIFIED')
+        .values('athlete')
+        .annotate(total=Sum('score_points'))
+        .values('total')[:1],
+        output_field=IntegerField(),
+    )
+
+    return {
+        '_sportiva_score': (
+            Value(50, output_field=IntegerField())
+            + Coalesce(exploit_points, Value(0), output_field=IntegerField())
+            + _count(Follow.objects.all(), 'followed_user', 5)
+            + _count(AthleteEndorsement.objects.all(), 'athlete', 10)
+            + _count(EventRegistration.objects.exclude(status='CANCELLED'), 'user', 15)
+        )
+    }

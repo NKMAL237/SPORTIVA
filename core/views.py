@@ -2,7 +2,7 @@ import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.contrib.staticfiles import finders
-from accounts.models import User
+from accounts.models import User, sportiva_score_annotation
 from events.models import Event
 from media_feed.models import Post, Like
 from media_feed.views import PostForm
@@ -139,9 +139,11 @@ def home(request):
         followed_ids = set(request.user.following.values_list('followed_user_id', flat=True))
 
     # 3. Top Athletes Leaderboard
-    top_athletes = [u for u in User.objects.filter(role=User.Role.ATHLETE, is_active=True)]
-    top_athletes.sort(key=lambda u: u.sportiva_score, reverse=True)
-    top_athletes = top_athletes[:5]
+    top_athletes = list(
+        User.objects.filter(role=User.Role.ATHLETE, is_active=True)
+        .annotate(**sportiva_score_annotation())
+        .order_by('-_sportiva_score')[:5]
+    )
 
     # 4. Featured Events
     featured_events = Event.objects.filter(is_published=True).select_related('organizer', 'sport')[:4]
