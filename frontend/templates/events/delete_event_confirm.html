@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Delete Event — {{ event.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-12">
+
+  <div class="glass-panel rounded-3xl border border-rose-500/40 shadow-2xl p-8 space-y-6 text-center">
+
+    <!-- Icon -->
+    <div class="flex justify-center">
+      <div class="w-20 h-20 rounded-full bg-rose-500/10 border-2 border-rose-500/40 flex items-center justify-center text-4xl text-rose-400">
+        <i class="fa-solid fa-calendar-xmark"></i>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="space-y-2">
+      <h1 class="text-2xl font-black text-white">Delete Event</h1>
+      <p class="text-slate-400 text-sm leading-relaxed">
+        You are about to permanently delete the event:<br>
+        <span class="text-rose-400 font-bold text-base">{{ event.title }}</span>
+      </p>
+    </div>
+
+    <!-- Event Summary -->
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs text-left space-y-2">
+      <div class="flex justify-between">
+        <span class="text-slate-400">Sport</span>
+        <span class="text-white font-bold">{{ event.sport.name }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Date</span>
+        <span class="text-white">{{ event.start_date|date:"D, d M Y" }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Venue</span>
+        <span class="text-white">{{ event.venue_name }}, {{ event.city }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Registered Participants</span>
+        <span class="text-amber-400 font-bold">{{ event.confirmed_participants_count }}</span>
+      </div>
+    </div>
+
+    <!-- Warning -->
+    <div class="p-3 rounded-xl bg-rose-950/40 border border-rose-500/30 text-[11px] text-rose-200 text-left">
+      <i class="fa-solid fa-skull-crossbones mr-1 text-rose-400"></i>
+      <strong>This is irreversible.</strong> All registrations, invoices, and participant data linked to this event will be permanently deleted. Notify participants before proceeding.
+    </div>
+
+    <!-- Actions -->
+    <form method="post">
+      {% csrf_token %}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a href="{% url 'event_detail' pk=event.pk %}"
+           class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-bold transition-colors text-center">
+          <i class="fa-solid fa-arrow-left mr-2"></i>Go Back
+        </a>
+        <button type="submit"
+                class="w-full sm:w-auto px-8 py-3 rounded-2xl bg-rose-700 hover:bg-rose-600 text-white text-sm font-black shadow-lg shadow-rose-500/30 transition-all active:scale-95">
+          <i class="fa-solid fa-fire mr-2"></i>Yes, Permanently Delete Event
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

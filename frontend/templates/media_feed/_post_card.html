@@ -1,0 +1,121 @@
+{% load i18n %}
+{# Shared Instagram-style post card. Expects: post, liked_post_ids, user, request. #}
+<div class="glass-card rounded-3xl border border-slate-800 overflow-hidden shadow-xl">
+
+  <!-- Post Author Header -->
+  <div class="p-4 flex items-center justify-between border-b border-slate-800/60">
+    <div class="flex items-center space-x-3">
+      <a href="{% url 'user_detail' username=post.author.username %}" class="relative group">
+        <div class="w-11 h-11 rounded-2xl overflow-hidden p-0.5 bg-gradient-to-tr from-cyan-500 to-blue-600">
+          {% if post.author.avatar %}
+            <img src="{{ post.author.avatar.url }}" alt="{{ post.author.username }}" class="w-full h-full object-cover rounded-[14px]">
+          {% else %}
+            <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-white font-bold text-sm">
+              {{ post.author.username|slice:":1"|upper }}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+      <div>
+        <div class="flex items-center space-x-2">
+          <a href="{% url 'user_detail' username=post.author.username %}" class="text-sm font-bold text-white hover:text-cyan-400">
+            {{ post.author.username }}
+          </a>
+          {% if post.author.is_verified %}
+            <i class="fa-solid fa-circle-check text-cyan-400 text-xs" title="Verified"></i>
+          {% endif %}
+          <span class="text-[10px] px-2 py-0.5 rounded-full font-semibold badge-{{ post.author.role|lower }}">
+            {{ post.author.get_role_display }}
+          </span>
+        </div>
+        <p class="text-[11px] text-slate-400">
+          {{ post.city }}, {{ post.country }} • {{ post.created_at|timesince }} ago
+          {% if post.sport %}
+            <a href="{% url 'media_feed_list' %}?sport={{ post.sport.id }}" class="text-cyan-400 hover:underline ml-1">#{{ post.sport.name }}</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <!-- Follow Shortcut -->
+    {% if user.is_authenticated and user != post.author %}
+      <form method="post" action="{% url 'toggle_follow' user_id=post.author.id %}" class="inline">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <button type="submit" class="px-3 py-1 rounded-xl text-xs font-bold transition-all {% if post.author.id in followed_ids %}bg-slate-800 text-slate-300 hover:bg-rose-900/40 hover:text-rose-300 border border-slate-700{% else %}bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-white{% endif %}">
+          {% if post.author.id in followed_ids %}{% trans "Following" %}{% else %}+ {% trans "Follow" %}{% endif %}
+        </button>
+      </form>
+    {% endif %}
+  </div>
+
+  <!-- Post Media / Image / Short Video -->
+  {% if post.image %}
+    <div class="relative bg-black max-h-96 overflow-hidden flex items-center justify-center">
+      <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full max-h-96 object-cover hover:scale-105 transition-transform duration-300">
+      {% if post.is_short %}
+        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-purple-900/90 border border-purple-500 text-white font-bold text-xs flex items-center shadow-lg">
+          <i class="fa-solid fa-play mr-1.5 text-xs"></i> Short / Reel
+        </span>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if post.video_url %}
+    <div class="p-3 bg-slate-950/80 border-b border-slate-800">
+      <a href="{{ post.video_url }}" target="_blank" rel="noopener" class="flex items-center space-x-3 p-3 rounded-2xl bg-slate-900 border border-slate-700/60 text-xs transition-colors hover:bg-slate-800">
+        <div class="w-10 h-10 rounded-xl bg-rose-600/20 text-rose-400 flex items-center justify-center text-lg flex-shrink-0">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <div class="min-w-0">
+          <p class="font-bold text-white">{% trans "Watch Video Highlight" %}</p>
+          <p class="text-slate-400 text-[10px] truncate max-w-xs">{{ post.video_url }}</p>
+        </div>
+      </a>
+    </div>
+  {% endif %}
+
+  <!-- Post Content & Captions -->
+  <div class="p-4 space-y-3">
+    {% if post.title %}
+      <h3 class="font-bold text-white text-sm">{{ post.title }}</h3>
+    {% endif %}
+    <p class="text-xs text-slate-200 leading-relaxed whitespace-pre-line">{{ post.content }}</p>
+
+    {% if post.hashtags %}
+      <div class="flex flex-wrap gap-1.5 pt-1">
+        {% for tag in post.hashtag_list %}
+          <a href="{% url 'media_feed_list' %}?tag={{ tag|cut:'#' }}" class="text-[11px] font-semibold text-cyan-400 hover:underline">{{ tag }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <!-- Interactive Actions (Like, Comment, Location) -->
+    <div class="flex items-center justify-between pt-3 border-t border-slate-800/60 text-xs">
+      <div class="flex items-center space-x-4">
+        <form method="post" action="{% url 'post_like' pk=post.pk %}" class="inline">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" class="flex items-center space-x-1.5 {% if post.id in liked_post_ids %}text-rose-500 font-bold{% else %}text-slate-400 hover:text-rose-400{% endif %} transition-colors">
+            <i class="fa-solid fa-heart text-base"></i>
+            <span>{{ post.like_count }}</span>
+          </button>
+        </form>
+
+        <a href="{% url 'post_detail' pk=post.pk %}" class="flex items-center space-x-1.5 text-slate-400 hover:text-cyan-400 transition-colors">
+          <i class="fa-solid fa-comment text-base"></i>
+          <span>{{ post.comment_count }}</span>
+        </a>
+      </div>
+
+      <!-- Location Popup Trigger (coords resolved client-side from city) -->
+      {% if post.city %}
+        <button type="button" data-open-location data-title="{{ post.title|default:post.author.username }}" data-address="{{ post.city }}" data-country="{{ post.country }}" class="text-[11px] text-slate-400 hover:text-cyan-400 flex items-center space-x-1">
+          <i class="fa-solid fa-location-dot text-cyan-400"></i>
+          <span>{{ post.city }}, {{ post.country }}</span>
+        </button>
+      {% endif %}
+    </div>
+  </div>
+
+</div>

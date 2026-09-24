@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Send Sponsorship Proposal — SPORTIVA" %}{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-10">
+  <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl space-y-6">
+    
+    <div class="space-y-1 text-center">
+      <div class="w-12 h-12 mx-auto rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-xl mb-3">
+        <i class="fa-solid fa-file-signature"></i>
+      </div>
+      <h1 class="text-2xl font-black text-white">{% trans "Send Sponsorship Proposal" %}</h1>
+      <p class="text-xs text-slate-400">
+        {% trans "Submit a formal partnership proposal. Both athletes/clubs and sponsors can initiate and negotiate sponsorship terms directly." %}
+      </p>
+    </div>
+
+    <form method="post" class="space-y-5">
+      {% csrf_token %}
+
+      <!-- Proposal Type -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Proposal Type" %} *</label>
+        <select name="proposal_type" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+          <option value="ATHLETE_TO_SPONSOR" {% if user.role == 'ATHLETE' or user.role == 'ORGANIZATION' %}selected{% endif %}>
+            {% trans "Athlete / Club Requesting Sponsorship from a Brand" %}
+          </option>
+          <option value="SPONSOR_TO_ATHLETE" {% if user.role == 'SPONSOR' %}selected{% endif %}>
+            {% trans "Sponsor Offering Deal / Funding to Athlete or Club" %}
+          </option>
+          <option value="EVENT_SPONSORSHIP">
+            {% trans "Event / Tournament Sponsorship Proposal" %}
+          </option>
+        </select>
+      </div>
+
+      <!-- Target Recipient Sponsor or Athlete -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Target Sponsor (if requesting sponsor)" %}</label>
+          <select name="recipient_sponsor_id" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+            <option value="">-- {% trans "Select Sponsor" %} --</option>
+            {% for sp in all_sponsors %}
+              <option value="{{ sp.id }}" {% if target_sponsor and target_sponsor.id == sp.id %}selected{% endif %}>
+                {{ sp.sponsor_profile.company_name|default:sp.username }} ({{ sp.city }}, {{ sp.country }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Target Athlete / Club (if offering deal)" %}</label>
+          <select name="recipient_athlete_id" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+            <option value="">-- {% trans "Select Athlete / Club" %} --</option>
+            {% for ath in all_athletes %}
+              <option value="{{ ath.id }}" {% if target_athlete and target_athlete.id == ath.id %}selected{% endif %}>
+                {{ ath.username }} ({{ ath.get_role_display }})
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Proposal Title / Subject" %} *</label>
+        <input type="text" name="title" required class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500" placeholder="e.g. 2026 World Championship Travel & Gear Sponsorship">
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Financial Value / Budget Request" %} *</label>
+        <input type="text" name="amount" required class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500" placeholder="e.g. $5,000 / 2,500,000 FCFA / Apparel package">
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Deliverables & Partnership Terms" %} *</label>
+        <textarea name="deliverables_description" rows="3" required class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500" placeholder="Detail what is expected, competition schedule, brand logo placement, social media deliverables..."></textarea>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 mb-1.5">{% trans "Perks & Mutual Benefits Offered" %}</label>
+        <textarea name="perks_offered" rows="2" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500" placeholder="e.g. VIP tournament passes, Jersey branding, 50k social media impressions..."></textarea>
+      </div>
+
+      <div class="pt-4 flex items-center justify-end space-x-3">
+        <a href="{% url 'sponsorships_list' %}" class="px-5 py-3 rounded-2xl bg-slate-800 text-slate-300 hover:text-white text-xs font-bold">
+          {% trans "Cancel" %}
+        </a>
+        <button type="submit" class="sportiva-btn-emerald px-6 py-3 rounded-2xl text-xs font-bold">
+          <i class="fa-solid fa-paper-plane mr-1.5"></i> {% trans "Send Proposal" %}
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

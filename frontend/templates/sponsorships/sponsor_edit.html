@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Edit Sponsor Profile" %} — SPORTIVA{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold mb-2">
+        <i class="fa-solid fa-handshake"></i>
+        <span>{% trans "Brand & Sponsor Portal" %}</span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">{% trans "Edit Sponsor Profile" %}</h1>
+      <p class="text-slate-400 text-sm mt-1">{% trans "Showcase your brand requirements, budget, and supported sporting disciplines to athletes and teams." %}</p>
+    </div>
+    <a href="{% url 'sponsor_detail' pk=profile.pk %}" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-xs font-semibold border border-white/10 transition flex items-center self-start">
+      <i class="fa-solid fa-arrow-left mr-2"></i> {% trans "Back to Profile" %}
+    </a>
+  </div>
+
+  <!-- Form -->
+  <form method="post" enctype="multipart/form-data" class="glass-card p-6 sm:p-8 rounded-3xl border border-white/10 space-y-6">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/20 text-rose-300 text-sm space-y-1">
+        <div class="font-bold flex items-center"><i class="fa-solid fa-triangle-exclamation mr-2"></i>{% trans "Please correct the errors below:" %}</div>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <p class="text-xs">• {{ field.label }}: {{ error }}</p>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Company Name -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Company / Brand Name" %} *</label>
+        {{ form.company_name }}
+      </div>
+
+      <!-- Industry -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Industry" %}</label>
+        {{ form.industry }}
+      </div>
+
+      <!-- Brand Tagline -->
+      <div class="md:col-span-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Brand Tagline / Slogan" %}</label>
+        {{ form.brand_tagline }}
+      </div>
+
+      <!-- Annual Budget Range -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Annual Budget Range" %}</label>
+        {{ form.annual_budget_range }}
+      </div>
+
+      <!-- Website -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Official Website" %}</label>
+        {{ form.website }}
+      </div>
+
+      <!-- Country -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Country" %}</label>
+        {{ form.country }}
+      </div>
+
+      <!-- City -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "City" %}</label>
+        {{ form.city }}
+      </div>
+
+      <!-- Address -->
+      <div class="md:col-span-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Headquarters Address" %}</label>
+        {{ form.address }}
+      </div>
+
+      <!-- Contact Email -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Sponsorship Inquiries Email" %}</label>
+        {{ form.contact_email }}
+      </div>
+
+      <!-- WhatsApp -->
+      <div>
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "WhatsApp Business Number" %}</label>
+        {{ form.whatsapp_number }}
+      </div>
+
+      <!-- What We Offer -->
+      <div class="md:col-span-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "What We Offer to Athletes / Teams" %}</label>
+        {{ form.what_we_offer }}
+      </div>
+
+      <!-- Requirements Criteria -->
+      <div class="md:col-span-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Selection Criteria & Requirements" %}</label>
+        {{ form.requirements_criteria }}
+      </div>
+
+      <!-- Sports Supported -->
+      <div class="md:col-span-2 space-y-3">
+        <label class="block text-xs font-bold uppercase tracking-wider text-cyan-400 mb-1">{% trans "Sports Supported (Select all that apply)" %}</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {% for sport in available_sports %}
+            <label class="flex items-center space-x-2.5 p-3 rounded-xl bg-slate-900 border border-slate-700/60 hover:border-cyan-500/50 cursor-pointer transition">
+              <input type="checkbox" name="sports_supported" value="{{ sport }}"
+                     {% if sport in profile.sports_supported %}checked{% endif %}
+                     class="w-4 h-4 rounded text-cyan-500 focus:ring-cyan-500 border-slate-700 bg-slate-800">
+              <span class="text-xs font-semibold text-slate-200">{{ sport }}</span>
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Brand Logo -->
+      <div class="md:col-span-2">
+        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">{% trans "Brand Logo" %}</label>
+        {% if profile.logo %}
+          <div class="flex items-center gap-4 mb-3">
+            <img src="{{ profile.logo.url }}" alt="{{ profile.company_name }}" class="w-16 h-16 rounded-xl object-contain bg-slate-900 border border-white/10 p-2">
+            <span class="text-xs text-slate-400">{% trans "Current Logo Uploaded" %}</span>
+          </div>
+        {% endif %}
+        {{ form.logo }}
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center justify-end gap-3 pt-6 border-t border-white/10">
+      <a href="{% url 'sponsor_detail' pk=profile.pk %}" class="px-6 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-sm font-semibold transition">
+        {% trans "Cancel" %}
+      </a>
+      <button type="submit" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 transition">
+        <i class="fa-solid fa-floppy-disk mr-2"></i> {% trans "Save Profile" %}
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

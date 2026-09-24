@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Launch Sponsorship Campaign" %} — SPORTIVA{% endblock %}
+
+{% block content %}
+<div class="max-w-3xl mx-auto px-4 py-12">
+  <div class="glass-card p-8 rounded-3xl border border-white/10 space-y-6 shadow-2xl">
+    <div class="border-b border-white/10 pb-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold mb-2">
+        <i class="fas fa-bullhorn"></i>
+        <span>{% trans "Crowdfunding & Sponsorships" %}</span>
+      </div>
+      <h1 class="text-2xl font-bold text-white tracking-tight">{% trans "Launch a Sponsorship Campaign" %}</h1>
+      <p class="text-xs text-slate-400 mt-1">{% trans "Raise funds for your sports team, tournament, equipment, travel, or athlete sponsorships worldwide." %}</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-4">
+      {% csrf_token %}
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Campaign Title" %}</label>
+        {{ form.title }}
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Funding Category" %}</label>
+          {{ form.category }}
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Target Funding Amount" %}</label>
+          {{ form.target_amount }}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "City" %}</label>
+          {{ form.city }}
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Deadline Date" %}</label>
+          {{ form.deadline }}
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Campaign Story & Details" %}</label>
+        {{ form.description }}
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "WhatsApp Contact" %}</label>
+        {{ form.whatsapp_number }}
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">{% trans "Campaign Banner Image" %}</label>
+        {{ form.banner }}
+      </div>
+
+      <button type="submit" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-sm font-bold shadow-lg shadow-cyan-500/20 transition mt-4">
+        {% trans "Launch Campaign" %}
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

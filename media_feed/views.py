@@ -3,9 +3,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django import forms
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from accounts.decorators import tab_required
 from organizations.models import SportsCategory
 from .models import Post, Comment, Like
+
+
+FEED_TABS = [
+    ('for_you', _('For You'), 'fa-wand-magic-sparkles'),
+    ('following', _('Following'), 'fa-user-group'),
+    ('shorts', _('Shorts & Reels'), 'fa-clapperboard'),
+    ('trending', _('Trending'), 'fa-fire'),
+]
 
 
 class PostForm(forms.ModelForm):
@@ -64,6 +73,12 @@ def media_feed_list(request):
 
     posts = list(queryset)
 
+    liked_post_ids = set()
+    followed_ids = set()
+    if request.user.is_authenticated:
+        liked_post_ids = set(Like.objects.filter(user=request.user).values_list('post_id', flat=True))
+        followed_ids = set(request.user.following.values_list('followed_user_id', flat=True))
+
     # Personalization Logic
     if tab == 'for_you' and request.user.is_authenticated:
         fav_sports = [s.lower() for s in (request.user.favorite_sports or [])]
@@ -73,17 +88,12 @@ def media_feed_list(request):
                     return 0
                 return 1
             posts.sort(key=sport_priority)
-    elif tab == 'following' and request.user.is_authenticated:
-        followed_user_ids = list(request.user.following.values_list('followed_user_id', flat=True))
-        posts = [p for p in posts if p.author_id in followed_user_ids]
+    elif tab == 'following':
+        posts = [p for p in posts if p.author_id in followed_ids]
     elif tab == 'shorts':
         posts = [p for p in posts if p.is_short]
     elif tab == 'trending':
         posts.sort(key=lambda p: p.like_count(), reverse=True)
-
-    liked_post_ids = set()
-    if request.user.is_authenticated:
-        liked_post_ids = set(Like.objects.filter(user=request.user).values_list('post_id', flat=True))
 
     sports = SportsCategory.objects.all()
 
@@ -91,8 +101,10 @@ def media_feed_list(request):
         'posts': posts,
         'top_shorts': top_shorts,
         'liked_post_ids': liked_post_ids,
+        'followed_ids': followed_ids,
         'post_form': PostForm(),
         'active_tab': tab,
+        'feed_tabs': FEED_TABS,
         'sports': sports,
         'selected_sport': sport_filter,
         'selected_tag': hashtag_filter,

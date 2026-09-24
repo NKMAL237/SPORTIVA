@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Sports Gear Marketplace" %} — SPORTIVA{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+  
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-white/10">
+    <div>
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold mb-2">
+        <i class="fas fa-shopping-bag"></i>
+        <span>{% trans "Global Equipment Network" %}</span>
+      </div>
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">{% trans "Sports Equipment Marketplace" %}</h1>
+      <p class="text-slate-400 text-sm mt-1">{% trans "Buy, sell, and trade authentic sports gear, apparel, footwear, and equipment globally." %}</p>
+    </div>
+    {% if user.is_authenticated %}
+      <a href="{% url 'product_create' %}" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center self-start md:self-auto transition">
+        <i class="fa-solid fa-plus-circle mr-2"></i> {% trans "List an Item" %}
+      </a>
+    {% else %}
+      <a href="{% url 'login' %}" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm shadow-lg shadow-cyan-500/20 flex items-center justify-center self-start md:self-auto transition">
+        <i class="fa-solid fa-right-to-bracket mr-2"></i> {% trans "Log in to Sell" %}
+      </a>
+    {% endif %}
+  </div>
+
+  <!-- Search & Filter Bar -->
+  <form method="get" class="glass-card p-4 rounded-2xl border border-white/10 flex flex-col md:flex-row gap-4">
+    <div class="flex-grow grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{% trans "Filter by City" %}</label>
+        <select name="city" onchange="this.form.submit()" class="w-full px-4 py-2 rounded-xl bg-slate-950/80 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-500 transition">
+          <option value="">{% trans "All Cities" %}</option>
+          <option value="London" {% if selected_city == 'London' %}selected{% endif %}>London</option>
+          <option value="Paris" {% if selected_city == 'Paris' %}selected{% endif %}>Paris</option>
+          <option value="Madrid" {% if selected_city == 'Madrid' %}selected{% endif %}>Madrid</option>
+          <option value="New York" {% if selected_city == 'New York' %}selected{% endif %}>New York</option>
+          <option value="Yaoundé" {% if selected_city == 'Yaoundé' %}selected{% endif %}>Yaoundé</option>
+          <option value="Douala" {% if selected_city == 'Douala' %}selected{% endif %}>Douala</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{% trans "Sports Discipline" %}</label>
+        <select name="category" onchange="this.form.submit()" class="w-full px-4 py-2 rounded-xl bg-slate-950/80 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-500 transition">
+          <option value="">{% trans "All Sports Categories" %}</option>
+          {% for cat in categories %}
+            <option value="{{ cat.id }}" {% if selected_category == cat.id|stringformat:"s" %}selected{% endif %}>{{ cat.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{% trans "Item Condition" %}</label>
+        <select name="condition" onchange="this.form.submit()" class="w-full px-4 py-2 rounded-xl bg-slate-950/80 border border-white/10 text-white text-sm focus:outline-none focus:border-cyan-500 transition">
+          <option value="">{% trans "All Conditions" %}</option>
+          {% for cond_code, cond_label in conditions %}
+            <option value="{{ cond_code }}" {% if selected_condition == cond_code %}selected{% endif %}>{{ cond_label }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    {% if selected_city or selected_category or selected_condition %}
+      <div class="flex items-end">
+        <a href="{% url 'marketplace_list' %}" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-rose-400 text-xs font-semibold border border-white/10 flex items-center transition">
+          <i class="fa-solid fa-xmark mr-1.5"></i> {% trans "Clear Filters" %}
+        </a>
+      </div>
+    {% endif %}
+  </form>
+
+  <!-- Marketplace Products Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for product in products %}
+      <div class="glass-card p-5 rounded-3xl space-y-4 border border-white/10 flex flex-col justify-between group hover:border-cyan-500/40 transition-all duration-300">
+        <div class="space-y-3">
+          <!-- Product Image -->
+          <div class="w-full h-48 rounded-2xl bg-slate-950 overflow-hidden border border-white/10 relative">
+            {% if product.image %}
+              <img src="{{ product.image.url }}" alt="{{ product.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            {% else %}
+              <div class="w-full h-full flex items-center justify-center text-slate-600 text-4xl">
+                <i class="fa-solid {{ product.category.icon_class|default:'fa-box' }}"></i>
+              </div>
+            {% endif %}
+            
+            <div class="absolute top-3 left-3 flex gap-1.5 flex-wrap">
+              <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-slate-950/80 text-cyan-400 border border-cyan-500/20 backdrop-blur-md">
+                {{ product.category.name }}
+              </span>
+              <span class="px-2.5 py-1 text-[11px] font-bold rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30 backdrop-blur-md">
+                {{ product.get_condition_display }}
+              </span>
+            </div>
+
+            {% if product.latitude and product.longitude %}
+            <button type="button" onclick="openLocationModal({{ product.latitude }}, {{ product.longitude }}, '{{ product.title|escapejs }}', '{{ product.city|escapejs }}')"
+                    class="absolute top-3 right-3 p-2 rounded-lg bg-slate-950/80 hover:bg-slate-900 text-rose-400 border border-white/10 backdrop-blur-md transition shadow-md"
+                    title="{% trans 'View item location' %}">
+              <i class="fas fa-map-marker-alt"></i>
+            </button>
+            {% endif %}
+          </div>
+
+          <!-- Product Details -->
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 mb-1">
+              <span><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> {{ product.city }}</span>
+              <span>{{ product.created_at|date:"d M Y" }}</span>
+            </div>
+            <a href="{% url 'product_detail' pk=product.pk %}" class="text-base font-bold text-white hover:text-cyan-400 transition-colors block line-clamp-1">
+              {{ product.title }}
+            </a>
+            <p class="text-xs text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+              {{ product.description }}
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-white/10 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs text-slate-400 font-medium">{% trans "Price" %}</span>
+            <span class="text-xl font-extrabold text-cyan-400 font-mono">{{ product.price_formatted }}</span>
+          </div>
+
+          <div class="flex gap-2">
+            <a href="{% url 'product_detail' pk=product.pk %}" class="flex-1 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-white text-xs font-semibold flex items-center justify-center border border-white/10 transition">
+              {% trans "Details" %}
+            </a>
+            {% if product.seller != user %}
+            <a href="{% url 'chat:start_direct_chat' product.seller.id %}" class="px-3 py-2.5 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 text-xs font-bold flex items-center justify-center border border-cyan-500/30 transition" title="{% trans 'Direct Message Seller' %}">
+              <i class="fas fa-comment-dots"></i>
+            </a>
+            {% endif %}
+            {% if product.whatsapp_number %}
+              <a href="https://wa.me/{{ product.clean_whatsapp }}?text=Hello,%20I%20am%20interested%20in%20your%20item%20'{{ product.title|urlencode }}'%20listed%20on%20SPORTIVA" 
+                 target="_blank" 
+                 class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center shadow-md transition">
+                <i class="fa-brands fa-whatsapp text-sm mr-1.5"></i> WhatsApp
+              </a>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    {% empty %}
+      <div class="col-span-full py-16 text-center glass-card rounded-3xl border border-white/10">
+        <i class="fa-solid fa-store-slash text-4xl text-slate-600 mb-3"></i>
+        <p class="text-slate-300 font-semibold text-base">{% trans "No Items Found in Marketplace" %}</p>
+        <p class="text-xs text-slate-500 mt-1">{% trans "Try adjusting your city, discipline, or condition filter." %}</p>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Withdraw Proposal — {{ proposal.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-12">
+  <div class="glass-panel rounded-3xl border border-amber-500/40 shadow-2xl p-8 space-y-6 text-center">
+
+    <div class="flex justify-center">
+      <div class="w-20 h-20 rounded-full bg-amber-500/10 border-2 border-amber-500/40 flex items-center justify-center text-4xl text-amber-400">
+        <i class="fa-solid fa-file-circle-minus"></i>
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <h1 class="text-2xl font-black text-white">Withdraw Proposal</h1>
+      <p class="text-slate-400 text-sm">
+        Withdraw your sponsorship proposal:<br>
+        <span class="text-amber-400 font-bold text-base">{{ proposal.title }}</span>
+      </p>
+    </div>
+
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs text-left space-y-2">
+      <div class="flex justify-between">
+        <span class="text-slate-400">Type</span>
+        <span class="text-white">{{ proposal.get_proposal_type_display }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Proposed Value</span>
+        <span class="text-emerald-400 font-bold">{{ proposal.amount }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Current Status</span>
+        <span class="text-amber-400">{{ proposal.get_status_display }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Sent On</span>
+        <span class="text-white">{{ proposal.created_at|date:"d M Y" }}</span>
+      </div>
+    </div>
+
+    <div class="p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 text-[11px] text-amber-200 text-left">
+      <i class="fa-solid fa-info-circle mr-1 text-amber-400"></i>
+      Withdrawing marks this proposal as <strong>Declined</strong>. You can always send a new proposal later.
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a href="{% url 'sponsorships_list' %}"
+           class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-bold transition-colors text-center">
+          <i class="fa-solid fa-arrow-left mr-2"></i>Keep Proposal
+        </a>
+        <button type="submit"
+                class="w-full sm:w-auto px-8 py-3 rounded-2xl bg-amber-600 hover:bg-amber-500 text-white text-sm font-black shadow-lg transition-all active:scale-95">
+          <i class="fa-solid fa-xmark mr-2"></i>Withdraw Proposal
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,10 +1,7 @@
-import os
-import json
 import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from django.conf import settings
-from django.views.decorators.cache import cache_page
+from django.contrib.staticfiles import finders
 from accounts.models import User
 from events.models import Event
 from media_feed.models import Post, Like
@@ -14,7 +11,6 @@ from organizations.models import SportsCategory
 
 
 # ─── CURATED GLOBAL SPORTS NEWS (OFFLINE-READY BUILT-IN DATA) ────────────────
-# These articles are always available. When online, a real API can override.
 BUILT_IN_NEWS = [
     {
         "title": "Erling Haaland breaks another Champions League scoring record in dramatic comeback",
@@ -137,8 +133,10 @@ def home(request):
         all_posts.sort(key=sort_by_preference)
 
     liked_post_ids = set()
+    followed_ids = set()
     if request.user.is_authenticated:
         liked_post_ids = set(Like.objects.filter(user=request.user).values_list('post_id', flat=True))
+        followed_ids = set(request.user.following.values_list('followed_user_id', flat=True))
 
     # 3. Top Athletes Leaderboard
     top_athletes = [u for u in User.objects.filter(role=User.Role.ATHLETE, is_active=True)]
@@ -157,6 +155,7 @@ def home(request):
         'top_shorts': top_shorts,
         'posts': all_posts,
         'liked_post_ids': liked_post_ids,
+        'followed_ids': followed_ids,
         'post_form': PostForm(),
         'top_athletes': top_athletes,
         'featured_events': featured_events,
@@ -178,22 +177,23 @@ def offline_view(request):
     return render(request, 'offline.html')
 
 
+def _serve_static_file(filename, content_type, fallback):
+    """Locate a static asset through the staticfiles finders and serve it inline."""
+    path = finders.find(filename)
+    if not path:
+        return HttpResponse(fallback, content_type=content_type)
+    with open(path, 'rb') as f:
+        return HttpResponse(f.read(), content_type=content_type)
+
+
 def service_worker(request):
-    """Serve sw.js from static directory with root scope."""
-    sw_path = os.path.join(settings.BASE_DIR, 'static', 'sw.js')
-    if os.path.exists(sw_path):
-        with open(sw_path, 'rb') as f:
-            return HttpResponse(f.read(), content_type='application/javascript')
-    return HttpResponse("// sw not found", content_type='application/javascript')
+    """Serve sw.js from the site root so it controls the whole origin scope."""
+    return _serve_static_file('sw.js', 'application/javascript', '// sw not found')
 
 
 def manifest(request):
-    """Serve manifest.json."""
-    manifest_path = os.path.join(settings.BASE_DIR, 'static', 'manifest.json')
-    if os.path.exists(manifest_path):
-        with open(manifest_path, 'rb') as f:
-            return HttpResponse(f.read(), content_type='application/json')
-    return HttpResponse("{}", content_type='application/json')
+    """Serve manifest.json from the site root."""
+    return _serve_static_file('manifest.json', 'application/json', '{}')
 
 
 def sports_news_api(request):
@@ -212,4 +212,3 @@ def sports_news_api(request):
         'articles': BUILT_IN_NEWS,
         'last_updated': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
     }, json_dumps_params={'ensure_ascii': False})
-

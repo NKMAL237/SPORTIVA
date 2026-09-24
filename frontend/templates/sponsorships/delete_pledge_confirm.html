@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}Remove Pledge — {{ pledge.campaign.title }}{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-12">
+  <div class="glass-panel rounded-3xl border border-rose-500/40 shadow-2xl p-8 space-y-6 text-center">
+
+    <div class="flex justify-center">
+      <div class="w-20 h-20 rounded-full bg-rose-500/10 border-2 border-rose-500/40 flex items-center justify-center text-4xl text-rose-400">
+        <i class="fa-solid fa-hand-holding-dollar"></i>
+      </div>
+    </div>
+
+    <div class="space-y-2">
+      <h1 class="text-2xl font-black text-white">Remove Pledge</h1>
+      <p class="text-slate-400 text-sm">
+        Remove your pledge from campaign:<br>
+        <span class="text-white font-bold text-base">{{ pledge.campaign.title }}</span>
+      </p>
+    </div>
+
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs text-left space-y-2">
+      <div class="flex justify-between">
+        <span class="text-slate-400">Your Pledge</span>
+        <span class="text-rose-400 font-bold text-base">{{ pledge.amount|floatformat:"0" }}</span>
+      </div>
+      {% if pledge.message %}
+      <div class="flex justify-between">
+        <span class="text-slate-400">Your Message</span>
+        <span class="text-white italic">"{{ pledge.message }}"</span>
+      </div>
+      {% endif %}
+      <div class="flex justify-between">
+        <span class="text-slate-400">Pledged On</span>
+        <span class="text-white">{{ pledge.created_at|date:"d M Y" }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Campaign Progress After</span>
+        <span class="text-amber-400">{{ pledge.campaign.raised_amount|floatformat:"0" }} → will decrease</span>
+      </div>
+    </div>
+
+    <div class="p-3 rounded-xl bg-slate-800/60 border border-slate-700 text-[11px] text-slate-300 text-left">
+      <i class="fa-solid fa-info-circle mr-1 text-cyan-400"></i>
+      Removing your pledge will reduce the campaign's raised total. The campaign will continue for other backers.
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a href="{% url 'campaign_detail' pk=pledge.campaign.pk %}"
+           class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-bold transition-colors text-center">
+          <i class="fa-solid fa-arrow-left mr-2"></i>Keep My Pledge
+        </a>
+        <button type="submit"
+                class="w-full sm:w-auto px-8 py-3 rounded-2xl bg-rose-700 hover:bg-rose-600 text-white text-sm font-black shadow-lg transition-all active:scale-95">
+          <i class="fa-solid fa-trash-can mr-2"></i>Remove Pledge
+        </button>
+      </div>
+    </form>
+
+  </div>
+</div>
+{% endblock %}

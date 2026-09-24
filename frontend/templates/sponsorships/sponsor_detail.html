@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ sponsor.company_name }} — SPORTIVA Sponsor Profile{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <!-- Sponsor Header Banner -->
+  <div class="glass-panel p-8 sm:p-10 rounded-3xl border border-emerald-500/30 shadow-2xl relative overflow-hidden">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+      
+      <div class="flex items-center space-x-6">
+        <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden bg-emerald-950/60 border border-emerald-500/40 p-2 flex items-center justify-center text-4xl text-emerald-400 flex-shrink-0 shadow-2xl">
+          {% if sponsor.logo %}
+            <img src="{{ sponsor.logo.url }}" alt="{{ sponsor.company_name }}" class="w-full h-full object-cover rounded-2xl">
+          {% else %}
+            <i class="fa-solid fa-building text-emerald-400"></i>
+          {% endif %}
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center space-x-2">
+            <h1 class="text-2xl sm:text-3xl font-black text-white">{{ sponsor.company_name }}</h1>
+            {% if sponsor.is_verified %}
+              <i class="fa-solid fa-circle-check text-emerald-400 text-lg" title="Verified Corporate Partner"></i>
+            {% endif %}
+          </div>
+          <p class="text-xs text-slate-400">
+            <i class="fa-solid fa-briefcase text-emerald-400 mr-1"></i> {{ sponsor.industry }} &bull; 
+            <i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> {{ sponsor.city }}, {{ sponsor.country }}
+          </p>
+          {% if sponsor.brand_tagline %}
+            <p class="text-xs text-slate-300 italic">"{{ sponsor.brand_tagline }}"</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap items-center gap-3">
+        <a href="{% url 'send_proposal' %}?sponsor_id={{ sponsor.user.id }}" class="sportiva-btn-emerald px-6 py-3.5 rounded-2xl text-xs font-bold flex items-center shadow-lg">
+          <i class="fa-solid fa-paper-plane mr-2"></i> {% trans "Submit Sponsorship Proposal" %}
+        </a>
+        <a href="{% url 'chat:start_direct_chat' sponsor.user.id %}" class="px-5 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-bold flex items-center transition-colors">
+          <i class="fa-solid fa-comment-dots mr-2"></i> {% trans "Chat with Sponsor" %}
+        </a>
+        <button type="button" data-open-location data-lat="{{ sponsor.latitude }}" data-lng="{{ sponsor.longitude }}" data-title="{{ sponsor.company_name|escapejs }}" data-address="{{ sponsor.address|default:sponsor.city|escapejs }}" data-country="{{ sponsor.country|escapejs }}" class="px-4 py-3.5 rounded-2xl bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 text-xs font-bold flex items-center transition-colors">
+          <i class="fa-solid fa-location-dot text-cyan-400 mr-2"></i> {% trans "Map Location" %}
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DETAILS GRID -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT: Offerings, Criteria & Active Contracts -->
+    <div class="lg:col-span-8 space-y-6">
+      
+      <!-- What We Offer -->
+      <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-3">
+        <h2 class="text-sm font-bold text-white uppercase tracking-wider flex items-center">
+          <i class="fa-solid fa-gift text-emerald-400 mr-2"></i> {% trans "Sponsorship Benefits & Offerings" %}
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed whitespace-pre-line">{{ sponsor.what_we_offer }}</p>
+      </div>
+
+      <!-- Selection Criteria -->
+      <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-3">
+        <h2 class="text-sm font-bold text-white uppercase tracking-wider flex items-center">
+          <i class="fa-solid fa-clipboard-check text-cyan-400 mr-2"></i> {% trans "Requirements & Athlete Criteria" %}
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed whitespace-pre-line">{{ sponsor.requirements_criteria|default:"Open to high-performing athletes and certified tournament organizers across all recognized sport disciplines." }}</p>
+      </div>
+
+      <!-- Active Contracts Portfolio -->
+      <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+        <h2 class="text-sm font-bold text-white uppercase tracking-wider flex items-center">
+          <i class="fa-solid fa-file-contract text-amber-400 mr-2"></i> {% trans "Active Sponsored Portfolio & Contracts" %}
+        </h2>
+        <div class="space-y-3">
+          {% for ctr in contracts %}
+            <div class="p-4 rounded-2xl bg-slate-900/70 border border-slate-800 flex items-center justify-between text-xs">
+              <div>
+                <span class="text-[10px] text-cyan-400 font-mono">#{{ ctr.contract_number }}</span>
+                <h4 class="font-bold text-white text-sm">{{ ctr.title }}</h4>
+                <p class="text-[11px] text-slate-400">
+                  {% if ctr.athlete %}Athlete: <strong>{{ ctr.athlete.username }}</strong>{% endif %}
+                  {% if ctr.event %}Event: <strong>{{ ctr.event.title }}</strong>{% endif %}
+                </p>
+              </div>
+              <div class="text-right">
+                <span class="font-black text-amber-400">{{ ctr.financial_value }}</span>
+                <span class="text-[10px] text-emerald-400 block font-semibold">Active & Enforced</span>
+              </div>
+            </div>
+          {% empty %}
+            <p class="text-xs text-slate-500">{% trans "No active public contracts listed." %}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Budget, Supported Sports & Contact -->
+    <div class="lg:col-span-4 space-y-6">
+      
+      <!-- Key Sponsor Stats -->
+      <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4 text-xs">
+        <h3 class="font-bold text-white text-xs uppercase tracking-wider">{% trans "Sponsorship Overview" %}</h3>
+        
+        <div class="space-y-3">
+          <div class="flex justify-between py-2 border-b border-slate-800">
+            <span class="text-slate-400">Annual Budget:</span>
+            <strong class="text-emerald-400">{{ sponsor.annual_budget_range }}</strong>
+          </div>
+          <div class="flex justify-between py-2 border-b border-slate-800">
+            <span class="text-slate-400">Location:</span>
+            <strong class="text-white">{{ sponsor.city }}, {{ sponsor.country }}</strong>
+          </div>
+          {% if sponsor.website %}
+            <div class="flex justify-between py-2 border-b border-slate-800">
+              <span class="text-slate-400">Website:</span>
+              <a href="{{ sponsor.website }}" target="_blank" class="text-cyan-400 hover:underline truncate max-w-[150px]">{{ sponsor.website }}</a>
+            </div>
+          {% endif %}
+          {% if sponsor.contact_email %}
+            <div class="flex justify-between py-2 border-b border-slate-800">
+              <span class="text-slate-400">Email:</span>
+              <a href="mailto:{{ sponsor.contact_email }}" class="text-cyan-300 hover:underline truncate max-w-[170px]">{{ sponsor.contact_email }}</a>
+            </div>
+          {% endif %}
+        </div>
+
+        {% if sponsor.whatsapp_number %}
+          <a href="https://wa.me/{{ sponsor.clean_whatsapp }}" target="_blank" class="w-full py-3 rounded-2xl bg-emerald-950 text-emerald-300 border border-emerald-700 font-bold flex items-center justify-center space-x-2 transition-colors">
+            <i class="fa-brands fa-whatsapp text-base"></i> <span>{% trans "Direct WhatsApp Channel" %}</span>
+          </a>
+        {% endif %}
+
+        {% if sponsor.user.social_links %}
+          <div class="pt-2 border-t border-slate-800 space-y-2">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{% trans "Other Contact Channels" %}</p>
+            <div class="flex flex-wrap gap-2">
+              {% for network, link in sponsor.user.social_links.items %}
+                <a href="{{ link }}" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-emerald-500/20 border border-slate-700 text-slate-300 hover:text-emerald-300 flex items-center justify-center" title="{{ network|title }}">
+                  <i class="fa-brands fa-{{ network }}"></i>
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

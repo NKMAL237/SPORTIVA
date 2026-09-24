@@ -1,0 +1,359 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{{ profile_user.get_full_name|default:profile_user.username }} — SPORTIVA Profile{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+  <!-- TOP PROFILE BANNER & HEADER -->
+  <div class="glass-panel p-6 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-500/10 via-blue-600/10 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+      
+      <!-- Left: Avatar & Personal Info -->
+      <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 text-center sm:text-left">
+        <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden p-1 bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-400 shadow-2xl flex-shrink-0">
+          {% if profile_user.avatar %}
+            <img src="{{ profile_user.avatar.url }}" alt="{{ profile_user.username }}" class="w-full h-full object-cover rounded-[22px]">
+          {% else %}
+            <div class="w-full h-full bg-[#090D16] rounded-[22px] flex items-center justify-center text-4xl font-extrabold text-white">
+              {{ profile_user.username|slice:":1"|upper }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            <h1 class="text-2xl sm:text-3xl font-black text-white leading-tight">
+              {{ profile_user.get_full_name|default:profile_user.username }}
+            </h1>
+            {% if profile_user.is_verified %}
+              <i class="fa-solid fa-circle-check text-cyan-400 text-lg" title="Verified Athlete"></i>
+            {% endif %}
+            <span class="text-xs px-3 py-1 rounded-full font-bold badge-{{ profile_user.role|lower }}">
+              {{ profile_user.get_role_display }}
+            </span>
+          </div>
+
+          <p class="text-xs text-slate-400">
+            @{{ profile_user.username }} • <i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> {{ profile_user.city }}, {{ profile_user.country }}
+          </p>
+
+          <p class="text-xs text-slate-300 max-w-xl leading-relaxed">
+            {{ profile_user.bio|default:"Official athlete and sports professional on SPORTIVA." }}
+          </p>
+
+          <!-- Social Links Row -->
+          <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1">
+            {% if profile_user.social_links.telegram %}
+              <a href="{{ profile_user.social_links.telegram }}" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:text-cyan-400 text-xs flex items-center space-x-1.5 transition-colors"><i class="fa-brands fa-telegram"></i> <span>Telegram</span></a>
+            {% endif %}
+            {% if profile_user.social_links.instagram %}
+              <a href="{{ profile_user.social_links.instagram }}" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:text-rose-400 text-xs flex items-center space-x-1.5 transition-colors"><i class="fa-brands fa-instagram"></i> <span>Instagram</span></a>
+            {% endif %}
+            {% if profile_user.social_links.twitter %}
+              <a href="{{ profile_user.social_links.twitter }}" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:text-white text-xs flex items-center space-x-1.5 transition-colors"><i class="fa-brands fa-x-twitter"></i> <span>X / Twitter</span></a>
+            {% endif %}
+            {% if profile_user.social_links.tiktok %}
+              <a href="{{ profile_user.social_links.tiktok }}" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:text-pink-400 text-xs flex items-center space-x-1.5 transition-colors"><i class="fa-brands fa-tiktok"></i> <span>TikTok</span></a>
+            {% endif %}
+            {% if profile_user.social_links.linkedin %}
+              <a href="{{ profile_user.social_links.linkedin }}" target="_blank" class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 hover:text-blue-400 text-xs flex items-center space-x-1.5 transition-colors"><i class="fa-brands fa-linkedin-in"></i> <span>LinkedIn</span></a>
+            {% endif %}
+            {% if profile_user.phone_number %}
+              <a href="https://wa.me/{{ profile_user.clean_phone_for_whatsapp }}" target="_blank" class="px-2.5 py-1 rounded-lg bg-emerald-950/60 border border-emerald-700 hover:text-emerald-300 text-xs flex items-center space-x-1.5 transition-colors"><i class="fa-brands fa-whatsapp text-emerald-400"></i> <span>WhatsApp</span></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Sportiva Scorecard & Actions -->
+      <div class="flex flex-col items-center md:items-end space-y-4 w-full md:w-auto">
+        
+        <!-- Score Card -->
+        <div class="glass-card p-4 rounded-2xl border border-slate-800 text-center md:text-right w-full sm:w-64">
+          <div class="flex items-center justify-between md:justify-end space-x-3 mb-1">
+            <span class="text-xs font-bold text-slate-400 uppercase">{% trans "Sportiva Score" %}</span>
+            <span class="text-2xl font-black text-amber-400">{{ profile_user.sportiva_score }}</span>
+          </div>
+          <div class="px-3 py-1 rounded-xl border text-xs font-bold inline-flex items-center space-x-1.5 {{ profile_user.sportiva_tier.color }}">
+            <span>{{ profile_user.sportiva_tier.badge }}</span>
+            <span>{{ profile_user.sportiva_tier.name }} Tier</span>
+          </div>
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="flex flex-wrap items-center justify-center md:justify-end gap-2 w-full">
+          {% if is_owner %}
+            <a href="{% url 'profile_edit' %}" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold border border-slate-700 flex items-center transition-colors">
+              <i class="fa-solid fa-user-pen mr-2 text-cyan-400"></i> {% trans "Edit Profile" %}
+            </a>
+            <a href="{% url 'add_exploit' %}" class="sportiva-btn px-4 py-2.5 rounded-xl text-xs font-bold flex items-center">
+              <i class="fa-solid fa-plus-circle mr-2"></i> {% trans "Add Exploit" %}
+            </a>
+          {% else %}
+            {% if user.is_authenticated %}
+              <form method="post" action="{% url 'toggle_follow' user_id=profile_user.id %}">
+                {% csrf_token %}
+                <button type="submit" class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all {% if is_following %}bg-slate-800 text-slate-300 hover:bg-rose-900/40 hover:text-rose-300 border border-slate-700{% else %}sportiva-btn{% endif %}">
+                  <i class="fa-solid {% if is_following %}fa-user-check{% else %}fa-user-plus{% endif %} mr-1.5"></i>
+                  {% if is_following %}{% trans "Subscribed / Following" %}{% else %}{% trans "Subscribe / Follow" %}{% endif %}
+                </button>
+              </form>
+
+              <a href="{% url 'chat:start_direct_chat' user_id=profile_user.id %}" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 text-xs font-bold flex items-center transition-colors">
+                <i class="fa-solid fa-comment-dots mr-2"></i> {% trans "Direct Chat" %}
+              </a>
+
+              {% if user.role == 'SPONSOR' or user.role == 'ORGANIZATION' %}
+                <a href="{% url 'send_proposal' %}?athlete_id={{ profile_user.id }}" class="px-4 py-2.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 text-emerald-300 border border-emerald-700 text-xs font-bold flex items-center transition-colors">
+                  <i class="fa-solid fa-handshake mr-2 text-emerald-400"></i> {% trans "Offer Sponsorship" %}
+                </a>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ATHLETE EXPLOITS, MERITS & VERIFICATION SECTION -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT: Verified Exploits Timeline & Scoring -->
+    <div class="lg:col-span-8 space-y-6">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center">
+            <i class="fa-solid fa-trophy text-amber-400 mr-2"></i> {% trans "Athlete Exploits & Merits" %}
+          </h2>
+          <p class="text-xs text-slate-400">
+            {% trans "Official medals, championship titles, match exploits, and verified records." %}
+          </p>
+        </div>
+
+        {% if is_owner %}
+          <a href="{% url 'add_exploit' %}" class="sportiva-btn px-4 py-2 rounded-xl text-xs font-bold flex items-center">
+            <i class="fa-solid fa-plus mr-1.5"></i> {% trans "Add New" %}
+          </a>
+        {% endif %}
+      </div>
+
+      <!-- Exploits List -->
+      <div class="space-y-4">
+        {% for exploit in exploits %}
+          <div class="glass-card rounded-3xl border {% if exploit.status == 'VERIFIED' %}border-slate-800 hover:border-emerald-500/40{% elif exploit.status == 'PENDING' %}border-amber-500/40 bg-amber-950/10{% else %}border-rose-800/40{% endif %} p-6 space-y-4 shadow-xl">
+            
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex items-start space-x-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-xl flex-shrink-0">
+                  {% if exploit.category == 'MEDAL' %}
+                    <i class="fa-solid fa-medal"></i>
+                  {% elif exploit.category == 'TITLE' %}
+                    <i class="fa-solid fa-trophy"></i>
+                  {% elif exploit.category == 'RECORD' %}
+                    <i class="fa-solid fa-stopwatch-20"></i>
+                  {% elif exploit.category == 'MVP' %}
+                    <i class="fa-solid fa-star"></i>
+                  {% else %}
+                    <i class="fa-solid fa-award"></i>
+                  {% endif %}
+                </div>
+
+                <div>
+                  <h3 class="text-base font-bold text-white leading-tight">{{ exploit.title }}</h3>
+                  <p class="text-xs text-cyan-400 font-semibold mt-0.5">
+                    <i class="fa-solid fa-flag-checkered mr-1"></i> {{ exploit.competition_name }} • {{ exploit.date_achieved|date:"M Y" }}
+                  </p>
+                  <span class="text-[10px] text-slate-400 uppercase font-mono">{{ exploit.get_category_display }}</span>
+                </div>
+              </div>
+
+              <!-- Status Badge -->
+              <div class="text-right flex-shrink-0">
+                {% if exploit.status == 'VERIFIED' %}
+                  <span class="px-3 py-1 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-700 text-xs font-bold flex items-center space-x-1">
+                    <i class="fa-solid fa-circle-check text-emerald-400"></i> <span>+{{ exploit.score_points }} PTS Verified</span>
+                  </span>
+                {% elif exploit.status == 'PENDING' %}
+                  <span class="px-3 py-1 rounded-full bg-amber-950 text-amber-300 border border-amber-700 text-xs font-bold flex items-center space-x-1">
+                    <i class="fa-solid fa-clock text-amber-400"></i> <span>Pending Verification</span>
+                  </span>
+                {% else %}
+                  <span class="px-3 py-1 rounded-full bg-rose-950 text-rose-300 border border-rose-700 text-xs font-bold">
+                    Rejected
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed">{{ exploit.description }}</p>
+
+            <!-- Proof Image & Links -->
+            {% if exploit.proof_image or exploit.proof_link %}
+              <div class="flex items-center space-x-3 pt-2">
+                {% if exploit.proof_image %}
+                  <a href="{{ exploit.proof_image.url }}" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-cyan-400 hover:text-white flex items-center space-x-1.5">
+                    <i class="fa-solid fa-file-image"></i> <span>{% trans "View Proof Certificate" %}</span>
+                  </a>
+                {% endif %}
+                {% if exploit.proof_link %}
+                  <a href="{{ exploit.proof_link }}" target="_blank" class="px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-700 text-xs text-slate-300 hover:text-white flex items-center space-x-1.5">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>{% trans "Official Match Record" %}</span>
+                  </a>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Verification Signature Info -->
+            {% if exploit.status == 'VERIFIED' and exploit.validated_by %}
+              <div class="p-3 rounded-2xl bg-slate-900/80 border border-emerald-900/50 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-2">
+                  <i class="fa-solid fa-signature text-emerald-400 text-sm"></i>
+                  <span class="text-slate-300">{% trans "Validated by:" %} <strong class="text-white">{{ exploit.validated_by.username }}</strong> ({{ exploit.validated_by.get_role_display }})</span>
+                </div>
+                {% if exploit.validation_notes %}
+                  <span class="text-slate-400 italic text-[11px]">"{{ exploit.validation_notes }}"</span>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            <!-- Verification Action Box (For Coaches, Clubs, Sponsors, Organizers) -->
+            {% if can_verify and exploit.status == 'PENDING' %}
+              <div class="p-4 rounded-2xl bg-slate-900 border border-cyan-500/30 space-y-3">
+                <p class="text-xs font-bold text-white flex items-center">
+                  <i class="fa-solid fa-stamp text-cyan-400 mr-2"></i> {% trans "Verify This Exploit as a Sports Authority" %}
+                </p>
+                <form method="post" action="{% url 'verify_exploit' exploit_id=exploit.id %}" class="space-y-2">
+                  {% csrf_token %}
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                    <div class="sm:col-span-2">
+                      <input type="text" name="validation_notes" placeholder="Validation notes e.g. Verified from official championship scoresheet" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+                    </div>
+                    <div>
+                      <input type="number" name="score_points" value="35" min="10" max="100" class="w-full px-3 py-2 rounded-xl bg-slate-950 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500" placeholder="Points (e.g. 35)">
+                    </div>
+                  </div>
+                  <div class="flex items-center space-x-2 pt-1">
+                    <button type="submit" name="action" value="VERIFY" class="sportiva-btn-emerald px-4 py-2 rounded-xl text-xs font-bold">
+                      <i class="fa-solid fa-check mr-1"></i> {% trans "Confirm & Validate (+Points)" %}
+                    </button>
+                    <button type="submit" name="action" value="REJECT" class="px-4 py-2 rounded-xl bg-rose-950 text-rose-300 border border-rose-800 text-xs font-bold hover:bg-rose-900">
+                      <i class="fa-solid fa-xmark mr-1"></i> {% trans "Reject" %}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            {% endif %}
+
+          </div>
+        {% empty %}
+          <div class="glass-card p-10 rounded-3xl border border-slate-800 text-center">
+            <i class="fa-solid fa-medal text-4xl text-slate-600 mb-3"></i>
+            <p class="text-sm font-bold text-white">{% trans "No exploits listed yet." %}</p>
+            <p class="text-xs text-slate-400 mt-1">{% trans "Add your career milestones, tournament victories and records to increase your Sportiva Score!" %}</p>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- Athlete Posts & Moments -->
+      <div class="pt-6 space-y-4">
+        <h3 class="text-base font-bold text-white flex items-center">
+          <i class="fa-solid fa-newspaper text-cyan-400 mr-2"></i> {% trans "Latest Posts & Highlights" %}
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {% for post in recent_posts %}
+            <div class="glass-card p-4 rounded-2xl border border-slate-800 space-y-2">
+              {% if post.image %}
+                <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-36 object-cover rounded-xl mb-2">
+              {% endif %}
+              <h4 class="font-bold text-white text-xs">{{ post.title|default:post.content|truncatechars:40 }}</h4>
+              <p class="text-[11px] text-slate-400 line-clamp-2">{{ post.content }}</p>
+              <div class="flex items-center justify-between text-[10px] text-slate-500 pt-1">
+                <span>{{ post.created_at|date:"M d, Y" }}</span>
+                <span><i class="fa-solid fa-heart text-rose-500 mr-1"></i> {{ post.like_count }}</span>
+              </div>
+            </div>
+          {% empty %}
+            <p class="text-xs text-slate-500">{% trans "No recent media posts." %}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Skill Endorsements & Organization/Sponsor Details -->
+    <div class="lg:col-span-4 space-y-6">
+      
+      <!-- Merit & Skill Endorsements -->
+      <div class="glass-card p-6 rounded-3xl border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center">
+            <i class="fa-solid fa-hand-holding-heart text-cyan-400 mr-2"></i> {% trans "Skill Endorsements" %}
+          </h3>
+          <span class="text-xs font-black text-cyan-400">{{ endorsements.count }}</span>
+        </div>
+
+        <div class="space-y-2.5">
+          {% for endo in endorsements %}
+            <div class="p-3 rounded-2xl bg-slate-900/70 border border-slate-800 text-xs space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-xs">{{ endo.skill_or_merit }}</span>
+                <span class="text-[10px] text-cyan-400 font-semibold">+10 PTS</span>
+              </div>
+              <p class="text-[11px] text-slate-400">By <strong>{{ endo.endorsed_by.username }}</strong></p>
+              {% if endo.comment %}
+                <p class="text-[11px] text-slate-300 italic">"{{ endo.comment }}"</p>
+              {% endif %}
+            </div>
+          {% empty %}
+            <p class="text-xs text-slate-500">{% trans "No endorsements yet." %}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Add Endorsement Form -->
+        {% if user.is_authenticated and user != profile_user %}
+          <form method="post" action="{% url 'endorse_athlete' athlete_id=profile_user.id %}" class="pt-3 border-t border-slate-800/80 space-y-2">
+            {% csrf_token %}
+            <input type="text" name="skill_or_merit" required placeholder="Endorse a skill (e.g. Speed, Tactical IQ, Power)" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+            <input type="text" name="comment" placeholder="Optional recommendation note" class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-white text-xs focus:outline-none focus:border-cyan-500">
+            <button type="submit" class="w-full sportiva-btn py-2 rounded-xl text-xs font-bold">
+              <i class="fa-solid fa-star mr-1"></i> {% trans "Endorse Athlete" %}
+            </button>
+          </form>
+        {% endif %}
+      </div>
+
+      <!-- Sponsor Profile Card if user is a Sponsor -->
+      {% if sponsor_profile %}
+        <div class="glass-card p-6 rounded-3xl border border-emerald-500/30 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white text-sm">{{ sponsor_profile.company_name }}</h3>
+              <p class="text-[11px] text-slate-400">{{ sponsor_profile.industry }}</p>
+            </div>
+          </div>
+          <div class="text-xs text-slate-300 space-y-1.5">
+            <p><strong>{% trans "Budget Range:" %}</strong> {{ sponsor_profile.annual_budget_range }}</p>
+            <p><strong>{% trans "What We Offer:" %}</strong> {{ sponsor_profile.what_we_offer }}</p>
+          </div>
+          <a href="{% url 'sponsor_detail' pk=sponsor_profile.pk %}" class="w-full py-2.5 rounded-xl bg-emerald-950/80 hover:bg-emerald-900 text-emerald-300 border border-emerald-700 text-xs font-bold block text-center transition-colors">
+            {% trans "View Sponsor Profile & Portfolio" %} &rarr;
+          </a>
+        </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

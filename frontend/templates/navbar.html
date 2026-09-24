@@ -1,0 +1,188 @@
+{% load i18n static %}
+<nav class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 backdrop-blur-xl bg-[#090D16]/90 shadow-lg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20 gap-4">
+      
+      <!-- Brand Logo -->
+      <div class="flex items-center space-x-3 flex-shrink-0">
+        <a href="{% url 'home' %}" class="flex items-center space-x-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-emerald-400 p-0.5 flex items-center justify-center shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-200">
+            <div class="w-full h-full bg-[#090D16] rounded-[14px] flex items-center justify-center">
+              <i class="fa-solid fa-bolt-lightning text-cyan-400 text-lg"></i>
+            </div>
+          </div>
+          <div>
+            <span class="text-2xl font-extrabold tracking-tight text-white">SPORTIVA</span>
+            <span class="block text-[10px] font-semibold text-cyan-400 tracking-wider uppercase">Global Sports Network</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links (Desktop — Equal Size Tabs) -->
+      <div class="hidden xl:flex items-center justify-center flex-1 max-w-3xl px-2">
+        <div class="grid grid-flow-col auto-cols-fr gap-1 w-full bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800">
+          
+          {% if 'home' in allowed_tabs %}
+            <a href="{% url 'home' %}" class="nav-tab-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+              <i class="fa-solid fa-house mr-1.5 text-xs text-cyan-400"></i>{% trans "Home" %}
+            </a>
+          {% endif %}
+
+          {% if 'profiles' in allowed_tabs %}
+            <a href="{% url 'profiles_list' %}" class="nav-tab-item {% if 'profile' in request.resolver_match.url_name %}active{% endif %}">
+              <i class="fa-solid fa-users mr-1.5 text-xs text-purple-400"></i>{% trans "Profiles" %}
+            </a>
+          {% endif %}
+
+          {% if 'events' in allowed_tabs %}
+            <a href="{% url 'events_list' %}" class="nav-tab-item {% if 'event' in request.resolver_match.url_name %}active{% endif %}">
+              <i class="fa-solid fa-calendar-days mr-1.5 text-xs text-amber-400"></i>{% trans "Events" %}
+            </a>
+          {% endif %}
+
+          {% if 'media_feed' in allowed_tabs %}
+            <a href="{% url 'media_feed_list' %}" class="nav-tab-item {% if 'media_feed' in request.resolver_match.url_name %}active{% endif %}">
+              <i class="fa-solid fa-newspaper mr-1.5 text-xs text-rose-400"></i>{% trans "News & Feed" %}
+            </a>
+          {% endif %}
+
+          {% if 'sponsorships' in allowed_tabs %}
+            <a href="{% url 'sponsorships_list' %}" class="nav-tab-item {% if 'sponsorship' in request.resolver_match.url_name %}active{% endif %}">
+              <i class="fa-solid fa-handshake mr-1.5 text-xs text-emerald-400"></i>{% trans "Sponsors" %}
+            </a>
+          {% endif %}
+
+          {% if 'marketplace' in allowed_tabs %}
+            <a href="{% url 'marketplace_list' %}" class="nav-tab-item {% if 'marketplace' in request.resolver_match.url_name %}active{% endif %}">
+              <i class="fa-solid fa-store mr-1.5 text-xs text-blue-400"></i>{% trans "Market" %}
+            </a>
+          {% endif %}
+
+          {% if 'chat' in allowed_tabs %}
+            <a href="{% url 'chat_inbox' %}" class="nav-tab-item {% if 'chat' in request.resolver_match.url_name %}active{% endif %}">
+              <i class="fa-solid fa-comments mr-1.5 text-xs text-teal-400"></i>{% trans "Chat" %}
+            </a>
+          {% endif %}
+
+          {% if 'user_management' in allowed_tabs %}
+            <a href="{% url 'user_management' %}" class="nav-tab-item {% if request.resolver_match.url_name == 'user_management' %}active{% endif %} text-cyan-400">
+              <i class="fa-solid fa-gear mr-1.5 text-xs"></i>{% trans "Admin" %}
+            </a>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <!-- Right Controls: Language Selector Dropdown + User Profile -->
+      <div class="flex items-center space-x-3 flex-shrink-0">
+        
+        <!-- Multi-Language Selector Dropdown -->
+        {% get_current_language as LANGUAGE_CODE %}
+        <div class="relative group">
+          <button type="button" class="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-slate-800/90 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 transition-all shadow-sm">
+            <i class="fa-solid fa-globe text-cyan-400"></i>
+            <span class="uppercase font-bold">{{ LANGUAGE_CODE }}</span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+          </button>
+          
+          <div class="absolute right-0 mt-2 w-44 rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-2 hidden group-hover:block z-50">
+            <form action="{% url 'set_language' %}" method="post">
+              {% csrf_token %}
+              <input name="next" type="hidden" value="{{ request.get_full_path }}">
+              <button type="submit" name="language" value="en" class="w-full text-left px-3 py-2 rounded-xl text-xs flex items-center space-x-2.5 hover:bg-slate-800 {% if LANGUAGE_CODE == 'en' %}text-cyan-400 font-bold bg-cyan-950/40{% else %}text-slate-300{% endif %}">
+                <span class="text-base">🇬🇧</span><span>English</span>
+              </button>
+              <button type="submit" name="language" value="fr" class="w-full text-left px-3 py-2 rounded-xl text-xs flex items-center space-x-2.5 hover:bg-slate-800 {% if LANGUAGE_CODE == 'fr' %}text-cyan-400 font-bold bg-cyan-950/40{% else %}text-slate-300{% endif %}">
+                <span class="text-base">🇫🇷</span><span>Français</span>
+              </button>
+              <button type="submit" name="language" value="es" class="w-full text-left px-3 py-2 rounded-xl text-xs flex items-center space-x-2.5 hover:bg-slate-800 {% if LANGUAGE_CODE == 'es' %}text-cyan-400 font-bold bg-cyan-950/40{% else %}text-slate-300{% endif %}">
+                <span class="text-base">🇪🇸</span><span>Español</span>
+              </button>
+              <button type="submit" name="language" value="de" class="w-full text-left px-3 py-2 rounded-xl text-xs flex items-center space-x-2.5 hover:bg-slate-800 {% if LANGUAGE_CODE == 'de' %}text-cyan-400 font-bold bg-cyan-950/40{% else %}text-slate-300{% endif %}">
+                <span class="text-base">🇩🇪</span><span>Deutsch</span>
+              </button>
+              <button type="submit" name="language" value="ar" class="w-full text-left px-3 py-2 rounded-xl text-xs flex items-center space-x-2.5 hover:bg-slate-800 {% if LANGUAGE_CODE == 'ar' %}text-cyan-400 font-bold bg-cyan-950/40{% else %}text-slate-300{% endif %}">
+                <span class="text-base">🇸🇦</span><span>العربية</span>
+              </button>
+              <button type="submit" name="language" value="pt" class="w-full text-left px-3 py-2 rounded-xl text-xs flex items-center space-x-2.5 hover:bg-slate-800 {% if LANGUAGE_CODE == 'pt' %}text-cyan-400 font-bold bg-cyan-950/40{% else %}text-slate-300{% endif %}">
+                <span class="text-base">🇵🇹</span><span>Português</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {% if user.is_authenticated %}
+          <div class="flex items-center space-x-2">
+            <!-- User Role Badge -->
+            <span class="hidden md:inline-block text-[11px] px-2.5 py-1 rounded-full font-semibold badge-{{ user.role|lower }} border border-slate-700">
+              {{ user.get_role_display }}
+            </span>
+
+            <a href="{% url 'profile' %}" class="flex items-center space-x-2 p-1.5 rounded-2xl bg-slate-800/80 hover:bg-slate-800 border border-slate-700/60 transition-all">
+              {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="{{ user.username }}" class="w-8 h-8 rounded-xl object-cover">
+              {% else %}
+                <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white font-bold text-sm shadow">
+                  {{ user.username|slice:":1"|upper }}
+                </div>
+              {% endif %}
+              <div class="hidden sm:block text-left pr-1">
+                <span class="text-xs font-bold text-white block leading-tight">{{ user.username }}</span>
+                <span class="text-[10px] text-cyan-400 font-semibold">{{ user.sportiva_tier.name }} {{ user.sportiva_tier.badge }}</span>
+              </div>
+            </a>
+
+            <form method="post" action="{% url 'logout' %}" class="inline">
+              {% csrf_token %}
+              <button type="submit" class="p-2.5 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-xl transition-colors" title="{% trans 'Logout' %}">
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </button>
+            </form>
+          </div>
+        {% else %}
+          <a href="{% url 'login' %}" class="px-3.5 py-2 text-xs font-semibold text-slate-200 hover:text-white hover:bg-slate-800 rounded-xl transition-colors">
+            {% trans "Log In" %}
+          </a>
+          <a href="{% url 'register' %}" class="sportiva-btn px-4 py-2 text-xs font-bold rounded-xl shadow-md">
+            {% trans "Join SPORTIVA" %}
+          </a>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Tab Navigation -->
+  <div class="xl:hidden flex items-center justify-around border-t border-slate-800/80 bg-[#090D16]/95 py-2 px-2 overflow-x-auto">
+    {% if 'home' in allowed_tabs %}
+      <a href="{% url 'home' %}" class="flex flex-col items-center text-[10px] {% if request.resolver_match.url_name == 'home' %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+        <i class="fa-solid fa-house text-sm mb-1"></i>{% trans "Home" %}
+      </a>
+    {% endif %}
+    {% if 'profiles' in allowed_tabs %}
+      <a href="{% url 'profiles_list' %}" class="flex flex-col items-center text-[10px] {% if 'profile' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+        <i class="fa-solid fa-users text-sm mb-1"></i>{% trans "Profiles" %}
+      </a>
+    {% endif %}
+    {% if 'events' in allowed_tabs %}
+      <a href="{% url 'events_list' %}" class="flex flex-col items-center text-[10px] {% if 'event' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+        <i class="fa-solid fa-calendar-days text-sm mb-1"></i>{% trans "Events" %}
+      </a>
+    {% endif %}
+    {% if 'media_feed' in allowed_tabs %}
+      <a href="{% url 'media_feed_list' %}" class="flex flex-col items-center text-[10px] {% if 'media_feed' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+        <i class="fa-solid fa-newspaper text-sm mb-1"></i>{% trans "Feed" %}
+      </a>
+    {% endif %}
+    {% if 'sponsorships' in allowed_tabs %}
+      <a href="{% url 'sponsorships_list' %}" class="flex flex-col items-center text-[10px] {% if 'sponsorship' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+        <i class="fa-solid fa-handshake text-sm mb-1"></i>{% trans "Sponsors" %}
+      </a>
+    {% endif %}
+    {% if 'chat' in allowed_tabs %}
+      <a href="{% url 'chat_inbox' %}" class="flex flex-col items-center text-[10px] {% if 'chat' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+        <i class="fa-solid fa-comments text-sm mb-1"></i>{% trans "Chat" %}
+      </a>
+    {% endif %}
+  </div>
+</nav>
