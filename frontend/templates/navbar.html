@@ -20,7 +20,7 @@
 
       <!-- Navigation Links (Desktop — Equal Size Tabs) -->
       <div class="hidden xl:flex items-center justify-center flex-1 max-w-3xl px-2">
-        <div class="grid grid-flow-col auto-cols-fr gap-1 w-full bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800">
+        <div class="nav-tabs-strip">
           
           {% if 'home' in allowed_tabs %}
             <a href="{% url 'home' %}" class="nav-tab-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
@@ -59,7 +59,7 @@
           {% endif %}
 
           {% if 'chat' in allowed_tabs %}
-            <a href="{% url 'chat_inbox' %}" class="nav-tab-item {% if 'chat' in request.resolver_match.url_name %}active{% endif %}">
+            <a href="{% url 'chat:chat_inbox' %}" class="nav-tab-item {% if 'chat' in request.resolver_match.url_name %}active{% endif %}">
               <i class="fa-solid fa-comments mr-1.5 text-xs text-teal-400"></i>{% trans "Chat" %}
             </a>
           {% endif %}
@@ -153,35 +153,45 @@
   </div>
 
   <!-- Mobile Bottom Tab Navigation -->
-  <div class="xl:hidden flex items-center justify-around border-t border-slate-800/80 bg-[#090D16]/95 py-2 px-2 overflow-x-auto">
+  <div class="xl:hidden flex items-stretch justify-start border-t border-slate-800/80 bg-[#090D16]/95 overflow-x-auto">
     {% if 'home' in allowed_tabs %}
-      <a href="{% url 'home' %}" class="flex flex-col items-center text-[10px] {% if request.resolver_match.url_name == 'home' %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+      <a href="{% url 'home' %}" class="mob-tab {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
         <i class="fa-solid fa-house text-sm mb-1"></i>{% trans "Home" %}
       </a>
     {% endif %}
     {% if 'profiles' in allowed_tabs %}
-      <a href="{% url 'profiles_list' %}" class="flex flex-col items-center text-[10px] {% if 'profile' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+      <a href="{% url 'profiles_list' %}" class="mob-tab {% if 'profile' in request.resolver_match.url_name %}active{% endif %}">
         <i class="fa-solid fa-users text-sm mb-1"></i>{% trans "Profiles" %}
       </a>
     {% endif %}
     {% if 'events' in allowed_tabs %}
-      <a href="{% url 'events_list' %}" class="flex flex-col items-center text-[10px] {% if 'event' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+      <a href="{% url 'events_list' %}" class="mob-tab {% if 'event' in request.resolver_match.url_name %}active{% endif %}">
         <i class="fa-solid fa-calendar-days text-sm mb-1"></i>{% trans "Events" %}
       </a>
     {% endif %}
     {% if 'media_feed' in allowed_tabs %}
-      <a href="{% url 'media_feed_list' %}" class="flex flex-col items-center text-[10px] {% if 'media_feed' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+      <a href="{% url 'media_feed_list' %}" class="mob-tab {% if 'media_feed' in request.resolver_match.url_name %}active{% endif %}">
         <i class="fa-solid fa-newspaper text-sm mb-1"></i>{% trans "Feed" %}
       </a>
     {% endif %}
     {% if 'sponsorships' in allowed_tabs %}
-      <a href="{% url 'sponsorships_list' %}" class="flex flex-col items-center text-[10px] {% if 'sponsorship' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+      <a href="{% url 'sponsorships_list' %}" class="mob-tab {% if 'sponsorship' in request.resolver_match.url_name %}active{% endif %}">
         <i class="fa-solid fa-handshake text-sm mb-1"></i>{% trans "Sponsors" %}
       </a>
     {% endif %}
+    {% if 'marketplace' in allowed_tabs %}
+      <a href="{% url 'marketplace_list' %}" class="mob-tab {% if 'marketplace' in request.resolver_match.url_name %}active{% endif %}">
+        <i class="fa-solid fa-store text-sm mb-1"></i>{% trans "Market" %}
+      </a>
+    {% endif %}
     {% if 'chat' in allowed_tabs %}
-      <a href="{% url 'chat_inbox' %}" class="flex flex-col items-center text-[10px] {% if 'chat' in request.resolver_match.url_name %}text-cyan-400 font-bold{% else %}text-slate-400{% endif %} px-2">
+      <a href="{% url 'chat:chat_inbox' %}" class="mob-tab {% if 'chat' in request.resolver_match.url_name %}active{% endif %}">
         <i class="fa-solid fa-comments text-sm mb-1"></i>{% trans "Chat" %}
+      </a>
+    {% endif %}
+    {% if 'user_management' in allowed_tabs %}
+      <a href="{% url 'user_management' %}" class="mob-tab {% if request.resolver_match.url_name == 'user_management' %}active{% endif %}">
+        <i class="fa-solid fa-gear text-sm mb-1"></i>{% trans "Admin" %}
       </a>
     {% endif %}
   </div>

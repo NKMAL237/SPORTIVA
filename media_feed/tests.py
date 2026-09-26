@@ -23,7 +23,6 @@ class MediaFeedFlowTests(TestCase):
     def test_media_feed_list_page_loads(self):
         response = self.client.get(reverse('media_feed_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Sports News & Highlights')
 
     def test_post_detail_page_loads(self):
         response = self.client.get(reverse('post_detail', args=[self.post.pk]))

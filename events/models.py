@@ -58,6 +58,48 @@ class Event(models.Model):
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    # ── Sport → trophy image key mapping ──────────────────────────────────────
+    SPORT_IMAGE_MAP = {
+        'football': 'football',
+        'soccer': 'football',
+        'basketball': 'basketball',
+        'athletics': 'athletics',
+        'track': 'athletics',
+        'running': 'athletics',
+        'sprint': 'athletics',
+        'marathon': 'athletics',
+        'tennis': 'tennis',
+        'badminton': 'tennis',
+        'squash': 'tennis',
+        'volleyball': 'volleyball',
+        'beach volleyball': 'volleyball',
+        'swimming': 'swimming',
+        'water polo': 'swimming',
+        'diving': 'swimming',
+        'cycling': 'cycling',
+        'triathlon': 'cycling',
+        'cricket': 'cricket',
+        'rugby': 'football',
+        'handball': 'volleyball',
+        'boxing': 'combat',
+        'mma': 'combat',
+        'judo': 'combat',
+        'wrestling': 'combat',
+        'karate': 'combat',
+        'taekwondo': 'combat',
+        'combat': 'combat',
+        'martial': 'combat',
+    }
+
+    @property
+    def trophy_image_key(self):
+        """Returns the sport-matched image key for the event banner."""
+        sport_name = (self.sport.name if self.sport else '').lower()
+        for keyword, key in self.SPORT_IMAGE_MAP.items():
+            if keyword in sport_name:
+                return key
+        return 'generic'
+
     def clean_whatsapp(self):
         if not self.contact_whatsapp:
             return ""

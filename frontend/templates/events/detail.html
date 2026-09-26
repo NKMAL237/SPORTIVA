@@ -28,11 +28,10 @@
             {% endif %}
           {% endwith %}
         ">
-          <img src="{% load static %}{% static 'images/events/trophy-'%}{{ event.trophy_image_key }}.svg" alt="{{ event.sport.name }}" class="h-48 w-48 opacity-30">
+          <img src="{% static 'images/events/trophy-' %}{{ event.trophy_image_key }}.svg" alt="{{ event.sport.name }}" class="h-48 w-48 opacity-30">
         </div>
       {% endif %}
       <!-- Sport SVG badge top-right -->
-      {% load static %}
       <img src="{% static 'images/events/trophy-' %}{{ event.trophy_image_key }}.svg" alt="{{ event.sport.name }} badge" class="absolute top-5 right-5 w-20 h-20 rounded-2xl object-cover border-2 border-white/80 shadow-2xl bg-slate-900/80 p-2">
       <div class="absolute inset-0 bg-gradient-to-t from-[#090D16] via-[#090D16]/60 to-transparent"></div>
 
@@ -242,7 +241,7 @@
           {% endif %}
         {% endif %}
 
-        {% if event.is_organizer or is_organizer %}
+        {% if is_organizer %}
           <div class="pt-3 border-t border-slate-800 space-y-2">
             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Organiser Controls</p>
             <a href="{% url 'delete_event' pk=event.pk %}"

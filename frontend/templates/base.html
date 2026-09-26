@@ -53,7 +53,7 @@
   {% if messages %}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4 w-full">
       {% for message in messages %}
-        <div class="p-4 rounded-2xl mb-3 flex items-center justify-between shadow-xl backdrop-blur-md {% if message.tags == 'error' %}bg-rose-950/80 text-rose-200 border border-rose-800/80{% elif message.tags == 'success' %}bg-emerald-950/80 text-emerald-200 border border-emerald-800/80{% elif message.tags == 'warning' %}bg-amber-950/80 text-amber-200 border border-amber-800/80{% else %}bg-blue-950/80 text-blue-200 border border-blue-800/80{% endif %}">
+        <div class="message-banner p-4 rounded-2xl mb-3 flex items-center justify-between shadow-xl backdrop-blur-md {% if message.tags == 'error' %}bg-rose-950/80 text-rose-200 border border-rose-800/80{% elif message.tags == 'success' %}bg-emerald-950/80 text-emerald-200 border border-emerald-800/80{% elif message.tags == 'warning' %}bg-amber-950/80 text-amber-200 border border-amber-800/80{% else %}bg-blue-950/80 text-blue-200 border border-blue-800/80{% endif %}">
           <div class="flex items-center space-x-3">
             <i class="fa-solid {% if message.tags == 'error' %}fa-circle-exclamation text-rose-400{% elif message.tags == 'success' %}fa-circle-check text-emerald-400{% elif message.tags == 'warning' %}fa-triangle-exclamation text-amber-400{% else %}fa-circle-info text-blue-400{% endif %} text-lg"></i>
             <span class="text-sm font-medium">{{ message }}</span>

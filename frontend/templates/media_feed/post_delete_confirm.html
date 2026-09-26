@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}Delete Post — SPORTIVA Feed{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 sm:px-6 py-12">
+
+  <!-- Danger Card -->
+  <div class="glass-panel rounded-3xl border border-rose-500/40 shadow-2xl p-8 space-y-6 text-center">
+
+    <!-- Icon -->
+    <div class="flex justify-center">
+      <div class="w-20 h-20 rounded-full bg-rose-500/10 border-2 border-rose-500/40 flex items-center justify-center text-4xl text-rose-400 animate-pulse">
+        <i class="fa-solid fa-trash-can"></i>
+      </div>
+    </div>
+
+    <!-- Heading -->
+    <div class="space-y-2">
+      <h1 class="text-2xl font-black text-white">Delete This Post?</h1>
+      <p class="text-slate-400 text-sm leading-relaxed">
+        You are about to <span class="text-rose-400 font-bold">permanently delete</span> your post.<br>
+        This action cannot be undone.
+      </p>
+    </div>
+
+    <!-- Post Summary -->
+    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-700 text-xs text-left space-y-2">
+      <div class="flex justify-between">
+        <span class="text-slate-400">Author</span>
+        <span class="text-white font-bold">{{ post.author.username }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Posted On</span>
+        <span class="text-white">{{ post.created_at|date:"D, d M Y · H:i" }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Likes</span>
+        <span class="text-white">{{ post.likes.count }}</span>
+      </div>
+      <div class="flex justify-between">
+        <span class="text-slate-400">Comments</span>
+        <span class="text-white">{{ post.comments.count }}</span>
+      </div>
+      <div class="pt-2 border-t border-slate-800">
+        <span class="text-slate-400 block mb-1">Content Preview</span>
+        <span class="text-slate-200 line-clamp-3">{{ post.content|truncatewords:25 }}</span>
+      </div>
+    </div>
+
+    <!-- Warning notice -->
+    <div class="p-3 rounded-xl bg-amber-950/40 border border-amber-500/30 text-[11px] text-amber-200 text-left">
+      <i class="fa-solid fa-triangle-exclamation mr-1 text-amber-400"></i>
+      <strong>Note:</strong> All likes and comments on this post will also be permanently removed.
+    </div>
+
+    <!-- Action Buttons -->
+    <form method="post">
+      {% csrf_token %}
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <a href="{% url 'post_detail' pk=post.pk %}"
+           class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-bold transition-colors text-center">
+          <i class="fa-solid fa-arrow-left mr-2"></i>Keep My Post
+        </a>
+        <button type="submit"
+                class="w-full sm:w-auto px-8 py-3 rounded-2xl bg-rose-600 hover:bg-rose-500 text-white text-sm font-black shadow-lg shadow-rose-500/25 transition-all active:scale-95">
+          <i class="fa-solid fa-trash-can mr-2"></i>Yes, Delete Permanently
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>
+{% endblock %}

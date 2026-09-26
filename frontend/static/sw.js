@@ -1,5 +1,5 @@
 /**
- * SPORTIVA Service Worker v4 — Full Offline Support
+ * SPORTIVA Service Worker v5 — Full Offline Support
  * 
  * Strategy:
  *  - Static assets  : Cache-First (CSS, JS, fonts, vendor libs)
@@ -8,7 +8,7 @@
  *  - Images/Media   : Cache-First (serve stale, refresh in background)
  */
 
-const CACHE_VERSION = 'sportiva-v4';
+const CACHE_VERSION = 'sportiva-v5';
 const OFFLINE_PAGE  = '/offline/';
 
 const STATIC_ASSETS = [
@@ -146,12 +146,50 @@ async function flushQueue() {
 }
 
 // ──────────────────────────────────────────────────────────────────────────────
+// HTML page shown when a full-document form POST is queued while offline
+// (self-contained so it renders with zero network access)
+// ──────────────────────────────────────────────────────────────────────────────
+function queuedHtmlResponse() {
+  const html = '<!DOCTYPE html>' +
+    '<html lang="en"><head><meta charset="UTF-8">' +
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0">' +
+    '<title>SPORTIVA — Action Queued (Offline)</title>' +
+    '<style>' +
+    'body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;' +
+    'background:#090D16;color:#E2E8F0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:1rem}' +
+    '.card{max-width:26rem;width:100%;background:#131B2E;border:1px solid #1E293B;border-radius:1.5rem;padding:2.5rem;text-align:center}' +
+    '.icon{width:4.5rem;height:4.5rem;margin:0 auto 1.25rem;border-radius:9999px;background:rgba(245,158,11,.1);' +
+    'border:2px solid rgba(245,158,11,.4);display:flex;align-items:center;justify-content:center;font-size:2rem}' +
+    'h1{font-size:1.25rem;font-weight:800;color:#fff;margin:0 0 .5rem}' +
+    'p{font-size:.8rem;color:#94A3B8;line-height:1.6;margin:0 0 1.5rem}' +
+    'a{display:inline-block;padding:.65rem 1.4rem;border-radius:.9rem;background:#0EA5E9;color:#090D16;' +
+    'font-size:.75rem;font-weight:800;text-decoration:none}' +
+    '</style></head><body><div class="card">' +
+    '<div class="icon">&#9203;</div>' +
+    '<h1>Action Saved Offline</h1>' +
+    '<p>You appear to be offline. Your action has been queued on this device and will be submitted automatically as soon as you reconnect — no need to repeat it.</p>' +
+    '<a href="/">Back to Home</a>' +
+    '</div></body></html>';
+  return new Response(html, {
+    status: 202,
+    headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Offline-Queued': '1' }
+  });
+}
+
+// ──────────────────────────────────────────────────────────────────────────────
 // BACKGROUND SYNC — replay queued form submissions on reconnect
 // ──────────────────────────────────────────────────────────────────────────────
 self.addEventListener('sync', (event) => {
   if (event.tag === 'sportiva-offline-forms') {
     console.log('[SW] Background sync: flushing offline form queue...');
-    event.waitUntil(flushQueue());
+    event.waitUntil(
+      flushQueue().then(() => {
+        // Notify open pages so they can show a "synced" toast
+        return self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clients) => {
+          clients.forEach((client) => client.postMessage({ action: 'SYNC_COMPLETE' }));
+        });
+      })
+    );
   }
 });
 
@@ -172,7 +210,10 @@ self.addEventListener('fetch', (event) => {
         if (self.registration.sync) {
           self.registration.sync.register('sportiva-offline-forms');
         }
-        // Return a synthetic "queued" response
+        // Document navigation gets a friendly HTML page; XHR/fetch gets JSON
+        if (request.mode === 'navigate') {
+          return queuedHtmlResponse();
+        }
         return new Response(
           JSON.stringify({ queued: true, message: 'Your action has been saved and will be submitted when you are back online.' }),
           { status: 202, headers: { 'Content-Type': 'application/json', 'X-Offline-Queued': '1' } }

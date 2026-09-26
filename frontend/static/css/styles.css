@@ -120,6 +120,45 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(14, 165, 233, 0.3);
 }
 
+/* Desktop Tab Strip: equal-width tabs with a min-width floor, scrolls instead of crowding */
+.nav-tabs-strip {
+  display: flex;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.4rem;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #1E293B;
+  border-radius: 1rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-tabs-strip::-webkit-scrollbar { display: none; }
+.nav-tabs-strip > .nav-tab-item {
+  flex: 1 1 0;
+  min-width: 92px;
+}
+
+/* Mobile Bottom Tab Bar: non-wrapping scrollable strip */
+.mob-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 68px;
+  padding: 0.55rem 0.5rem;
+  font-size: 10px;
+  color: #94A3B8;
+  white-space: nowrap;
+  border-top: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.mob-tab.active {
+  color: #22D3EE;
+  font-weight: 700;
+  border-top-color: #0EA5E9;
+}
+
 /* Story / Shorts Avatar Ring */
 .story-ring {
   padding: 2.5px;

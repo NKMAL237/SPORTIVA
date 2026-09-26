@@ -5,9 +5,17 @@ from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
-from django.utils import timezone  # ← ADDED
+from django.utils import timezone
+from django.utils.http import url_has_allowed_host_and_scheme
 from .models import User, Follow, AthleteExploit, AthleteEndorsement, sportiva_score_annotation
 from .decorators import tab_required
+
+
+def _safe_next_url(request, candidate, fallback):
+    """Return candidate only when it is a same-host relative URL; otherwise fallback."""
+    if candidate and url_has_allowed_host_and_scheme(candidate, allowed_hosts={request.get_host()}):
+        return candidate
+    return fallback
 
 
 AVAILABLE_SPORTS_LIST = [
@@ -99,7 +107,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"Welcome back, {user.username}!")
-            next_url = request.GET.get('next', 'home')
+            next_url = _safe_next_url(request, request.GET.get('next'), 'home')
             return redirect(next_url)
         else:
             messages.error(request, "Invalid username or password. Please try again.")
@@ -292,7 +300,8 @@ def toggle_follow_view(request, user_id):
         Follow.objects.create(follower=request.user, followed_user=target_user)
         messages.success(request, f"You are now following {target_user.username}! 🌟")
 
-    next_url = request.POST.get('next') or request.META.get('HTTP_REFERER') or f"/accounts/profile/{target_user.username}/"
+    fallback = f"/accounts/profile/{target_user.username}/"
+    next_url = _safe_next_url(request, request.POST.get('next') or request.META.get('HTTP_REFERER'), fallback)
     return redirect(next_url)
 
 
@@ -369,6 +378,23 @@ def edit_exploit_view(request, exploit_id):
 
 
 @login_required
+def delete_exploit_view(request, exploit_id):
+    """Allows an athlete to delete one of their own exploits (or staff to moderate)."""
+    exploit = get_object_or_404(AthleteExploit, id=exploit_id)
+    if exploit.athlete != request.user and not request.user.is_staff:
+        messages.error(request, "You are not authorized to delete this exploit.")
+        return redirect('user_detail', username=exploit.athlete.username)
+
+    if request.method == 'POST':
+        title = exploit.title
+        exploit.delete()
+        messages.warning(request, f"Exploit '{title}' has been permanently deleted.")
+        return redirect('user_detail', username=request.user.username)
+
+    return render(request, 'accounts/exploit_delete_confirm.html', {'exploit': exploit})
+
+
+@login_required
 def verify_exploit_view(request, exploit_id):
     """
     Verification Endpoint:
@@ -431,6 +457,25 @@ def endorse_athlete_view(request, athlete_id):
         )
         messages.success(request, f"You endorsed {athlete.username} for '{skill}'! (+10 Sportiva Merit Score)")
 
+    return redirect('user_detail', username=athlete.username)
+
+
+@login_required
+@require_POST
+def remove_endorsement_view(request, athlete_id):
+    """Allows a user to retract an endorsement they previously gave."""
+    athlete = get_object_or_404(User, id=athlete_id)
+    skill = request.POST.get('skill_or_merit', '').strip()
+
+    qs = AthleteEndorsement.objects.filter(athlete=athlete, endorsed_by=request.user)
+    if skill:
+        qs = qs.filter(skill_or_merit=skill)
+    deleted, _ = qs.delete()
+
+    if deleted:
+        messages.info(request, f"Your endorsement for {athlete.username} has been removed.")
+    else:
+        messages.info(request, "No endorsement from you was found for this athlete.")
     return redirect('user_detail', username=athlete.username)
 
 

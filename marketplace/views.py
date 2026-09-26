@@ -94,3 +94,21 @@ def product_create(request):
     else:
         form = ProductForm()
     return render(request, 'marketplace/create.html', {'form': form})
+
+
+@login_required
+def product_delete(request, pk):
+    """Allows the seller (or staff) to remove their marketplace listing."""
+    product = get_object_or_404(Product, pk=pk)
+
+    if product.seller != request.user and not request.user.is_staff:
+        messages.error(request, "You can only delete your own listings.")
+        return redirect('product_detail', pk=pk)
+
+    if request.method == 'POST':
+        title = product.title
+        product.delete()
+        messages.warning(request, f"'{title}' has been removed from the Marketplace.")
+        return redirect('marketplace_list')
+
+    return render(request, 'marketplace/product_delete_confirm.html', {'product': product})

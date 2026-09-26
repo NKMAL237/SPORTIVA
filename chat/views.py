@@ -32,7 +32,7 @@ def chat_inbox_view(request, conversation_id=None):
                 attachment=attachment
             )
             active_conversation.save()  # update updated_at timestamp
-            return redirect('chat_conversation', conversation_id=active_conversation.id)
+            return redirect('chat:chat_conversation', conversation_id=active_conversation.id)
 
     # Mark unread messages as read
     if active_conversation:
@@ -69,7 +69,7 @@ def start_direct_chat(request, user_id):
     target_user = get_object_or_404(User, id=user_id)
     if target_user == request.user:
         messages.warning(request, "You cannot start a chat with yourself.")
-        return redirect('chat_inbox')
+        return redirect('chat:chat_inbox')
 
     # Look for existing 1-on-1 conversation
     existing_conv = Conversation.objects.filter(participants=request.user).filter(participants=target_user).first()
@@ -78,4 +78,4 @@ def start_direct_chat(request, user_id):
         existing_conv = Conversation.objects.create(subject=f"Chat with {target_user.username}")
         existing_conv.participants.add(request.user, target_user)
 
-    return redirect('chat_conversation', conversation_id=existing_conv.id)
+    return redirect('chat:chat_conversation', conversation_id=existing_conv.id)

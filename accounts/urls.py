@@ -14,8 +14,10 @@ urlpatterns = [
     path('follow/<int:user_id>/', views.toggle_follow_view, name='toggle_follow'),
     path('exploits/add/', views.add_exploit_view, name='add_exploit'),
     path('exploits/<int:exploit_id>/edit/', views.edit_exploit_view, name='edit_exploit'),
+    path('exploits/<int:exploit_id>/delete/', views.delete_exploit_view, name='delete_exploit'),
     path('exploits/<int:exploit_id>/verify/', views.verify_exploit_view, name='verify_exploit'),
     path('athletes/<int:athlete_id>/endorse/', views.endorse_athlete_view, name='endorse_athlete'),
+    path('athletes/<int:athlete_id>/unendorse/', views.remove_endorsement_view, name='remove_endorsement'),
     path('users/', views.user_management_view, name='user_management'),
     path('users/<int:user_id>/update-tabs/', views.user_update_tabs_view, name='user_update_tabs'),
 ]

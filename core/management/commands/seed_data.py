@@ -121,7 +121,7 @@ class Command(BaseCommand):
                 'exploits': [
                     {
                         'title': 'Catalonia Open Trophy Champion',
-                        'category': 'TROPHY',
+                        'category': 'TITLE',
                         'competition': 'WTA 250 International Open',
                         'date': timezone.now().date() - timedelta(days=85),
                         'merit_points': 40,
@@ -463,6 +463,8 @@ class Command(BaseCommand):
                 'raised_amount': 3200,
                 'city': 'London',
                 'country': 'United Kingdom',
+                'latitude': 51.5074,
+                'longitude': -0.1278,
                 'deadline': timezone.now().date() + timedelta(days=60),
                 'whatsapp_number': '+447911123456',
             }

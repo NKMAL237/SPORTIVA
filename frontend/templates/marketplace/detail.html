@@ -57,6 +57,11 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-3 pt-4 border-t border-white/10">
+          {% if product.seller == user or user.is_staff %}
+            <a href="{% url 'product_delete' pk=product.pk %}" class="inline-flex items-center justify-center px-5 py-3 rounded-xl bg-rose-900/60 hover:bg-rose-800 border border-rose-700 text-rose-200 text-xs font-bold transition">
+              <i class="fas fa-trash-can mr-2"></i> {% trans "Delete Listing" %}
+            </a>
+          {% endif %}
           {% if product.seller != user %}
           <a href="{% url 'chat:start_direct_chat' product.seller.id %}" class="flex-1 inline-flex items-center justify-center px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 text-xs font-bold shadow-lg shadow-cyan-500/20 transition">
             <i class="fas fa-comment-dots mr-2"></i> {% trans "Direct Chat with Seller" %}

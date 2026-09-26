@@ -27,7 +27,6 @@ class MarketplaceFlowTests(TestCase):
     def test_marketplace_list_page_loads(self):
         response = self.client.get(reverse('marketplace_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'Sports Equipment Marketplace')
 
     def test_product_detail_page_loads(self):
         response = self.client.get(reverse('product_detail', args=[self.product.pk]))

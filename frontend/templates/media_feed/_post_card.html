@@ -37,16 +37,24 @@
       </div>
     </div>
 
-    <!-- Follow Shortcut -->
-    {% if user.is_authenticated and user != post.author %}
-      <form method="post" action="{% url 'toggle_follow' user_id=post.author.id %}" class="inline">
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ request.path }}">
-        <button type="submit" class="px-3 py-1 rounded-xl text-xs font-bold transition-all {% if post.author.id in followed_ids %}bg-slate-800 text-slate-300 hover:bg-rose-900/40 hover:text-rose-300 border border-slate-700{% else %}bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-white{% endif %}">
-          {% if post.author.id in followed_ids %}{% trans "Following" %}{% else %}+ {% trans "Follow" %}{% endif %}
-        </button>
-      </form>
-    {% endif %}
+    <!-- Follow Shortcut + Author Actions -->
+    <div class="flex items-center space-x-2">
+      {% if user.is_authenticated and user != post.author %}
+        <form method="post" action="{% url 'toggle_follow' user_id=post.author.id %}" class="inline">
+          {% csrf_token %}
+          <input type="hidden" name="next" value="{{ request.path }}">
+          <button type="submit" class="px-3 py-1 rounded-xl text-xs font-bold transition-all {% if post.author.id in followed_ids %}bg-slate-800 text-slate-300 hover:bg-rose-900/40 hover:text-rose-300 border border-slate-700{% else %}bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-white{% endif %}">
+            {% if post.author.id in followed_ids %}{% trans "Following" %}{% else %}+ {% trans "Follow" %}{% endif %}
+          </button>
+        </form>
+      {% endif %}
+
+      {% if user.is_authenticated and user == post.author or user.is_staff %}
+        <a href="{% url 'post_delete' pk=post.pk %}" title="{% trans 'Delete post' %}" class="w-7 h-7 rounded-lg bg-slate-800/80 hover:bg-rose-900/60 border border-slate-700 hover:border-rose-700 text-slate-400 hover:text-rose-400 flex items-center justify-center transition-colors">
+          <i class="fa-solid fa-trash-can text-xs"></i>
+        </a>
+      {% endif %}
+    </div>
   </div>
 
   <!-- Post Media / Image / Short Video -->

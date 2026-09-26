@@ -4,7 +4,7 @@ from django.utils import timezone
 from datetime import timedelta
 from accounts.models import User
 from organizations.models import SportsCategory
-from events.models import EventCategory, Event, EventAttendance
+from events.models import EventCategory, Event, EventRegistration
 
 
 class EventsUnitTests(TestCase):
@@ -27,6 +27,8 @@ class EventsUnitTests(TestCase):
             start_date=timezone.now() + timedelta(days=5),
             description='Annual 3x3 Basketball competition in Yaoundé.',
             entry_fee='Free',
+            fee_amount=0,
+            max_participants=50,
             contact_whatsapp='+237677112233',
         )
 
@@ -48,4 +50,4 @@ class EventsUnitTests(TestCase):
         self.client.login(username='event_organizer', password='Password123!')
         response = self.client.post(reverse('event_rsvp', args=[self.event.pk]))
         self.assertEqual(response.status_code, 302)
-        self.assertTrue(EventAttendance.objects.filter(event=self.event, user=self.user).exists())
+        self.assertTrue(EventRegistration.objects.filter(event=self.event, user=self.user).exists())

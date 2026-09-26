@@ -35,6 +35,13 @@ document.addEventListener('DOMContentLoaded', function () {
         window.location.reload();
       }
     });
+
+    // When the SW finishes replaying queued offline form submissions
+    navigator.serviceWorker.addEventListener('message', function (event) {
+      if (event.data && event.data.action === 'SYNC_COMPLETE') {
+        showSyncToast();
+      }
+    });
   }
 
   // ─── 2. ONLINE / OFFLINE STATUS INDICATOR ─────────────────────────────────
@@ -87,6 +94,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Trigger live news refresh
     refreshSportsNews();
+  }
+
+  function showSyncToast() {
+    var toast = document.createElement('div');
+    toast.style.cssText = [
+      'position:fixed', 'bottom:70px', 'left:50%', 'transform:translateX(-50%) translateY(20px)',
+      'z-index:9999', 'display:flex', 'align-items:center', 'gap:8px',
+      'padding:10px 20px', 'border-radius:99px',
+      'background:rgba(6,78,59,0.95)', 'border:1px solid rgba(52,211,153,0.4)',
+      'color:#a7f3d0', 'font-size:12px', 'font-weight:700',
+      'box-shadow:0 8px 32px rgba(0,0,0,0.5)', 'backdrop-filter:blur(12px)',
+      'opacity:0', 'transition:all 0.5s ease',
+      'white-space:nowrap'
+    ].join(';');
+    toast.innerHTML = '<i class="fa-solid fa-cloud-arrow-up" style="color:#34d399;font-size:14px"></i>' +
+      '<span>Offline actions synced — everything is up to date.</span>';
+    document.body.appendChild(toast);
+    requestAnimationFrame(function () {
+      toast.style.opacity = '1';
+      toast.style.transform = 'translateX(-50%) translateY(0)';
+    });
+    setTimeout(function () {
+      toast.style.opacity = '0';
+      setTimeout(function () { toast.remove(); }, 500);
+    }, 5000);
   }
 
   function updateNetworkStatus() {

@@ -48,14 +48,32 @@ def organizations_list(request):
 
 def organization_detail(request, pk):
     """Renders detailed view for a single sports organization."""
-    org = get_object_or_404(OrganizationProfile.objects.select_related('sports_category'), pk=pk)
-    events = org.events.filter(is_published=True)
-    return render(request, 'organizations/detail.html', {'organization': org, 'events': events})
+    org = get_object_or_404(
+        OrganizationProfile.objects.select_related('sports_category', 'user'),
+        pk=pk
+    )
+    events = org.events.filter(is_published=True).select_related('sport', 'category')[:6]
+
+    context = {
+        'organization': org,
+        'events': events,
+        'is_owner': request.user.is_authenticated and org.user_id == request.user.id,
+    }
+    return render(request, 'organizations/detail.html', context)
 
 
 @login_required
 def organization_create(request):
-    """Create a new sports organization profile."""
+    """Create a new sports organization profile (one per user)."""
+    # Prevent duplicate organization profiles for the same user
+    existing = OrganizationProfile.objects.filter(user=request.user).first()
+    if existing:
+        messages.info(
+            request,
+            f"You already have an organization profile: '{existing.name}'. You can edit it below."
+        )
+        return redirect('organization_detail', pk=existing.pk)
+
     if request.method == 'POST':
         form = OrganizationProfileForm(request.POST, request.FILES)
         if form.is_valid():
@@ -64,6 +82,14 @@ def organization_create(request):
             org.save()
             messages.success(request, f"Organization '{org.name}' created successfully!")
             return redirect('organization_detail', pk=org.pk)
+        else:
+            messages.error(request, "Please correct the errors below and try again.")
     else:
-        form = OrganizationProfileForm()
+        # Pre-fill from user profile data
+        form = OrganizationProfileForm(initial={
+            'country': request.user.country,
+            'city': request.user.city,
+            'phone_number': request.user.phone_number,
+            'email': request.user.email,
+        })
     return render(request, 'organizations/create.html', {'form': form})

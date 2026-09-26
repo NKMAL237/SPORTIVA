@@ -46,6 +46,22 @@ class SponsorProfile(models.Model):
             return ""
         return "".join([c for c in self.whatsapp_number if c.isdigit()])
 
+    @property
+    def brand_image_key(self):
+        text = f"{self.company_name} {self.industry}".lower()
+        categories = {
+            'banking': ('bank', 'finance', 'insurance', 'microfinance'),
+            'telecom': ('telecom', 'mobile', 'network', 'communication'),
+            'nutrition': ('nutrition', 'food', 'beverage', 'water', 'drink'),
+            'apparel': ('apparel', 'fashion', 'clothing', 'sportswear', 'shoe'),
+            'technology': ('tech', 'software', 'digital', 'technology', 'internet'),
+            'health': ('health', 'medical', 'pharmacy', 'hospital'),
+        }
+        for key, words in categories.items():
+            if any(word in text for word in words):
+                return key
+        return 'corporate'
+
     def __str__(self):
         return f"{self.company_name} ({self.country})"
 

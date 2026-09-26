@@ -20,7 +20,7 @@ class AccountsUnitTests(TestCase):
         self.assertTrue(self.user.check_password('Password123!'))
 
     def test_register_view_get(self):
-        response = self.client.get(reverse('register'))
+        response = self.client.get(reverse('accounts:register'))
         self.assertEqual(response.status_code, 200)
 
     def test_login_view_success(self):
@@ -28,5 +28,5 @@ class AccountsUnitTests(TestCase):
         self.assertTrue(login_successful)
 
     def test_login_view_get(self):
-        response = self.client.get(reverse('login'))
+        response = self.client.get(reverse('accounts:login'))
         self.assertEqual(response.status_code, 200)

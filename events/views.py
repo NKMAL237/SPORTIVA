@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.http import HttpResponse, Http404
 from django.core.files.base import ContentFile
 from django.utils import timezone
+from django.db import models
+from django.db import transaction
 from accounts.decorators import tab_required
 from .models import Event, EventCategory, EventRegistration
 from organizations.models import SportsCategory
@@ -72,7 +74,7 @@ def event_detail(request, pk):
     context = {
         'event': event,
         'user_registration': user_registration,
-        'is_registered': user_registration is not None,
+        'is_registered': user_registration is not None and user_registration.status != 'CANCELLED',
         'registrations': registrations,
         'confirmed_count': event.confirmed_participants_count(),
         'spots_remaining': event.spots_remaining(),
@@ -91,9 +93,9 @@ def event_register_payment(request, pk):
     """
     event = get_object_or_404(Event, pk=pk)
 
-    # Check if already registered
+    # Check if already registered (a CANCELLED registration may re-register)
     existing_reg = EventRegistration.objects.filter(event=event, user=request.user).first()
-    if existing_reg:
+    if existing_reg and existing_reg.status != 'CANCELLED':
         messages.info(request, "You are already registered for this event. You can download your invoice below.")
         return redirect('event_detail', pk=pk)
 
@@ -105,24 +107,46 @@ def event_register_payment(request, pk):
     if request.method == 'POST':
         payment_method = request.POST.get('payment_method', 'Credit Card (Visa/Mastercard)')
         team_name = request.POST.get('team_or_club_name', '').strip()
-        
+
         # Payment details
         fee = event.fee_amount
         currency = event.currency
         invoice_num = f"INV-{timezone.now().year}-{uuid.uuid4().hex[:6].upper()}"
 
-        reg = EventRegistration.objects.create(
-            event=event,
-            user=request.user,
-            team_or_club_name=team_name,
-            status='CONFIRMED',
-            payment_status='COMPLETED' if fee > 0 else 'FREE',
-            payment_method=payment_method,
-            amount_paid=fee,
-            currency=currency,
-            invoice_number=invoice_num,
-            organizer_validated=True
-        )
+        # Lock the event row while re-checking capacity so two simultaneous
+        # signups cannot take the last spot twice.
+        with transaction.atomic():
+            locked_event = Event.objects.select_for_update().get(pk=event.pk)
+            if locked_event.is_sold_out():
+                messages.error(request, "Sorry, this event has just sold out.")
+                return redirect('event_detail', pk=pk)
+
+            if existing_reg:
+                # Re-register in place over the cancelled record
+                reg = existing_reg
+                reg.team_or_club_name = team_name
+                reg.status = 'CONFIRMED'
+                reg.payment_status = 'COMPLETED' if fee > 0 else 'FREE'
+                reg.payment_method = payment_method
+                reg.amount_paid = fee
+                reg.currency = currency
+                reg.invoice_number = invoice_num
+                reg.organizer_validated = True
+                reg.organizer_validation_notes = ''
+            else:
+                reg = EventRegistration(
+                    event=event,
+                    user=request.user,
+                    team_or_club_name=team_name,
+                    status='CONFIRMED',
+                    payment_status='COMPLETED' if fee > 0 else 'FREE',
+                    payment_method=payment_method,
+                    amount_paid=fee,
+                    currency=currency,
+                    invoice_number=invoice_num,
+                    organizer_validated=True,
+                )
+            reg.save()
 
         # Generate PDF Invoice and save to model
         try:
@@ -181,6 +205,67 @@ def validate_registration_view(request, pk):
             messages.warning(request, f"Registration for {registration.user.username} has been cancelled.")
 
     return redirect('event_detail', pk=registration.event.pk)
+
+
+@login_required
+def cancel_registration(request, pk):
+    """
+    Allows a registered user to cancel (withdraw) their own event registration.
+    Frees up the spot immediately and marks the registration as CANCELLED.
+    """
+    registration = get_object_or_404(EventRegistration, pk=pk)
+
+    # Only the registrant themselves (or staff) may cancel
+    if request.user != registration.user and not request.user.is_staff:
+        messages.error(request, "You can only cancel your own registration.")
+        return redirect('event_detail', pk=registration.event.pk)
+
+    if registration.status == 'CANCELLED':
+        messages.info(request, "This registration is already cancelled.")
+        return redirect('event_detail', pk=registration.event.pk)
+
+    if request.method == 'POST':
+        event_pk = registration.event.pk
+        registration.status = 'CANCELLED'
+        registration.payment_status = 'REFUNDED'
+        registration.organizer_validation_notes = (
+            f"Cancelled by {request.user.username} on "
+            f"{timezone.now().strftime('%d %b %Y %H:%M')}"
+        )
+        registration.save()
+        messages.warning(
+            request,
+            f"Your registration for '{registration.event.title}' has been cancelled. "
+            "The spot has been released. If you paid, a refund record has been created."
+        )
+        return redirect('event_detail', pk=event_pk)
+
+    # GET → show confirmation page
+    return render(request, 'events/cancel_registration_confirm.html', {
+        'registration': registration,
+        'event': registration.event,
+    })
+
+
+@login_required
+def delete_event(request, pk):
+    """
+    Allows the event organiser (or staff) to delete/unpublish an event.
+    Presents a confirmation screen first; POST actually deletes.
+    """
+    event = get_object_or_404(Event, pk=pk)
+
+    if request.user != event.organizer and not request.user.is_staff:
+        messages.error(request, "Only the event organiser can delete this event.")
+        return redirect('event_detail', pk=pk)
+
+    if request.method == 'POST':
+        title = event.title
+        event.delete()
+        messages.success(request, f"Event '{title}' has been permanently deleted.")
+        return redirect('events_list')
+
+    return render(request, 'events/delete_event_confirm.html', {'event': event})
 
 
 @login_required

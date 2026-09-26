@@ -4,6 +4,8 @@ from django.contrib import messages
 from django import forms
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.views.decorators.http import require_POST
+from django.utils.http import url_has_allowed_host_and_scheme
 from accounts.decorators import tab_required
 from organizations.models import SportsCategory
 from .models import Post, Comment, Like
@@ -157,11 +159,43 @@ def post_detail(request, pk):
 
 
 @login_required
+def post_delete(request, pk):
+    """Allows the author (or staff) to permanently delete a post."""
+    post = get_object_or_404(Post, pk=pk)
+    if post.author != request.user and not request.user.is_staff:
+        messages.error(request, "You can only delete your own posts.")
+        return redirect('post_detail', pk=pk)
+
+    if request.method == 'POST':
+        post.delete()
+        messages.warning(request, "Your post has been permanently deleted.")
+        return redirect('media_feed_list')
+
+    return render(request, 'media_feed/post_delete_confirm.html', {'post': post})
+
+
+@login_required
+@require_POST
+def comment_delete(request, pk):
+    """Allows the author (or staff) to delete a comment."""
+    comment = get_object_or_404(Comment, pk=pk)
+    post_pk = comment.post.pk
+    if comment.author != request.user and not request.user.is_staff:
+        messages.error(request, "You can only delete your own comments.")
+    else:
+        comment.delete()
+        messages.info(request, "Comment deleted.")
+    return redirect('post_detail', pk=post_pk)
+
+
+@login_required
 def post_like(request, pk):
     """Toggle like on a post."""
     post = get_object_or_404(Post, pk=pk)
     like, created = Like.objects.get_or_create(post=post, user=request.user)
     if not created:
         like.delete()
-    next_url = request.POST.get('next') or request.META.get('HTTP_REFERER') or '/media-feed/'
+    next_url = request.POST.get('next') or request.META.get('HTTP_REFERER')
+    if not (next_url and url_has_allowed_host_and_scheme(next_url, allowed_hosts={request.get_host()})):
+        next_url = '/media-feed/'
     return redirect(next_url)

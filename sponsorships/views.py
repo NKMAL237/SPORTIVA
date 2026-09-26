@@ -1,4 +1,5 @@
 import uuid
+from datetime import timedelta
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -50,6 +51,20 @@ class SponsorProfileForm(forms.ModelForm):
             'contact_email': forms.EmailInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm'}),
             'whatsapp_number': forms.TextInput(attrs={'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm'}),
         }
+
+
+class PledgeForm(forms.Form):
+    amount = forms.IntegerField(min_value=1, widget=forms.NumberInput(attrs={
+        'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500',
+        'placeholder': 'Amount (e.g. 5000)',
+    }))
+    message = forms.CharField(required=False, widget=forms.TextInput(attrs={
+        'class': 'w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-500',
+        'placeholder': 'Optional message of support',
+    }))
+    is_anonymous = forms.BooleanField(required=False, widget=forms.CheckboxInput(attrs={
+        'class': 'rounded border-slate-700 bg-slate-900 text-cyan-500',
+    }))
 
 
 @tab_required('sponsorships')
@@ -140,6 +155,10 @@ def sponsor_profile_edit(request):
     return render(request, 'sponsorships/sponsor_edit.html', {
         'form': form,
         'profile': profile,
+        'available_sports': [
+            'Football', 'Basketball', 'Athletics', 'Tennis', 'Combat Sports',
+            'Volleyball', 'Fitness & Gym', 'Swimming', 'Cycling', 'Rugby', 'Handball'
+        ],
     })
 
 
@@ -245,7 +264,7 @@ def respond_sponsorship_proposal(request, pk):
                 financial_value=proposal.amount,
                 terms_and_conditions=f"{proposal.deliverables_description}\n\nPerks: {proposal.perks_offered}",
                 start_date=timezone.now().date(),
-                end_date=timezone.now().date() + timezone.timedelta(days=365),
+                end_date=timezone.now().date() + timedelta(days=365),  # ← FIXED
                 status='ACTIVE',
                 sponsor_signed=True,
                 beneficiary_signed=True,
@@ -291,6 +310,7 @@ def campaign_detail(request, pk):
         'campaign': campaign,
         'pledges': pledges,
         'progress': campaign.progress_percent(),
+        'pledge_form': PledgeForm(),
     }
     return render(request, 'sponsorships/detail.html', context)
 
@@ -309,3 +329,78 @@ def campaign_create(request):
     else:
         form = CampaignForm()
     return render(request, 'sponsorships/create.html', {'form': form})
+
+
+@login_required
+def delete_campaign(request, pk):
+    """
+    Allows the campaign creator (or staff) to permanently delete a campaign.
+    Presents a confirmation page before deletion.
+    """
+    campaign = get_object_or_404(Campaign, pk=pk)
+
+    if request.user != campaign.creator and not request.user.is_staff:
+        messages.error(request, "Only the campaign creator can delete this campaign.")
+        return redirect('campaign_detail', pk=pk)
+
+    if request.method == 'POST':
+        title = campaign.title
+        campaign.delete()
+        messages.success(request, f"Campaign '{title}' has been permanently deleted.")
+        return redirect('sponsorships_list')
+
+    return render(request, 'sponsorships/delete_campaign_confirm.html', {'campaign': campaign})
+
+
+@login_required
+def withdraw_proposal(request, pk):
+    """
+    Allows the proposal sender (or staff) to withdraw a PENDING sponsorship proposal.
+    Once withdrawn the proposal status is set to DECLINED with a withdrawal note.
+    """
+    proposal = get_object_or_404(SponsorshipRequest, pk=pk)
+
+    if request.user != proposal.sender and not request.user.is_staff:
+        messages.error(request, "You can only withdraw proposals you sent.")
+        return redirect('sponsorships_list')
+
+    if proposal.status != 'PENDING':
+        messages.info(request, f"This proposal is already '{proposal.get_status_display()}' and cannot be withdrawn.")
+        return redirect('sponsorships_list')
+
+    if request.method == 'POST':
+        proposal.status = 'DECLINED'
+        proposal.response_message = (
+            f"Withdrawn by sender ({request.user.username}) on "
+            f"{timezone.now().strftime('%d %b %Y %H:%M')}."
+        )
+        proposal.save()
+        messages.warning(request, f"Proposal '{proposal.title}' has been withdrawn.")
+        return redirect('sponsorships_list')
+
+    return render(request, 'sponsorships/withdraw_proposal_confirm.html', {'proposal': proposal})
+
+
+@login_required
+def delete_pledge(request, pk):
+    """
+    Allows a pledge maker (or staff) to delete their pledge from a campaign.
+    Updates the campaign's raised_amount accordingly.
+    """
+    pledge = get_object_or_404(Pledge, pk=pk)
+
+    if request.user != pledge.sponsor and not request.user.is_staff:
+        messages.error(request, "You can only remove your own pledges.")
+        return redirect('campaign_detail', pk=pledge.campaign.pk)
+
+    if request.method == 'POST':
+        campaign = pledge.campaign
+        amount = pledge.amount
+        pledge.delete()
+        # Recalculate raised amount
+        campaign.raised_amount = max(0, sum(p.amount for p in campaign.pledges.all()))
+        campaign.save()
+        messages.warning(request, f"Your pledge of {amount:,} has been removed from the campaign.")
+        return redirect('campaign_detail', pk=campaign.pk)
+
+    return render(request, 'sponsorships/delete_pledge_confirm.html', {'pledge': pledge})

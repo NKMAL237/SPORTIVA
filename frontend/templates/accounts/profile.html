@@ -189,6 +189,11 @@
                     Rejected
                   </span>
                 {% endif %}
+                {% if is_owner or user.is_staff %}
+                  <a href="{% url 'delete_exploit' exploit_id=exploit.id %}" class="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-900 border border-slate-700 hover:border-rose-700 hover:bg-rose-900/40 text-slate-400 hover:text-rose-400 text-[11px] font-semibold transition-colors">
+                    <i class="fa-solid fa-trash-can"></i> {% trans "Delete" %}
+                  </a>
+                {% endif %}
               </div>
             </div>
 
@@ -306,7 +311,18 @@
                 <span class="font-bold text-white text-xs">{{ endo.skill_or_merit }}</span>
                 <span class="text-[10px] text-cyan-400 font-semibold">+10 PTS</span>
               </div>
-              <p class="text-[11px] text-slate-400">By <strong>{{ endo.endorsed_by.username }}</strong></p>
+              <div class="flex items-center justify-between gap-2">
+                <p class="text-[11px] text-slate-400">By <strong>{{ endo.endorsed_by.username }}</strong></p>
+                {% if user.is_authenticated and endo.endorsed_by == user %}
+                  <form method="post" action="{% url 'remove_endorsement' athlete_id=profile_user.id %}" class="inline">
+                    {% csrf_token %}
+                    <input type="hidden" name="skill_or_merit" value="{{ endo.skill_or_merit }}">
+                    <button type="submit" title="{% trans 'Retract my endorsement' %}" class="text-slate-500 hover:text-rose-400 transition-colors">
+                      <i class="fa-solid fa-rotate-left text-xs"></i>
+                    </button>
+                  </form>
+                {% endif %}
+              </div>
               {% if endo.comment %}
                 <p class="text-[11px] text-slate-300 italic">"{{ endo.comment }}"</p>
               {% endif %}
